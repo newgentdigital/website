@@ -1,0 +1,152 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import ThemeSwitcher from "../settings/ThemeSwitcher.astro";
+import SimpleIconsInstagram from "../icons/simple-icons/SimpleIconsInstagram.astro";
+import SimpleIconsLinkedIn from "../icons/simple-icons/SimpleIconsLinkedIn.astro";
+import SimpleIconsGithub from "../icons/simple-icons/SimpleIconsGithub.astro";
+
+interface Link {
+  category: string;
+  href?: string;
+  links: { href: string; title: string }[];
+}
+
+interface Props {
+  description?: string;
+  iconHref?: string;
+  links?: Link[];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+const isActive = (href: string) => {
+  const currentPath = Astro.url.pathname.replace(/\/$/, "");
+  const targetPath = getRelativeLocaleUrl(lang, href).replace(/\/$/, "");
+  return currentPath === targetPath;
+};
+
+const socials = [
+  {
+    name: "LinkedIn",
+    icon: SimpleIconsLinkedIn,
+    href: "https://www.linkedin.com/company/newgent",
+  },
+  {
+    name: "Instagram",
+    icon: SimpleIconsInstagram,
+    href: "https://www.instagram.com/heynewgent/",
+  },
+  {
+    name: "GitHub",
+    icon: SimpleIconsGithub,
+    href: "https://github.com/newgentdigital",
+  },
+];
+
+const { description = "", iconHref = "/", links = [] } = Astro.props;
+---
+
+<div class="mx-auto border-t border-zinc-300 dark:border-zinc-700">
+  <footer
+    class="mx-2 max-w-5xl justify-between space-y-8 divide-y divide-zinc-200 border-x border-dashed border-zinc-300 p-8 sm:mx-auto sm:p-12 dark:divide-zinc-800 dark:border-zinc-700"
+    aria-label={`${t("footer").footerNavigation}`}
+  >
+    <section class="flex flex-wrap items-end justify-between gap-6 pb-8">
+      <div class="max-w-sm">
+        <a
+          class="link block w-fit hover:opacity-70 active:opacity-50"
+          href={getRelativeLocaleUrl(lang, iconHref)}
+          aria-hidden="true"
+        >
+          <slot name="logo" />
+        </a>
+        <p class="p mt-4">{description}</p>
+      </div>
+
+      <ul class="flex gap-4">
+        {
+          socials.map((social) => (
+            <li>
+              <a
+                class="link block text-zinc-900 dark:text-zinc-100"
+                href={social.href}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <span class="sr-only">
+                  {t("footer").visitSocial} {social.name}
+                </span>
+                <social.icon />
+              </a>
+            </li>
+          ))
+        }
+
+        <li>
+          <ThemeSwitcher />
+        </li>
+      </ul>
+    </section>
+
+    <nav
+      class="flex flex-col gap-8 pb-8 sm:flex-row sm:flex-wrap sm:justify-between"
+    >
+      {
+        links.map((link) => (
+          <div class="space-y-2">
+            <h3 class="h6 font-display text-lg tracking-normal text-nwg-sky-500">
+              {link.href ? (
+                <a
+                  class="link link-ghost text-nwg-sky-500"
+                  href={getRelativeLocaleUrl(lang, link.href)}
+                  aria-current={isActive(link.href) ? "page" : undefined}
+                >
+                  {link.category}
+                </a>
+              ) : (
+                link.category
+              )}
+            </h3>
+            <ul class="space-y-0.5">
+              {link.links.map((item) => (
+                <li>
+                  <a
+                    class:list={`link link-ghost font-display tracking-normal ${
+                      isActive(item.href) ? "font-semibold" : ""
+                    }`}
+                    href={getRelativeLocaleUrl(lang, item.href)}
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </nav>
+
+    <section class="flex flex-wrap items-center justify-between gap-6">
+      <div class="max-w-xs space-y-0.5">
+        <p class="p text-sm text-zinc-500">
+          © 2025 NWG Digital AB. {t("footer").allRightsReserved}
+        </p>
+        <p class="p text-xs text-zinc-500">
+          {t("footer").newgentOperates}
+        </p>
+      </div>
+
+      <a
+        class="link link-ghost font-mono text-sm text-zinc-500"
+        href="https://github.com/newgentdigital/website"
+        rel="noopener noreferrer"
+        target="_blank"
+        aria-label={t("footer").viewSource}
+      >
+        530c124
+      </a>
+    </section>
+  </footer>
+</div>

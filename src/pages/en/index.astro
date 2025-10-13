@@ -1,0 +1,12 @@
+---
+export const prerender = true;
+
+import HomeHero from "../../components/home/HomeHero.astro";
+import LayoutNewgent from "../../layouts/LayoutNewgent.astro";
+---
+
+<LayoutNewgent>
+  <slot name="content">
+    <HomeHero />
+  </slot>
+</LayoutNewgent>

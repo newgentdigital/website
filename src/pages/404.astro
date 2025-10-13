@@ -1,0 +1,12 @@
+---
+export const prerender = true;
+
+import LayoutNewgent from "../layouts/LayoutNewgent.astro";
+import Page404 from "../components/Page404.astro";
+---
+
+<LayoutNewgent>
+  <slot name="content">
+    <Page404 />
+  </slot>
+</LayoutNewgent>

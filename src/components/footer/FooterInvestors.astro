@@ -1,0 +1,114 @@
+---
+import SvgLogomarkAktiebolagColorBlack from "../../assets/brand/logomark-aktiebolag-color-black.svg";
+import SvgLogomarkAktiebolagColorWhite from "../../assets/brand/logomark-aktiebolag-color-white.svg";
+import FooterBase from "./FooterBase.astro";
+import FooterNewsletterSignup from "./FooterNewsletterSignup.astro";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+
+const links = [
+  {
+    category: t("footer").links.newgent.label,
+    href: "/company",
+    links: [
+      { title: t("footer").links.newgent.items.about, href: "/company" },
+      { title: t("footer").links.newgent.items.team, href: "/team" },
+      { title: t("footer").links.newgent.items.careers, href: "/careers" },
+      { title: t("footer").links.newgent.items.awards, href: "/awards" },
+      { title: t("footer").links.newgent.items.partners, href: "/partners" },
+      { title: t("footer").links.newgent.items.investors, href: "/investors" },
+      { title: t("footer").links.newgent.items.handbook, href: "/handbook" },
+    ],
+  },
+  {
+    category: t("footer").links.investorResources.label,
+    href: "/investors",
+    links: [
+      {
+        title: t("footer").links.investorResources.items.financials,
+        href: "/investors/financials",
+      },
+      {
+        title: t("footer").links.investorResources.items.governance,
+        href: "/investors/governance",
+      },
+      {
+        title: t("footer").links.investorResources.items.events,
+        href: "/investors/events",
+      },
+      {
+        title: t("footer").links.investorResources.items.news,
+        href: "/investors/news",
+      },
+      {
+        title: t("footer").links.investorResources.items.bylaws,
+        href: "/investors/bylaws",
+      },
+      {
+        title: t("footer").links.investorResources.items.files,
+        href: "/investors/resources",
+      },
+    ],
+  },
+  {
+    category: t("footer").links.resources.label,
+    links: [
+      { title: t("footer").links.resources.items.blog, href: "/blog" },
+      { title: t("footer").links.resources.items.presskit, href: "/press-kit" },
+      {
+        title: t("footer").links.resources.items.finconnect,
+        href: "/finconnect",
+      },
+      {
+        title: t("footer").links.resources.items.quotegenerator,
+        href: "/pricing/quote",
+      },
+      {
+        title: t("footer").links.resources.items.pricecalculator,
+        href: "/pricing/calculator",
+      },
+    ],
+  },
+  {
+    category: t("footer").links.support.label,
+    links: [
+      { title: t("footer").links.support.items.hire, href: "/hire" },
+      {
+        title: t("footer").links.support.items.contact,
+        href: "/investors/contact",
+      },
+      { title: t("footer").links.support.items.faq, href: "/investors/faq" },
+      { title: t("footer").links.support.items.wiki, href: "/wiki" },
+    ],
+  },
+  {
+    category: t("footer").links.legal.label,
+    href: "/legal",
+    links: [
+      { title: t("footer").links.legal.items.terms, href: "/legal/terms" },
+      { title: t("footer").links.legal.items.privacy, href: "/legal/privacy" },
+      { title: t("footer").links.legal.items.cookies, href: "/legal/cookies" },
+      {
+        title: t("footer").links.legal.items.disclaimer,
+        href: "/legal/disclaimer",
+      },
+      { title: t("footer").links.legal.items.imprint, href: "/legal/imprint" },
+    ],
+  },
+];
+---
+
+<FooterNewsletterSignup />
+
+<FooterBase
+  description={t("footer").description.investors}
+  iconHref="/investors"
+  {links}
+>
+  <slot slot="logo">
+    <SvgLogomarkAktiebolagColorBlack class="h-8 dark:hidden" />
+    <SvgLogomarkAktiebolagColorWhite class="hidden h-8 dark:block" />
+  </slot>
+</FooterBase>

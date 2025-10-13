@@ -1,0 +1,15 @@
+---
+import FooterNewgent from "../components/footer/FooterNewgent.astro";
+import NavbarNewgent from "../components/navigation/NavbarNewgent.astro";
+import LayoutBase from "./LayoutBase.astro";
+---
+
+<LayoutBase>
+  <NavbarNewgent slot="navbar" />
+
+  <slot slot="body">
+    <slot name="content" />
+  </slot>
+
+  <FooterNewgent slot="footer" />
+</LayoutBase>

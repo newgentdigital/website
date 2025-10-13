@@ -1,0 +1,15 @@
+---
+import FooterFinconnect from "../components/footer/FooterFinconnect.astro";
+import NavbarFinconnect from "../components/navigation/NavbarFinconnect.astro";
+import LayoutBase from "./LayoutBase.astro";
+---
+
+<LayoutBase>
+  <NavbarFinconnect slot="navbar" />
+
+  <slot slot="body">
+    <slot name="content" />
+  </slot>
+
+  <FooterFinconnect slot="footer" />
+</LayoutBase>

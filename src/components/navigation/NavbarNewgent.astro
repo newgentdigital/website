@@ -1,0 +1,22 @@
+---
+import SvgIconWhite from "../../assets/brand/icon-white.svg";
+import NavbarBase from "./NavbarBase.astro";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+
+const links = [
+  { href: "/services", title: t("nav").links.services },
+  { href: "/about", title: t("nav").links.aboutUs },
+  { href: "/work", title: t("nav").links.work },
+  { href: "/contact", title: t("nav").links.contact, alternate: true },
+  { href: "/hire", title: t("nav").links.hire, cta: true },
+];
+---
+
+<NavbarBase {links}>
+  <slot slot="icon">
+    <SvgIconWhite height={24} width={24} />
+  </slot>
+</NavbarBase>

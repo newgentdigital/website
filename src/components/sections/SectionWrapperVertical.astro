@@ -1,0 +1,51 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLangFromUrl } from "../../i18n/utils";
+import RiArrowRightLine from "../icons/ri/RiArrowRightLine.astro";
+
+interface Props {
+  ctaText?: string;
+  ctaHref?: string;
+  hideHeaderCta?: boolean;
+}
+
+const lang = getLangFromUrl(Astro.url);
+
+const { ctaText, ctaHref, hideHeaderCta } = Astro.props;
+---
+
+<section class="space-y-4 p-8 sm:p-12">
+  <header class="flex flex-row items-end justify-between gap-8">
+    <slot name="header" />
+
+    {
+      ctaText && ctaHref ? (
+        <a
+          class="link link-primary group hidden items-center gap-1 whitespace-nowrap"
+          class:list={`${hideHeaderCta ? "sm:hidden" : "sm:flex"}`}
+          href={getRelativeLocaleUrl(lang, ctaHref)}
+        >
+          {ctaText}
+          <RiArrowRightLine class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </a>
+      ) : null
+    }
+  </header>
+
+  <div class="max-w-lg">
+    <slot name="content" />
+  </div>
+
+  {
+    ctaText && ctaHref ? (
+      <a
+        class="link link-primary group flex w-fit items-center gap-1"
+        class:list={`${hideHeaderCta ? "sm:flex" : "sm:hidden"}`}
+        href={getRelativeLocaleUrl(lang, ctaHref)}
+      >
+        {ctaText}
+        <RiArrowRightLine class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+      </a>
+    ) : null
+  }
+</section>

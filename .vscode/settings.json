@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "wrangler.json": "jsonc"
+  },
+
+  "astro.content-intellisense": true
+}

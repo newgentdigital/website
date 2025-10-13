@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json.schemastore.org/prettierrc",
+  "plugins": [
+    "prettier-plugin-astro",
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-css-order",
+    "prettier-plugin-jsdoc",
+    "prettier-plugin-tailwindcss",
+    "@xeonlink/prettier-plugin-organize-attributes"
+  ],
+
+  "tsdoc": true,
+
+  "tailwindStylesheet": "./src/styles/tailwind.css",
+  "tailwindFunctions": ["tw"],
+
+  "attributeGroups": ["^class$", "^(id|name)$", "$DEFAULT", "^aria-"],
+  "attributeSort": "ASC",
+
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro",
+        "importOrder": []
+      }
+    }
+  ]
+}

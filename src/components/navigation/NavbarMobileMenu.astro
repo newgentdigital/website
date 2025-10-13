@@ -1,0 +1,103 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import RiArrowRightLine from "../icons/ri/RiArrowRightLine.astro";
+import RiCloseLine from "../icons/ri/RiCloseLine.astro";
+import RiMenuLine from "../icons/ri/RiMenuLine.astro";
+import SimpleIconsGithub from "../icons/simple-icons/SimpleIconsGithub.astro";
+import SimpleIconsInstagram from "../icons/simple-icons/SimpleIconsInstagram.astro";
+import SimpleIconsLinkedIn from "../icons/simple-icons/SimpleIconsLinkedIn.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+
+const socials = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/newgent",
+    icon: SimpleIconsLinkedIn,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/heynewgent/",
+    icon: SimpleIconsInstagram,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/newgentdigital",
+    icon: SimpleIconsGithub,
+  },
+];
+
+interface Link {
+  href: string;
+  title: string;
+}
+
+interface Props {
+  links?: Link[];
+}
+
+const { links = [] } = Astro.props;
+---
+
+<button id="mobile-nav-toggle" aria-controls="mobile-nav" aria-expanded="false">
+  <RiMenuLine aria-hidden="true" />
+</button>
+
+<aside
+  class="fixed inset-0 z-50 hidden bg-zinc-50 p-6 dark:bg-zinc-900"
+  id="mobile-nav"
+>
+  <div class="flex h-full flex-col justify-between gap-4">
+    <div class="space-y-6">
+      <header class="flex items-center justify-between gap-2">
+        <h2 class="h5 font-display">
+          {t("nav").mobileMenu}
+        </h2>
+        <button id="mobile-nav-close">
+          <RiCloseLine aria-hidden="true" />
+        </button>
+      </header>
+
+      <nav>
+        <ul
+          class="divide-y divide-zinc-200 font-medium tracking-tight dark:divide-zinc-700"
+        >
+          {
+            links.map((link) => (
+              <li>
+                <a
+                  class="flex items-center justify-between gap-2 py-4"
+                  href={getRelativeLocaleUrl(lang, link.href)}
+                >
+                  {link.title}
+                  <RiArrowRightLine aria-hidden="true" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <nav>
+      <ul class="flex flex-row gap-4">
+        {
+          socials.map((social) => (
+            <li>
+              <a href={social.href} rel="noopener noreferrer" target="_blank">
+                <social.icon class="h-6 w-6" aria-hidden="true" />
+                <span class="sr-only">{social.label}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</aside>
+
+<script>
+  import "./NavbarMobileMenu";
+</script>

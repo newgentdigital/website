@@ -1,0 +1,217 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-inter), sans-serif;
+  --font-serif: var(--font-instrument-serif), serif;
+  --font-mono: var(--font-geist-mono), monospace;
+  --font-display: var(--font-anek-latin), sans-serif;
+
+  /* Newgent Sky - the default brand color for general use */
+  --color-nwg-sky-50: oklch(95.55% 0.02117 259.19);
+  --color-nwg-sky-100: oklch(91.659% 0.04049 257.51);
+  --color-nwg-sky-200: oklch(83.835% 0.0807 258.34);
+  --color-nwg-sky-300: oklch(76.479% 0.12087 258.28);
+  --color-nwg-sky-400: oklch(69.227% 0.16254 258.52);
+  --color-nwg-sky-500: oklch(62.815% 0.20109 258.85); /* base */
+  --color-nwg-sky-600: oklch(55.086% 0.23454 260.76);
+  --color-nwg-sky-700: oklch(45.859% 0.19062 260.34);
+  --color-nwg-sky-800: oklch(35.932% 0.14527 259.83);
+  --color-nwg-sky-900: oklch(25.52% 0.09454 258.02);
+  --color-nwg-sky-950: oklch(19.669% 0.06815 256.39);
+
+  /* Newgent Deep Sea - a default variant brand color for general use */
+  --color-nwg-deep-sea-50: oklch(81.044% 0.08615 258.33);
+  --color-nwg-deep-sea-100: oklch(77.352% 0.10457 258.45);
+  --color-nwg-deep-sea-200: oklch(70.112% 0.14221 258.29);
+  --color-nwg-deep-sea-300: oklch(63.352% 0.17866 258.7);
+  --color-nwg-deep-sea-400: oklch(57.198% 0.21093 259.56);
+  --color-nwg-deep-sea-500: oklch(51.062% 0.19687 259.87);
+  --color-nwg-deep-sea-600: oklch(44.301% 0.1685 259.74);
+  --color-nwg-deep-sea-700: oklch(37.202% 0.13733 259.53); /* base */
+  --color-nwg-deep-sea-800: oklch(26.996% 0.09167 258.7);
+  --color-nwg-deep-sea-900: oklch(15.757% 0.03952 253.21);
+  --color-nwg-deep-sea-950: oklch(6.5534% 0.0175 247.65);
+
+  /* Newgent Night - a dark brand color for high contrast */
+  --color-nwg-night-50: oklch(81.98% 0.08115 258.34);
+  --color-nwg-night-100: oklch(78.275% 0.09951 258.47);
+  --color-nwg-night-200: oklch(70.726% 0.13686 258.61);
+  --color-nwg-night-300: oklch(63.885% 0.17364 258.85);
+  --color-nwg-night-400: oklch(57.63% 0.20643 259.59);
+  --color-nwg-night-500: oklch(51.526% 0.19939 260);
+  --color-nwg-night-600: oklch(44.782% 0.17111 259.91);
+  --color-nwg-night-700: oklch(37.794% 0.14144 259.93);
+  --color-nwg-night-800: oklch(30.597% 0.10745 259);
+  --color-nwg-night-900: oklch(22.831% 0.07342 258.31); /* base */
+  --color-nwg-night-950: oklch(17.28% 0.04737 254.4);
+
+  /* Newgent Day - a very light brand color for high contrast */
+  --color-nwg-day-50: oklch(98.77% 0.00572 264.53); /* base */
+  --color-nwg-day-100: oklch(92.971% 0.03344 265.23);
+  --color-nwg-day-200: oklch(81.675% 0.09128 263.87);
+  --color-nwg-day-300: oklch(70.586% 0.15314 263.28);
+  --color-nwg-day-400: oklch(60.737% 0.21258 262.24);
+  --color-nwg-day-500: oklch(52.859% 0.25721 262.63);
+  --color-nwg-day-600: oklch(43.943% 0.20982 262.41);
+  --color-nwg-day-700: oklch(34.663% 0.16084 262.04);
+  --color-nwg-day-800: oklch(24.961% 0.10625 260.75);
+  --color-nwg-day-900: oklch(14.076% 0.04463 253.88);
+  --color-nwg-day-950: oklch(0% 0 none);
+}
+
+@layer components {
+  /* HEADINGS & PARAGRAPHS */
+  .h1 {
+    @apply text-5xl font-semibold tracking-tighter text-zinc-900 sm:text-6xl dark:text-zinc-100;
+  }
+
+  .h2 {
+    @apply text-4xl font-semibold tracking-tighter text-zinc-900 sm:text-5xl dark:text-zinc-100;
+  }
+
+  .h3 {
+    @apply text-3xl font-semibold tracking-tighter text-zinc-900 sm:text-4xl dark:text-zinc-100;
+  }
+
+  .h4 {
+    @apply text-2xl font-semibold tracking-tighter text-zinc-900 sm:text-3xl dark:text-zinc-100;
+  }
+
+  .h5 {
+    @apply text-xl font-semibold tracking-tighter text-zinc-900 sm:text-2xl dark:text-zinc-100;
+  }
+
+  .h6 {
+    @apply text-lg font-semibold tracking-tighter text-zinc-900 sm:text-xl dark:text-zinc-100;
+  }
+
+  .p {
+    @apply leading-relaxed tracking-tight text-zinc-800 dark:text-zinc-200;
+  }
+
+  /* BUTTONS */
+  .btn {
+    @apply flex items-center justify-center gap-2 px-4 py-2 font-medium tracking-tight transition-all selection:bg-nwg-sky-200 hover:cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-nwg-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100 active:scale-95 active:opacity-80 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 dark:selection:bg-nwg-sky-800 dark:focus-visible:ring-offset-zinc-950;
+  }
+
+  /* BUTTONS: SIZES */
+  .btn-lg {
+    @apply gap-2 px-5 py-3;
+  }
+
+  .btn-sm {
+    @apply gap-1 px-3 py-2 text-sm;
+  }
+
+  /* BUTTONS: PRIMARY VARIANTS */
+  .btn-primary {
+    @apply bg-gradient-to-b from-nwg-sky-500 to-nwg-sky-600 text-zinc-100 hover:from-nwg-sky-600 hover:to-nwg-sky-700;
+  }
+
+  .btn-primary-outline {
+    @apply border-2 border-nwg-sky-500 text-nwg-sky-500 hover:border-nwg-sky-600 hover:bg-nwg-sky-50 dark:text-nwg-sky-100 dark:hover:bg-nwg-sky-800;
+  }
+
+  /* BUTTONS: SECONDARY VARIANTS */
+  .btn-secondary {
+    @apply bg-gradient-to-b from-nwg-deep-sea-500 to-nwg-deep-sea-600 text-zinc-100 hover:from-nwg-deep-sea-600 hover:to-nwg-deep-sea-700;
+  }
+
+  .btn-secondary-outline {
+    @apply border-2 border-nwg-deep-sea-500 text-nwg-deep-sea-500 hover:border-nwg-deep-sea-600 hover:bg-nwg-deep-sea-50 dark:text-nwg-deep-sea-100 dark:hover:bg-nwg-deep-sea-800;
+  }
+
+  /* BUTTONS: TERTIARY VARIANTS */
+  .btn-tertiary {
+    @apply bg-gradient-to-b from-nwg-day-100 to-nwg-day-200 text-nwg-day-700 hover:from-nwg-day-200 hover:to-nwg-day-300 dark:from-nwg-day-700 dark:to-nwg-day-800 dark:text-nwg-day-200 dark:hover:from-nwg-day-600 dark:hover:to-nwg-day-700;
+  }
+
+  .btn-tertiary-outline {
+    @apply border-2 border-nwg-day-300 text-nwg-day-300 hover:border-nwg-day-400 hover:bg-nwg-day-100 dark:border-nwg-day-700 dark:hover:bg-nwg-day-800;
+  }
+
+  /* BUTTONS: GHOST VARIANTS */
+  .btn-ghost {
+    @apply bg-transparent text-zinc-900 decoration-from-font underline-offset-3 hover:underline focus-visible:underline dark:text-zinc-100;
+  }
+
+  /* LINKS */
+  .link {
+    @apply tracking-tight decoration-dashed decoration-from-font underline-offset-4 transition-all selection:bg-nwg-sky-200 hover:decoration-solid focus:outline-none focus-visible:ring-2 focus-visible:ring-nwg-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100 active:opacity-70 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 dark:selection:bg-nwg-sky-800 dark:focus-visible:ring-offset-zinc-950;
+  }
+
+  /* LINKS: VARIANTS */
+  .link-primary {
+    @apply text-nwg-sky-500 underline hover:text-nwg-sky-600;
+  }
+
+  .link-secondary {
+    @apply text-nwg-deep-sea-700 underline hover:text-nwg-deep-sea-800 dark:text-nwg-deep-sea-400 dark:hover:text-nwg-deep-sea-300;
+  }
+
+  .link-tertiary {
+    @apply text-nwg-day-700 underline hover:text-nwg-day-800 dark:text-nwg-day-200 dark:hover:text-nwg-day-100;
+  }
+
+  .link-ghost {
+    @apply text-zinc-900 hover:underline focus-visible:underline dark:text-zinc-100;
+  }
+
+  /* FORM INPUTS */
+  .input {
+    @apply border border-zinc-300 bg-zinc-100 px-3 py-2 tracking-tight text-zinc-900 transition-all selection:bg-nwg-sky-200 placeholder:text-zinc-500 hover:border-zinc-400 focus:border-nwg-sky-500 focus:ring-2 focus:ring-nwg-sky-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:selection:bg-nwg-sky-800 dark:hover:border-zinc-600 dark:focus:ring-nwg-sky-800 dark:disabled:hover:border-zinc-700;
+  }
+
+  .input-checkbox {
+    @apply h-4 w-4 appearance-none border border-zinc-300 bg-zinc-50 transition-all checked:border-nwg-sky-500 checked:bg-nwg-sky-500 checked:ring-2 checked:ring-nwg-sky-200 hover:border-zinc-400 focus:border-nwg-sky-500 focus:ring-2 focus:ring-nwg-sky-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-950 dark:checked:ring-nwg-sky-800 dark:hover:border-zinc-600 dark:focus:ring-nwg-sky-800;
+  }
+
+  .input-radio {
+    @apply h-4 w-4 appearance-none rounded-full border border-zinc-300 bg-zinc-50 transition-all checked:border-nwg-sky-500 checked:bg-nwg-sky-500 checked:ring-2 checked:ring-nwg-sky-200 hover:border-zinc-400 focus:border-nwg-sky-500 focus:ring-2 focus:ring-nwg-sky-200 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-950 dark:checked:ring-nwg-sky-800 dark:hover:border-zinc-600 dark:focus:ring-nwg-sky-800;
+  }
+
+  /* FORM INPUTS: LABELS */
+  .input-label {
+    @apply font-medium tracking-tight text-zinc-900 select-none dark:text-zinc-100;
+  }
+
+  .input-label-wide {
+    @apply text-sm font-medium tracking-widest text-zinc-500 uppercase select-none;
+  }
+
+  /* ALERTS */
+  .alert {
+    @apply border-l-4 border-zinc-500 bg-zinc-200 p-4 tracking-tight text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300;
+  }
+
+  .alert-info {
+    @apply border-nwg-sky-500 bg-nwg-sky-100 text-nwg-sky-700 dark:bg-nwg-sky-900 dark:text-nwg-sky-200;
+  }
+
+  .alert-success {
+    @apply border-lime-500 bg-lime-100 text-lime-700 dark:bg-lime-900 dark:text-lime-200;
+  }
+
+  .alert-warning {
+    @apply border-amber-500 bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-200;
+  }
+
+  .alert-error {
+    @apply border-red-500 bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-200;
+  }
+
+  /* TABLES */
+  .table {
+    @apply w-full table-auto border-collapse tracking-tight text-zinc-900 dark:text-zinc-100;
+  }
+
+  .table th {
+    @apply border border-zinc-300 bg-zinc-50 px-4 py-2 text-left font-medium dark:border-zinc-700 dark:bg-zinc-900;
+  }
+
+  .table td {
+    @apply border border-zinc-300 px-4 py-2 dark:border-zinc-700;
+  }
+}

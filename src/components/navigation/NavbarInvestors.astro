@@ -1,0 +1,29 @@
+---
+import SvgLogomarkAktiebolagWhite from "../../assets/brand/logomark-aktiebolag-white.svg";
+import NavbarBase from "./NavbarBase.astro";
+import NavbarReturn from "./NavbarReturn.astro";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+
+const links = [
+  { href: "/investors/financials", title: t("nav").links.financials },
+  { href: "/investors/governance", title: t("nav").links.governance },
+  { href: "/investors/events", title: t("nav").links.events },
+  {
+    href: "/investors/contact",
+    title: t("nav").links.contact,
+    alternate: true,
+  },
+  { href: "/investors/news", title: t("nav").links.news, cta: true },
+];
+---
+
+<NavbarBase iconHref="/investors" {links}>
+  <NavbarReturn slot="return" />
+
+  <slot slot="icon">
+    <SvgLogomarkAktiebolagWhite height={24} />
+  </slot>
+</NavbarBase>

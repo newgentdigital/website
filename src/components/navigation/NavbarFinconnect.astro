@@ -1,0 +1,25 @@
+---
+import SvgLogomarkFinconnectWhite from "../../assets/brand/logomark-finconnect-white.svg";
+import NavbarBase from "./NavbarBase.astro";
+import NavbarReturn from "./NavbarReturn.astro";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+
+const links = [
+  { href: "/finconnect/integrations", title: t("nav").links.integrations },
+  { href: "/finconnect/setup", title: t("nav").links.setup },
+  { href: "/finconnect/about", title: t("nav").links.about },
+  { href: "/wiki", title: t("nav").links.support, alternate: true },
+  { href: "/finconnect/pricing", title: t("nav").links.getStarted, cta: true },
+];
+---
+
+<NavbarBase iconHref="/finconnect" {links}>
+  <NavbarReturn slot="return" />
+
+  <slot slot="icon">
+    <SvgLogomarkFinconnectWhite height={24} />
+  </slot>
+</NavbarBase>

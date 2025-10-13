@@ -1,0 +1,15 @@
+---
+import FooterInvestors from "../components/footer/FooterInvestors.astro";
+import NavbarInvestors from "../components/navigation/NavbarInvestors.astro";
+import LayoutBase from "./LayoutBase.astro";
+---
+
+<LayoutBase>
+  <NavbarInvestors slot="navbar" />
+
+  <slot slot="body">
+    <slot name="content" />
+  </slot>
+
+  <FooterInvestors slot="footer" />
+</LayoutBase>

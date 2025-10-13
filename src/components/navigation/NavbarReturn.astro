@@ -1,0 +1,26 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import RiArrowLeftLine from "../icons/ri/RiArrowLeftLine.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+---
+
+<div class="bg-nwg-night-800 p-4">
+  <nav
+    class="mx-auto max-w-5xl text-sm font-medium tracking-tight text-zinc-100"
+    aria-label={t("nav").returnToNewgent}
+  >
+    <a
+      class="group flex w-fit items-center gap-1 hover:opacity-70 active:opacity-50"
+      href={getRelativeLocaleUrl(lang, "/")}
+    >
+      <RiArrowLeftLine
+        class="h-4 w-4 transition-transform group-hover:-translate-x-0.5"
+        aria-hidden="true"
+      />
+      {t("nav").returnToNewgent}
+    </a>
+  </nav>
+</div>

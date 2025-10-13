@@ -1,0 +1,56 @@
+---
+import {
+  getLangFromUrl,
+  supportedLocales,
+  defaultLocale,
+} from "../../i18n/utils";
+import TwemojiFlagSweden from "../icons/twemoji/TwemojiFlagSweden.astro";
+import TwemojiFlagUnitedKingdom from "../icons/twemoji/TwemojiFlagUnitedKingdom.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const supportedLocalesArray = Object.keys(supportedLocales);
+const currentIndex = supportedLocalesArray.indexOf(lang);
+const targetLocale =
+  supportedLocalesArray[(currentIndex + 1) % supportedLocalesArray.length];
+
+interface Languages {
+  [key: string]: {
+    ariaLabel: string;
+    FlagComponent: any;
+  };
+}
+
+const languages: Languages = {
+  sv: {
+    ariaLabel: "Visa sidan på svenska",
+    FlagComponent: TwemojiFlagSweden,
+  },
+  en: {
+    ariaLabel: "View this page in English",
+    FlagComponent: TwemojiFlagUnitedKingdom,
+  },
+};
+
+const currentPath = Astro.url.pathname;
+let withoutLocalePrefix = currentPath;
+if (currentPath.startsWith(`/${lang}`)) {
+  withoutLocalePrefix = currentPath.slice(`/${lang}`.length) || "/";
+}
+
+const href =
+  targetLocale === defaultLocale
+    ? withoutLocalePrefix
+    : `/${targetLocale}${withoutLocalePrefix}`.replace(/\/$/, "");
+
+const langConfig = languages[targetLocale];
+---
+
+<a
+  class="link flex h-full w-full items-center px-4 active:opacity-50"
+  href={href}
+  hreflang={targetLocale}
+  rel="alternate"
+  aria-label={langConfig.ariaLabel}
+>
+  <langConfig.FlagComponent class="h-6 w-6" aria-hidden="true" />
+</a>

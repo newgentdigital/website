@@ -1,0 +1,16 @@
+---
+import RiMoonClearLine from "../icons/ri/RiMoonClearLine.astro";
+import RiSunLine from "../icons/ri/RiSunLine.astro";
+---
+
+<button
+  class="link text-zinc-900 hover:cursor-pointer dark:text-zinc-100"
+  id="theme-toggle"
+>
+  <RiSunLine class="hidden dark:block" />
+  <RiMoonClearLine class="block dark:hidden" />
+</button>
+
+<script>
+  import "./ThemeSwitcher";
+</script>

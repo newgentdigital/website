@@ -1,0 +1,42 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLangFromUrl } from "../../i18n/utils";
+import RiArrowRightLine from "../icons/ri/RiArrowRightLine.astro";
+
+interface Props {
+  ctaText?: string;
+  ctaHref?: string;
+  stickyHeader?: boolean;
+}
+
+const lang = getLangFromUrl(Astro.url);
+
+const { ctaText, ctaHref, stickyHeader } = Astro.props;
+---
+
+<section
+  class="flex flex-col justify-between gap-4 p-8 sm:flex-row sm:gap-8 sm:p-12"
+>
+  <header
+    class="flex-1"
+    class:list={`${stickyHeader ? "top-26 self-start sm:sticky" : ""}`}
+  >
+    <slot name="header" />
+  </header>
+
+  <div class="flex max-w-md flex-1 flex-col gap-4">
+    <slot name="content" />
+
+    {
+      ctaText && ctaHref ? (
+        <a
+          class="link link-primary group flex w-fit items-center gap-1"
+          href={getRelativeLocaleUrl(lang, ctaHref)}
+        >
+          {ctaText}
+          <RiArrowRightLine class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </a>
+      ) : null
+    }
+  </div>
+</section>

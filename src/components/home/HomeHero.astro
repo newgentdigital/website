@@ -1,0 +1,57 @@
+---
+import { Dithering } from "@paper-design/shaders-react";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+---
+
+<section class="relative h-[500px] overflow-hidden">
+  <div
+    class="absolute inset-0 -z-50 bg-nwg-sky-500 dark:hidden"
+    aria-hidden="true"
+  >
+    <Dithering
+      client:only="react"
+      colorBack="#fafafa"
+      colorFront="#2e82ff"
+      height={500}
+      scale={1}
+      shape="warp"
+      size={3}
+      speed={0.25}
+      type="4x4"
+    />
+  </div>
+  <div
+    class="absolute inset-0 -z-50 hidden bg-nwg-sky-500 dark:block"
+    aria-hidden="true"
+  >
+    <Dithering
+      client:only="react"
+      colorBack="#09090b"
+      colorFront="#2e82ff"
+      height={500}
+      scale={1}
+      shape="warp"
+      size={3}
+      speed={0.25}
+      type="4x4"
+    />
+  </div>
+
+  <header class="absolute bottom-0 left-0 flex flex-col gap-4 p-8 sm:p-12">
+    <span
+      class="input-label-wide font-display font-semibold text-zinc-900 dark:text-zinc-100"
+    >
+      {t("home").newgent.hero.label}
+    </span>
+    <h1 class="h1">{t("home").newgent.hero.heading}</h1>
+  </header>
+
+  <div
+    class="absolute right-0 bottom-0 left-0 -z-40 h-full bg-gradient-to-t from-zinc-100 to-transparent dark:from-zinc-950"
+    aria-hidden="true"
+  >
+  </div>
+</section>

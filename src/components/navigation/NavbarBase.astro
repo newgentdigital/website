@@ -1,0 +1,131 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import SvgIconWhite from "../../assets/brand/icon-white.svg";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import LanguageSwitcher from "../settings/LanguageSwitcher.astro";
+import NavbarMobileMenu from "./NavbarMobileMenu.astro";
+
+interface Link {
+  href: string;
+  title: string;
+  alternate?: boolean;
+  cta?: boolean;
+}
+
+interface Props {
+  iconHref?: string;
+  links?: Link[];
+  ctaHideIcon?: boolean;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+const isActive = (href: string) => {
+  const currentPath = Astro.url.pathname.replace(/\/$/, "");
+  const targetPath = getRelativeLocaleUrl(lang, href).replace(/\/$/, "");
+  return currentPath === targetPath;
+};
+
+const { iconHref = "/", links = [], ctaHideIcon = false } = Astro.props;
+---
+
+<slot name="return" />
+
+<div
+  class="sticky top-0 z-10 mx-auto border-b border-zinc-300 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900"
+>
+  <nav
+    class="mx-2 flex max-w-5xl justify-between border-x border-zinc-300 text-zinc-900 sm:mx-auto dark:border-zinc-700 dark:text-zinc-100"
+    aria-label=`${t("nav").mainNavigation}`
+  >
+    <div class="flex">
+      <a
+        class="link group block bg-gradient-to-tr from-nwg-sky-600 to-nwg-sky-400 p-4"
+        href={getRelativeLocaleUrl(lang, iconHref)}
+      >
+        <div
+          class="group-hover:opacity-70 group-active:opacity-50"
+          aria-hidden="true"
+        >
+          <slot name="icon" />
+        </div>
+      </a>
+
+      <ul
+        class="hidden divide-x divide-zinc-300 border-r border-zinc-300 font-medium tracking-tight md:flex dark:divide-zinc-700 dark:border-zinc-700"
+      >
+        {
+          links
+            .filter((link) => !link.cta && !link.alternate)
+            .map((link) => {
+              return (
+                <li>
+                  <a
+                    class="link flex h-full items-center px-6 hover:bg-nwg-sky-500 hover:text-zinc-100 active:opacity-50"
+                    href={getRelativeLocaleUrl(lang, link.href)}
+                    aria-current={isActive(link.href) ? "page" : undefined}
+                  >
+                    {link.title}
+                  </a>
+                </li>
+              );
+            })
+        }
+      </ul>
+    </div>
+
+    <div class="flex">
+      <ul
+        class="hidden divide-x divide-zinc-300 border-l border-zinc-300 md:flex dark:divide-zinc-700 dark:border-zinc-700"
+      >
+        {
+          links
+            .filter((link) => link.alternate || link.cta)
+            .map((link) => {
+              return link.cta ? (
+                <li class="relative overflow-hidden">
+                  <a
+                    class="link flex h-full items-center bg-gradient-to-tl from-nwg-sky-600 to-nwg-sky-400 px-8 font-medium tracking-tight text-zinc-100 transition-colors hover:to-nwg-sky-300 active:opacity-50"
+                    href={getRelativeLocaleUrl(lang, link.href)}
+                    aria-current={isActive(link.href) ? "page" : undefined}
+                  >
+                    {link.title}
+
+                    {!ctaHideIcon && (
+                      <SvgIconWhite
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-50 mix-blend-soft-light"
+                        height={164}
+                        width={164}
+                        aria-hidden="true"
+                      />
+                    )}
+                  </a>
+                </li>
+              ) : (
+                <li>
+                  <a
+                    class="link flex h-full items-center px-6 font-medium tracking-tight hover:bg-zinc-900 hover:text-zinc-100 active:opacity-50 dark:hover:bg-zinc-50 dark:hover:text-zinc-900"
+                    href={getRelativeLocaleUrl(lang, link.href)}
+                    aria-current={isActive(link.href) ? "page" : undefined}
+                  >
+                    {link.title}
+                  </a>
+                </li>
+              );
+            })
+        }
+      </ul>
+
+      <ul
+        class="flex divide-x divide-zinc-300 border-l border-zinc-300 dark:divide-zinc-700 dark:border-zinc-700"
+      >
+        <li class="flex items-center px-4 md:hidden">
+          <NavbarMobileMenu {links} />
+        </li>
+        <li class="flex items-center">
+          <LanguageSwitcher />
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

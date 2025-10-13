@@ -1,0 +1,11 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node-terminal",
+      "request": "launch",
+      "name": "Astro: Development Server",
+      "command": "./node_modules/.bin/astro dev"
+    }
+  ]
+}

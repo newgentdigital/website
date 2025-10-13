@@ -1,0 +1,49 @@
+---
+import { Font } from "astro:assets";
+import "../styles/global.css";
+import "../styles/tailwind.css";
+---
+
+<html class="scroll-smooth" lang={Astro.currentLocale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <Font cssVariable="--font-inter" preload />
+    <Font cssVariable="--font-instrument-serif" />
+    <Font cssVariable="--font-geist-mono" />
+    <Font cssVariable="--font-anek-latin" preload />
+
+    <script>
+      (function () {
+        const isDark =
+          localStorage.theme === "dark" ||
+          (!localStorage.theme &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        localStorage.theme = isDark ? "dark" : "light";
+        document.documentElement.classList.toggle("dark", isDark);
+      })();
+    </script>
+
+    <script
+      defer
+      is:inline
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
+
+    <slot name="head" />
+  </head>
+
+  <body
+    class="bg-zinc-100 selection:bg-nwg-sky-500 selection:text-zinc-50 dark:bg-zinc-900"
+  >
+    <slot name="navbar" />
+
+    <div
+      class="mx-2 max-w-5xl border-x border-dashed border-zinc-300 sm:mx-auto dark:border-zinc-700"
+    >
+      <slot name="body" />
+    </div>
+
+    <slot name="footer" />
+  </body>
+</html>

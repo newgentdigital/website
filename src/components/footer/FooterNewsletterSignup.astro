@@ -1,0 +1,71 @@
+---
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+---
+
+<section
+  class="mx-2 max-w-5xl border-x border-t border-dashed border-zinc-300 p-8 sm:mx-auto sm:p-12 dark:border-zinc-700"
+>
+  <div class="flex flex-col gap-4 sm:flex-row sm:justify-between sm:gap-12">
+    <h2 class="h3">
+      {t("footer").newsletterSignup.heading}<br />
+      <span class="font-serif font-normal text-nwg-sky-500 italic">
+        The Newgent Pulse
+      </span>
+    </h2>
+
+    <p class="p max-w-md flex-1">
+      {t("footer").newsletterSignup.description}
+    </p>
+  </div>
+
+  <form class="space-y-4" id="footer-newsletter-form" method="post">
+    <fieldset
+      class="mt-6 flex w-full flex-col gap-2 sm:mt-12 sm:flex-row sm:items-center sm:gap-4"
+    >
+      <legend class="sr-only">{t("footer").newsletterSignup.formLegend}</legend>
+      <label class="sr-only" for="email"
+        >{t("footer").newsletterSignup.emailLabel}</label
+      >
+      <input
+        class="input w-full"
+        id="email"
+        name="email"
+        placeholder={t("footer").newsletterSignup.emailPlaceholder}
+        required
+        type="email"
+      />
+      <input
+        name="audienceId"
+        type="hidden"
+        value="d08ca3a9-2673-4432-9199-8753384e6eb8"
+      />
+      <button class="btn btn-primary" type="submit">
+        {t("footer").newsletterSignup.submitLabel}
+      </button>
+    </fieldset>
+
+    <div
+      class="p hidden bg-green-600 p-2 text-center font-medium text-zinc-100"
+      id="newsletter-success"
+    >
+      {t("footer").newsletterSignup.successMessage}
+    </div>
+    <div
+      class="p hidden bg-red-600 p-2 text-center font-medium text-zinc-100"
+      id="newsletter-error"
+    >
+      <span id="newsletter-error-text">
+        {t("footer").newsletterSignup.errorMessage}
+      </span>
+    </div>
+
+    <div id="cf-turnstile"></div>
+  </form>
+</section>
+
+<script>
+  import "./FooterNewsletterSignup";
+</script>

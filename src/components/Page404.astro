@@ -1,0 +1,42 @@
+---
+import { getLangFromUrl, useTranslation } from "../i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import RiArrowRightLine from "./icons/ri/RiArrowRightLine.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+---
+
+<section class="space-y-12">
+  <aside class="bg-amber-700">
+    <p class="p-4 text-center font-medium tracking-tight text-zinc-100">
+      {t("page404").aside}
+    </p>
+  </aside>
+
+  <div class="max-w-2xl space-y-6 px-8 pb-12 sm:px-12">
+    <h1 class="h3">404</h1>
+
+    <p class="p">
+      <span class="font-medium">
+        {t("page404").oops}
+      </span>
+      <br />
+      {t("page404").description}
+    </p>
+
+    <a
+      class="link link-primary group flex w-fit items-center gap-1"
+      href={getRelativeLocaleUrl(lang, "/")}
+    >
+      {t("page404").returnHome}
+      <RiArrowRightLine
+        class="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+      />
+    </a>
+
+    <aside class="p text-sm text-zinc-500">
+      {t("page404").believeError}
+    </aside>
+  </div>
+</section>

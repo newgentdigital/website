@@ -1,0 +1,48 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLangFromUrl } from "../../i18n/utils";
+import RiArrowRightLine from "../icons/ri/RiArrowRightLine.astro";
+
+interface Props {
+  ctaText?: string;
+  ctaHref?: string;
+  stickyHeader?: boolean;
+  reverseOrder?: boolean;
+}
+
+const lang = getLangFromUrl(Astro.url);
+
+const {
+  ctaText,
+  ctaHref,
+  stickyHeader = false,
+  reverseOrder = false,
+} = Astro.props;
+---
+
+<section class="grid gap-8 p-8 sm:grid-cols-2 sm:p-12">
+  <header
+    class="space-y-4"
+    class:list={`${stickyHeader ? "top-26 self-start sm:sticky" : ""} ${
+      reverseOrder ? "order-2" : "order-1"
+    }`}
+  >
+    <slot name="header" />
+
+    {
+      ctaText && ctaHref ? (
+        <a
+          class="link link-primary group flex items-center gap-1"
+          href={getRelativeLocaleUrl(lang, ctaHref)}
+        >
+          {ctaText}
+          <RiArrowRightLine class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </a>
+      ) : null
+    }
+  </header>
+
+  <div class:list={`${reverseOrder ? "order-1" : "order-2"}`}>
+    <slot name="content" />
+  </div>
+</section>
