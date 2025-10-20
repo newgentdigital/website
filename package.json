@@ -41,7 +41,7 @@
     "@paper-design/shaders-react": "^0.0.57",
     "@sentry/astro": "^10.20.0",
     "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.1.14",
+    "@tailwindcss/vite": "^4.1.15",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "astro": "^5.14.6",
