@@ -1,0 +1,138 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  heading?: string;
+  description?: string;
+  image?: any | null;
+  imageAlt?: string;
+  features?: Array<{ title: string; description: string }>;
+  color?: "sky" | "red" | "orange" | "lime" | "purple" | "pink";
+}
+
+const colorSchemes = {
+  sky: {
+    bg: "bg-sky-100 dark:bg-sky-950/75",
+    iconBg: "from-sky-300 to-sky-600",
+    text: "text-sky-800 dark:text-sky-100",
+    textMuted: "text-sky-800/75 dark:text-sky-100/75",
+  },
+  red: {
+    bg: "bg-red-100 dark:bg-red-950/75",
+    iconBg: "from-red-400 to-red-600",
+    text: "text-red-800 dark:text-red-100",
+    textMuted: "text-red-800/75 dark:text-red-100/75",
+  },
+  orange: {
+    bg: "bg-orange-100 dark:bg-orange-950/50",
+    iconBg: "from-orange-400 to-orange-700",
+    text: "text-orange-800 dark:text-orange-100",
+    textMuted: "text-orange-800/75 dark:text-orange-100/75",
+  },
+  lime: {
+    bg: "bg-lime-100 dark:bg-lime-950/50",
+    iconBg: "from-lime-400 to-lime-600",
+    text: "text-lime-800 dark:text-lime-100",
+    textMuted: "text-lime-800/75 dark:text-lime-100/75",
+  },
+  purple: {
+    bg: "bg-purple-100 dark:bg-purple-950/50",
+    iconBg: "from-purple-400 to-purple-700",
+    text: "text-purple-800 dark:text-purple-100",
+    textMuted: "text-purple-800/75 dark:text-purple-100/75",
+  },
+  pink: {
+    bg: "bg-pink-100 dark:bg-pink-950/50",
+    iconBg: "from-pink-400 to-pink-600",
+    text: "text-pink-800 dark:text-pink-100",
+    textMuted: "text-pink-800/75 dark:text-pink-100/75",
+  },
+};
+
+const {
+  heading = "What about those sections?",
+  description = "This is a description of the section. Maybe a sentence or maybe two. It's up to you. Nothing special, just a nice and friendly description that tells you what this section is about.",
+  image = "https://placehold.co/900x450",
+  imageAlt = "Image representing the section",
+  features = [
+    {
+      title: "A feature of sorts",
+      description:
+        "This is a description of the feature. Maybe a sentence or maybe two. It's up to you.",
+    },
+    {
+      title: "A feature of sorts",
+      description:
+        "This is a description of the feature. Maybe a sentence or maybe two. It's up to you.",
+    },
+    {
+      title: "A feature of sorts",
+      description:
+        "This is a description of the feature. Maybe a sentence or maybe two. It's up to you.",
+    },
+  ],
+  color = "pink",
+} = Astro.props;
+---
+
+<section class="p-8 sm:p-12" aria-labelledby="features-heading">
+  <div
+    class="w-full space-y-4 p-6 sm:p-8"
+    class:list={`${colorSchemes[color].bg}`}
+  >
+    <header class="max-w-md space-y-6">
+      <span
+        class="label flex h-12 w-12 items-center justify-center bg-gradient-to-b text-xl font-semibold text-zinc-100"
+        class:list={`${colorSchemes[color].iconBg}`}
+        aria-hidden="true"
+      >
+        {heading.charAt(0)}
+      </span>
+
+      <h2
+        class="h5"
+        id="features-heading"
+        class:list={`${colorSchemes[color].text}`}
+      >
+        {heading}
+      </h2>
+    </header>
+
+    <p class="p max-w-xl" class:list={`${colorSchemes[color].textMuted}`}>
+      {description}
+    </p>
+
+    <Image
+      class="py-4 select-none"
+      alt={imageAlt}
+      fit="cover"
+      format="avif"
+      height={450}
+      layout="constrained"
+      position="center"
+      quality={80}
+      src={image}
+      width={900}
+    />
+
+    {
+      features && features.length > 0 && (
+        <ul class="flex flex-col justify-between gap-8 sm:flex-row sm:gap-12">
+          {features.map((feature) => (
+            <li class="space-y-1.5">
+              <h3 class="h6" class:list={`${colorSchemes[color].text}`}>
+                {feature.title}
+              </h3>
+              <p
+                class="p text-sm"
+                class:list={`${colorSchemes[color].textMuted}`}
+              >
+                {feature.description}
+              </p>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</section>
