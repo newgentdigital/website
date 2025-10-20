@@ -166,7 +166,7 @@ export const strings = {
       mobileMenu: "Menu",
       links: {
         services: "Services",
-        aboutUs: "About Us",
+        aboutUs: "About us",
         work: "Work",
         contact: "Contact",
         hire: "Hire Newgent",
