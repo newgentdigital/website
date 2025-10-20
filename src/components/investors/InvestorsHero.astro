@@ -7,10 +7,7 @@ const t = useTranslation(lang);
 ---
 
 <section class="relative h-[500px] overflow-hidden">
-  <div
-    class="absolute inset-0 -z-50 bg-nwg-sky-500 dark:hidden"
-    aria-hidden="true"
-  >
+  <div class="absolute inset-0 -z-50 dark:hidden" aria-hidden="true">
     <GodRays
       bloom={0.1}
       client:only="react"
@@ -27,10 +24,7 @@ const t = useTranslation(lang);
       spotty={1}
     />
   </div>
-  <div
-    class="absolute inset-0 -z-50 hidden bg-nwg-sky-500 dark:block"
-    aria-hidden="true"
-  >
+  <div class="absolute inset-0 -z-50 hidden dark:block" aria-hidden="true">
     <GodRays
       bloom={0.5}
       client:only="react"

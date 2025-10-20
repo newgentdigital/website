@@ -64,7 +64,7 @@
 @layer components {
   /* HEADINGS & PARAGRAPHS */
   .h1 {
-    @apply text-5xl font-semibold tracking-tighter text-zinc-900 sm:text-6xl dark:text-zinc-100;
+    @apply text-4xl font-semibold tracking-tighter text-zinc-900 sm:text-6xl dark:text-zinc-100;
   }
 
   .h2 {

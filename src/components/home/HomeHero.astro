@@ -7,10 +7,7 @@ const t = useTranslation(lang);
 ---
 
 <section class="relative h-[500px] overflow-hidden">
-  <div
-    class="absolute inset-0 -z-50 bg-nwg-sky-500 dark:hidden"
-    aria-hidden="true"
-  >
+  <div class="absolute inset-0 -z-50 dark:hidden" aria-hidden="true">
     <Dithering
       client:only="react"
       colorBack="#fafafa"
@@ -23,10 +20,7 @@ const t = useTranslation(lang);
       type="4x4"
     />
   </div>
-  <div
-    class="absolute inset-0 -z-50 hidden bg-nwg-sky-500 dark:block"
-    aria-hidden="true"
-  >
+  <div class="absolute inset-0 -z-50 hidden dark:block" aria-hidden="true">
     <Dithering
       client:only="react"
       colorBack="#09090b"
