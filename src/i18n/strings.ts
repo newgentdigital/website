@@ -104,6 +104,7 @@ export const strings = {
             installFinconnect: "Installera Finconnect",
             aboutFinconnect: "Om Finconnect",
             opensource: "Vad är öppen källkod?",
+            discern: "Discern av Newgent",
           },
         },
         support: {
@@ -166,7 +167,7 @@ export const strings = {
       mobileMenu: "Menu",
       links: {
         services: "Services",
-        aboutUs: "About Us",
+        aboutUs: "About us",
         work: "Work",
         contact: "Contact",
         hire: "Hire Newgent",
@@ -264,6 +265,7 @@ export const strings = {
             installFinconnect: "Install Finconnect",
             aboutFinconnect: "About Finconnect",
             opensource: "What is open source?",
+            discern: "Discern by Newgent",
           },
         },
         support: {

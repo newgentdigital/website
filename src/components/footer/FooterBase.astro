@@ -99,6 +99,7 @@ const { description = "", iconHref = "/", links = [] } = Astro.props;
               {link.href ? (
                 <a
                   class="link link-ghost text-nwg-sky-500"
+                  class:list={`${isActive(link.href) ? "underline" : ""}`}
                   href={getRelativeLocaleUrl(lang, link.href)}
                   aria-current={isActive(link.href) ? "page" : undefined}
                 >
@@ -112,9 +113,8 @@ const { description = "", iconHref = "/", links = [] } = Astro.props;
               {link.links.map((item) => (
                 <li>
                   <a
-                    class:list={`link link-ghost font-display tracking-normal ${
-                      isActive(item.href) ? "font-semibold" : ""
-                    }`}
+                    class="link link-ghost font-display tracking-normal"
+                    class:list={`${isActive(item.href) ? "font-semibold" : ""}`}
                     href={getRelativeLocaleUrl(lang, item.href)}
                     aria-current={isActive(item.href) ? "page" : undefined}
                   >

@@ -2,11 +2,14 @@
 export const prerender = true;
 
 import HomeHero from "../components/home/HomeHero.astro";
+import QuickActions from "../components/navigation/QuickActions.astro";
 import LayoutNewgent from "../layouts/LayoutNewgent.astro";
 ---
 
 <LayoutNewgent>
   <slot name="content">
     <HomeHero />
+
+    <QuickActions />
   </slot>
 </LayoutNewgent>
