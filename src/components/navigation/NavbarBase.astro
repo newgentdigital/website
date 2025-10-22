@@ -58,11 +58,20 @@ const { iconHref = "/", links = [], ctaHideIcon = false } = Astro.props;
           links
             .filter((link) => !link.cta && !link.alternate)
             .map((link) => {
+              const isExternal = link.href.startsWith("http");
               return (
                 <li>
                   <a
                     class="link flex h-full items-center px-6 hover:bg-nwg-sky-500 hover:text-zinc-100 active:opacity-50"
-                    href={getRelativeLocaleUrl(lang, link.href)}
+                    href={
+                      isExternal
+                        ? link.href
+                        : getRelativeLocaleUrl(lang, link.href)
+                    }
+                    {...(isExternal && {
+                      rel: "noopener noreferrer",
+                      target: "_blank",
+                    })}
                     aria-current={isActive(link.href) ? "page" : undefined}
                   >
                     {link.title}
@@ -82,11 +91,20 @@ const { iconHref = "/", links = [], ctaHideIcon = false } = Astro.props;
           links
             .filter((link) => link.alternate || link.cta)
             .map((link) => {
+              const isExternal = link.href.startsWith("http");
               return link.cta ? (
                 <li class="relative overflow-hidden">
                   <a
                     class="link flex h-full items-center bg-gradient-to-tl from-nwg-sky-600 to-nwg-sky-400 px-8 font-medium tracking-tight text-zinc-100 transition-colors hover:to-nwg-sky-300 active:opacity-50"
-                    href={getRelativeLocaleUrl(lang, link.href)}
+                    href={
+                      isExternal
+                        ? link.href
+                        : getRelativeLocaleUrl(lang, link.href)
+                    }
+                    {...(isExternal && {
+                      rel: "noopener noreferrer",
+                      target: "_blank",
+                    })}
                     aria-current={isActive(link.href) ? "page" : undefined}
                   >
                     {link.title}
@@ -105,7 +123,15 @@ const { iconHref = "/", links = [], ctaHideIcon = false } = Astro.props;
                 <li>
                   <a
                     class="link flex h-full items-center px-6 font-medium tracking-tight hover:bg-zinc-900 hover:text-zinc-100 active:opacity-50 dark:hover:bg-zinc-50 dark:hover:text-zinc-900"
-                    href={getRelativeLocaleUrl(lang, link.href)}
+                    href={
+                      isExternal
+                        ? link.href
+                        : getRelativeLocaleUrl(lang, link.href)
+                    }
+                    {...(isExternal && {
+                      rel: "noopener noreferrer",
+                      target: "_blank",
+                    })}
                     aria-current={isActive(link.href) ? "page" : undefined}
                   >
                     {link.title}

@@ -97,14 +97,25 @@ const { description = "", iconHref = "/", links = [] } = Astro.props;
           <div class="space-y-2">
             <h3 class="h6 font-display text-lg tracking-normal text-nwg-sky-500">
               {link.href ? (
-                <a
-                  class="link link-ghost text-nwg-sky-500"
-                  class:list={`${isActive(link.href) ? "underline" : ""}`}
-                  href={getRelativeLocaleUrl(lang, link.href)}
-                  aria-current={isActive(link.href) ? "page" : undefined}
-                >
-                  {link.category}
-                </a>
+                link.href.startsWith("http") ? (
+                  <a
+                    class="link link-ghost text-nwg-sky-500"
+                    href={link.href}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {link.category}
+                  </a>
+                ) : (
+                  <a
+                    class="link link-ghost text-nwg-sky-500"
+                    class:list={`${isActive(link.href) ? "underline" : ""}`}
+                    href={getRelativeLocaleUrl(lang, link.href)}
+                    aria-current={isActive(link.href) ? "page" : undefined}
+                  >
+                    {link.category}
+                  </a>
+                )
               ) : (
                 link.category
               )}
@@ -112,14 +123,25 @@ const { description = "", iconHref = "/", links = [] } = Astro.props;
             <ul class="space-y-0.5">
               {link.links.map((item) => (
                 <li>
-                  <a
-                    class="link link-ghost font-display tracking-normal"
-                    class:list={`${isActive(item.href) ? "font-semibold" : ""}`}
-                    href={getRelativeLocaleUrl(lang, item.href)}
-                    aria-current={isActive(item.href) ? "page" : undefined}
-                  >
-                    {item.title}
-                  </a>
+                  {item.href.startsWith("http") ? (
+                    <a
+                      class="link link-ghost font-display tracking-normal"
+                      href={item.href}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      {item.title}
+                    </a>
+                  ) : (
+                    <a
+                      class="link link-ghost font-display tracking-normal"
+                      class:list={`${isActive(item.href) ? "font-semibold" : ""}`}
+                      href={getRelativeLocaleUrl(lang, item.href)}
+                      aria-current={isActive(item.href) ? "page" : undefined}
+                    >
+                      {item.title}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
