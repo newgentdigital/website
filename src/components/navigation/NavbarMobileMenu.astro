@@ -65,17 +65,28 @@ const { links = [] } = Astro.props;
           class="divide-y divide-zinc-200 font-medium tracking-tight dark:divide-zinc-700"
         >
           {
-            links.map((link) => (
-              <li>
-                <a
-                  class="flex items-center justify-between gap-2 py-4"
-                  href={getRelativeLocaleUrl(lang, link.href)}
-                >
-                  {link.title}
-                  <RiArrowRightLine aria-hidden="true" />
-                </a>
-              </li>
-            ))
+            links.map((link) => {
+              const isExternal = link.href.startsWith("http");
+              return (
+                <li>
+                  <a
+                    class="flex items-center justify-between gap-2 py-4"
+                    href={
+                      isExternal
+                        ? link.href
+                        : getRelativeLocaleUrl(lang, link.href)
+                    }
+                    {...(isExternal && {
+                      rel: "noopener noreferrer",
+                      target: "_blank",
+                    })}
+                  >
+                    {link.title}
+                    <RiArrowRightLine aria-hidden="true" />
+                  </a>
+                </li>
+              );
+            })
           }
         </ul>
       </nav>
