@@ -44,6 +44,17 @@ const socials = [
   },
 ];
 
+async function safeExec(cmd: string) {
+  try {
+    const { execSync } = await import("child_process");
+    return execSync(cmd, { encoding: "utf-8" }).trim();
+  } catch {
+    return "unknown";
+  }
+}
+
+const commitHash = await safeExec("git rev-parse --short HEAD");
+
 const { description = "", iconHref = "/", links = [] } = Astro.props;
 ---
 
@@ -167,7 +178,7 @@ const { description = "", iconHref = "/", links = [] } = Astro.props;
         target="_blank"
         aria-label={t("footer").viewSource}
       >
-        530c124
+        {commitHash}
       </a>
     </section>
   </footer>
