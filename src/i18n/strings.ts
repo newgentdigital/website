@@ -19,12 +19,15 @@ export const strings = {
         about: "Om",
         support: "Support",
         getStarted: "Kom igång",
+        destinations: "Destinationer",
       },
     },
     footer: {
       footerNavigation: "Sidfotens navigering",
       description: {
         base: "Newgent är den heltäckande, 360° digitala kreativa mediebyrån du har drömt om. Vi är baserade i Skellefteå, och betjänar kunder över hela världen. Vi är redo att leda ditt varumärke in i nästa generation, oavsett utmaning.",
+        discern:
+          "Discern by Newgent är ett kraftfullt verktyg för övervakning och analys av Discord-serverar som förvandlar ditt community till en marknadsföringsmotor. Få insikter, spåra engagemang och optimera strategier enkelt.",
         finconnect:
           "Finconnect by Newgent är en öppen integrationsplattform som kopplar ihop dina betalningslösningar, banker och ekonomitjänster för att spara tid och pengar på bokföring, avstämning och rapportering.",
         investors:
@@ -57,6 +60,17 @@ export const strings = {
             partners: "Partners",
             investors: "Investerare",
             handbook: "Företagshandbok",
+          },
+        },
+        discernDestinations: {
+          label: "Destinationer",
+          items: {
+            prometheus: "Prometheus",
+            influxdb: "InfluxDB",
+            clickhouse: "ClickHouse",
+            grafana: "Grafana",
+            metabase: "Metabase",
+            allDestinations: "Alla destinationer",
           },
         },
         finconnectIntegrations: {
@@ -105,6 +119,8 @@ export const strings = {
             aboutFinconnect: "Om Finconnect",
             opensource: "Vad är öppen källkod?",
             discern: "Discern av Newgent",
+            setupDiscern: "Setup Discern",
+            aboutDiscern: "Om Discern",
           },
         },
         support: {
@@ -145,6 +161,12 @@ export const strings = {
           heading: "Driver och producerar den nya digitala generationen.",
         },
       },
+      discern: {
+        hero: {
+          label: "Bevaka med Discern",
+          heading: "Gör Discord till ett kraftverk för marknadsföring.",
+        },
+      },
       finconnect: {
         hero: {
           label: "Integrera med Finconnect",
@@ -180,12 +202,15 @@ export const strings = {
         about: "About",
         support: "Support",
         getStarted: "Get started",
+        destinations: "Destinations",
       },
     },
     footer: {
       footerNavigation: "Footer Navigation",
       description: {
         base: "Newgent is the all-in-one, 360° digital creative & media agency you've been dreaming of. Based in Skellefteå, Sweden — serving clients worldwide. We're ready to lead your brand for the next generation, no matter the challenge.",
+        discern:
+          "Discern by Newgent is a powerful Discord community monitoring and analytics tool that transforms your community into a marketing powerhouse. Gain insights, track engagement, and optimize your strategies with ease.",
         finconnect:
           "Finconnect by Newgent is an open-source integrations platform that connects your payment gateways, banks, and financial services together to save you time and money on accounting, reconciliation, and reporting.",
         investors:
@@ -218,6 +243,17 @@ export const strings = {
             partners: "Partners",
             investors: "Investors",
             handbook: "Company Handbook",
+          },
+        },
+        discernDestinations: {
+          label: "Destinations",
+          items: {
+            prometheus: "Prometheus",
+            influxdb: "InfluxDB",
+            clickhouse: "ClickHouse",
+            grafana: "Grafana",
+            metabase: "Metabase",
+            allDestinations: "All destinations",
           },
         },
         finconnectIntegrations: {
@@ -266,6 +302,8 @@ export const strings = {
             aboutFinconnect: "About Finconnect",
             opensource: "What is open source?",
             discern: "Discern by Newgent",
+            setupDiscern: "Setup Discern",
+            aboutDiscern: "About Discern",
           },
         },
         support: {
@@ -303,6 +341,12 @@ export const strings = {
         hero: {
           label: "All-in-one nordic media agency",
           heading: "Powering and producing the new digital generation.",
+        },
+      },
+      discern: {
+        hero: {
+          label: "Monitor with Discern",
+          heading: "Turn Discord into a marketing powerhouse.",
         },
       },
       finconnect: {

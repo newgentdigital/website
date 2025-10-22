@@ -1,0 +1,111 @@
+---
+import SvgLogomarkDiscernColorBlack from "../../assets/brand/logomark-discern-color-black.svg";
+import SvgLogomarkDiscernColorWhite from "../../assets/brand/logomark-discern-color-white.svg";
+import FooterBase from "./FooterBase.astro";
+import FooterNewsletterSignup from "./FooterNewsletterSignup.astro";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+
+const links = [
+  {
+    category: t("footer").links.newgent.label,
+    href: "/company",
+    links: [
+      { title: t("footer").links.newgent.items.about, href: "/company" },
+      { title: t("footer").links.newgent.items.team, href: "/team" },
+      { title: t("footer").links.newgent.items.careers, href: "/careers" },
+      { title: t("footer").links.newgent.items.awards, href: "/awards" },
+      { title: t("footer").links.newgent.items.partners, href: "/partners" },
+      { title: t("footer").links.newgent.items.investors, href: "/investors" },
+      { title: t("footer").links.newgent.items.handbook, href: "/handbook" },
+    ],
+  },
+  {
+    category: t("footer").links.discernDestinations.label,
+    href: "/discern/destinations",
+    links: [
+      {
+        title: t("footer").links.discernDestinations.items.prometheus,
+        href: "/discern/destinations/prometheus",
+      },
+      {
+        title: t("footer").links.discernDestinations.items.influxdb,
+        href: "/discern/destinations/influxdb",
+      },
+      {
+        title: t("footer").links.discernDestinations.items.clickhouse,
+        href: "/discern/destinations/clickhouse",
+      },
+      {
+        title: t("footer").links.discernDestinations.items.grafana,
+        href: "/discern/destinations/grafana",
+      },
+      {
+        title: t("footer").links.discernDestinations.items.metabase,
+        href: "/discern/destinations/metabase",
+      },
+      {
+        title: t("footer").links.discernDestinations.items.allDestinations,
+        href: "/discern/destinations",
+      },
+    ],
+  },
+  {
+    category: t("footer").links.resources.label,
+    links: [
+      {
+        title: t("footer").links.resources.items.aboutDiscern,
+        href: "/discern/about",
+      },
+      {
+        title: t("footer").links.resources.items.setupDiscern,
+        href: "/discern/setup",
+      },
+      {
+        title: t("footer").links.resources.items.opensource,
+        href: "/discern/oss",
+      },
+      { title: t("footer").links.resources.items.blog, href: "/blog" },
+      { title: t("footer").links.resources.items.presskit, href: "/press-kit" },
+    ],
+  },
+  {
+    category: t("footer").links.support.label,
+    links: [
+      { title: t("footer").links.support.items.hire, href: "/hire" },
+      { title: t("footer").links.support.items.contact, href: "/contact" },
+      { title: t("footer").links.support.items.faq, href: "/discern/faq" },
+      { title: t("footer").links.support.items.wiki, href: "/discern/wiki" },
+    ],
+  },
+  {
+    category: t("footer").links.legal.label,
+    href: "/legal",
+    links: [
+      { title: t("footer").links.legal.items.terms, href: "/legal/terms" },
+      { title: t("footer").links.legal.items.privacy, href: "/legal/privacy" },
+      { title: t("footer").links.legal.items.cookies, href: "/legal/cookies" },
+      {
+        title: t("footer").links.legal.items.disclaimer,
+        href: "/legal/disclaimer",
+      },
+      { title: t("footer").links.legal.items.imprint, href: "/legal/imprint" },
+    ],
+  },
+];
+---
+
+<FooterNewsletterSignup />
+
+<FooterBase
+  description={t("footer").description.discern}
+  iconHref="/discern"
+  {links}
+>
+  <slot slot="logo">
+    <SvgLogomarkDiscernColorBlack class="h-8 dark:hidden" />
+    <SvgLogomarkDiscernColorWhite class="hidden h-8 dark:block" />
+  </slot>
+</FooterBase>

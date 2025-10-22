@@ -1,0 +1,33 @@
+---
+import SvgLogomarkDiscernWhite from "../../assets/brand/logomark-discern-white.svg";
+import NavbarBase from "./NavbarBase.astro";
+import NavbarReturn from "./NavbarReturn.astro";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+
+const links = [
+  { href: "/discern/destinations", title: t("nav").links.destinations },
+  { href: "/discern/setup", title: t("nav").links.setup },
+  { href: "/discern/about", title: t("nav").links.about },
+  {
+    href: "https://github.com/newgentdigital/discern/issues",
+    title: t("nav").links.support,
+    alternate: true,
+  },
+  {
+    href: "https://github.com/newgentdigital/discern",
+    title: t("nav").links.getStarted,
+    cta: true,
+  },
+];
+---
+
+<NavbarBase iconHref="/discern" {links}>
+  <NavbarReturn slot="return" />
+
+  <slot slot="icon">
+    <SvgLogomarkDiscernWhite height={24} />
+  </slot>
+</NavbarBase>

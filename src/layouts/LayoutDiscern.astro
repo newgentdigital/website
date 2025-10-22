@@ -1,0 +1,15 @@
+---
+import FooterDiscern from "../components/footer/FooterDiscern.astro";
+import NavbarDiscern from "../components/navigation/NavbarDiscern.astro";
+import LayoutBase from "./LayoutBase.astro";
+---
+
+<LayoutBase>
+  <NavbarDiscern slot="navbar" />
+
+  <slot slot="body">
+    <slot name="content" />
+  </slot>
+
+  <FooterDiscern slot="footer" />
+</LayoutBase>

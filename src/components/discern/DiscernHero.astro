@@ -1,0 +1,45 @@
+---
+import { LiquidMetal } from "@paper-design/shaders-react";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+---
+
+<section class="relative h-[500px] overflow-hidden">
+  <div class="absolute inset-0 -z-50" aria-hidden="true">
+    <LiquidMetal
+      client:only="react"
+      colorBack="#e0e3ff"
+      colorTint="#5865f2"
+      contour={0}
+      distortion={0}
+      height={500}
+      repetition={5}
+      rotation={180}
+      scale={2}
+      shape="none"
+      shiftBlue={0.25}
+      shiftRed={0.25}
+      softness={1}
+      speed={0.75}
+    />
+  </div>
+
+  <header class="absolute bottom-0 left-0 flex flex-col gap-4 p-8 sm:p-12">
+    <span
+      class="input-label-wide font-display font-semibold text-zinc-900 dark:text-zinc-100"
+    >
+      {t("home").discern.hero.label}
+    </span>
+    <h1 class="h1">
+      {t("home").discern.hero.heading}
+    </h1>
+  </header>
+
+  <div
+    class="absolute right-0 bottom-0 left-0 -z-40 h-full bg-gradient-to-t from-zinc-100 to-transparent dark:from-zinc-950"
+    aria-hidden="true"
+  >
+  </div>
+</section>
