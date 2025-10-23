@@ -26,6 +26,8 @@ export const strings = {
       footerNavigation: "Sidfotens navigering",
       description: {
         base: "Newgent är den heltäckande, 360° digitala kreativa mediebyrån du har drömt om. Vi är baserade i Skellefteå, och betjänar kunder över hela världen. Vi är redo att leda ditt varumärke in i nästa generation, oavsett utmaning.",
+        discav:
+          "DiscAV by Newgent är ett kraftfullt verktyg för att skanna Discord-servrar efter skadligt innehåll snabbt och enkelt. Skydda ditt community genom att identifiera och ta bort virus, malware och oönskat material effektivt.",
         discern:
           "Discern by Newgent är ett kraftfullt verktyg för övervakning och analys av Discord-serverar som förvandlar ditt community till en marknadsföringsmotor. Få insikter, spåra engagemang och optimera strategier enkelt.",
         finconnect:
@@ -65,22 +67,12 @@ export const strings = {
         discernDestinations: {
           label: "Destinationer",
           items: {
-            prometheus: "Prometheus",
-            influxdb: "InfluxDB",
-            clickhouse: "ClickHouse",
-            grafana: "Grafana",
-            metabase: "Metabase",
             allDestinations: "Alla destinationer",
           },
         },
         finconnectIntegrations: {
           label: "Integrationer",
           items: {
-            fortnox: "Fortnox",
-            skatteverker: "Skatteverket",
-            stripe: "Stripe",
-            wise: "Wise",
-            rippling: "Rippling",
             allIntegrations: "Alla integrationer",
           },
         },
@@ -121,6 +113,9 @@ export const strings = {
             discern: "Discern av Newgent",
             setupDiscern: "Setup Discern",
             aboutDiscern: "Om Discern",
+            discav: "DiscAV av Newgent",
+            setupDiscav: "Setup DiscAV",
+            aboutDiscav: "Om DiscAV",
           },
         },
         support: {
@@ -159,6 +154,12 @@ export const strings = {
         hero: {
           label: "Allt-i-ett nordisk mediebyrå",
           heading: "Driver och producerar den nya digitala generationen.",
+        },
+      },
+      discav: {
+        hero: {
+          label: "Hitta virus med DiscAV",
+          heading: "Skanna Discord efter skadligt innehåll snabbt och enkelt.",
         },
       },
       discern: {
@@ -209,6 +210,8 @@ export const strings = {
       footerNavigation: "Footer Navigation",
       description: {
         base: "Newgent is the all-in-one, 360° digital creative & media agency you've been dreaming of. Based in Skellefteå, Sweden — serving clients worldwide. We're ready to lead your brand for the next generation, no matter the challenge.",
+        discav:
+          "DiscAV by Newgent is a powerful tool to scan Discord servers for malicious content quickly and easily. Protect your community by identifying and removing viruses, malware, and unwanted material effectively.",
         discern:
           "Discern by Newgent is a powerful Discord community monitoring and analytics tool that transforms your community into a marketing powerhouse. Gain insights, track engagement, and optimize your strategies with ease.",
         finconnect:
@@ -248,22 +251,12 @@ export const strings = {
         discernDestinations: {
           label: "Destinations",
           items: {
-            prometheus: "Prometheus",
-            influxdb: "InfluxDB",
-            clickhouse: "ClickHouse",
-            grafana: "Grafana",
-            metabase: "Metabase",
             allDestinations: "All destinations",
           },
         },
         finconnectIntegrations: {
           label: "Integrations",
           items: {
-            fortnox: "Fortnox",
-            skatteverker: "Skatteverket",
-            stripe: "Stripe",
-            wise: "Wise",
-            rippling: "Rippling",
             allIntegrations: "All integrations",
           },
         },
@@ -304,6 +297,9 @@ export const strings = {
             discern: "Discern by Newgent",
             setupDiscern: "Setup Discern",
             aboutDiscern: "About Discern",
+            discav: "DiscAV by Newgent",
+            setupDiscav: "Setup DiscAV",
+            aboutDiscav: "About DiscAV",
           },
         },
         support: {
@@ -341,6 +337,12 @@ export const strings = {
         hero: {
           label: "All-in-one nordic media agency",
           heading: "Powering and producing the new digital generation.",
+        },
+      },
+      discav: {
+        hero: {
+          label: "Find viruses with DiscAV",
+          heading: "Scan Discord for malicious content quickly and easily.",
         },
       },
       discern: {

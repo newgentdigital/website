@@ -1,6 +1,6 @@
 ---
-import SvgLogomarkFinconnectColorBlack from "../../assets/brand/logomark-finconnect-color-black.svg";
-import SvgLogomarkFinconnectColorWhite from "../../assets/brand/logomark-finconnect-color-white.svg";
+import SvgLogomarkDiscavColorBlack from "../../assets/brand/logomark-discav-color-black.svg";
+import SvgLogomarkDiscavColorWhite from "../../assets/brand/logomark-discav-color-white.svg";
 import FooterBase from "./FooterBase.astro";
 import FooterNewsletterSignup from "./FooterNewsletterSignup.astro";
 import { getLangFromUrl, useTranslation } from "../../i18n/utils";
@@ -24,31 +24,27 @@ const links = [
   },
   {
     category: t("footer").links.finconnectIntegrations.label,
-    href: "/finconnect/integrations",
+    href: "/discav/integrations",
     links: [
       {
-        title: "Fortnox",
-        href: "/finconnect/integrations/fortnox",
+        title: "ClamAV",
+        href: "/discav/integrations/clamav",
       },
       {
-        title: "Skatteverket",
-        href: "/finconnect/integrations/skatteverket",
+        title: "VirusTotal",
+        href: "/discav/integrations/virustotal",
       },
       {
-        title: "Stripe",
-        href: "/finconnect/integrations/stripe",
+        title: "Triage",
+        href: "/discav/integrations/triage",
       },
       {
-        title: "Wise",
-        href: "/finconnect/integrations/wise",
-      },
-      {
-        title: "Rippling",
-        href: "/finconnect/integrations/rippling",
+        title: "Hybrid Analysis",
+        href: "/discav/integrations/hybrid-analysis",
       },
       {
         title: t("footer").links.finconnectIntegrations.items.allIntegrations,
-        href: "/finconnect/integrations",
+        href: "/discav/integrations",
       },
     ],
   },
@@ -56,16 +52,23 @@ const links = [
     category: t("footer").links.resources.label,
     links: [
       {
-        title: t("footer").links.resources.items.aboutFinconnect,
-        href: "/finconnect/about",
+        title: t("footer").links.resources.items.aboutDiscav,
+        href: "/discav/about",
       },
       {
-        title: t("footer").links.resources.items.installFinconnect,
-        href: "/finconnect/setup",
+        title: t("footer").links.resources.items.setupDiscav,
+        href: "/discav/setup",
       },
       { title: t("footer").links.resources.items.blog, href: "/blog" },
       { title: t("footer").links.resources.items.presskit, href: "/press-kit" },
-      { title: t("footer").links.resources.items.discern, href: "/discern" },
+      {
+        title: t("footer").links.resources.items.discern,
+        href: "/discern",
+      },
+      {
+        title: t("footer").links.resources.items.finconnect,
+        href: "/finconnect",
+      },
     ],
   },
   {
@@ -73,12 +76,12 @@ const links = [
     links: [
       {
         title: t("footer").links.resources.items.opensource,
-        href: "/finconnect/oss",
+        href: "/discav/oss",
       },
       { title: t("footer").links.support.items.hire, href: "/hire" },
       { title: t("footer").links.support.items.contact, href: "/contact" },
-      { title: t("footer").links.support.items.faq, href: "/finconnect/faq" },
-      { title: t("footer").links.support.items.wiki, href: "/finconnect/wiki" },
+      { title: t("footer").links.support.items.faq, href: "/discav/faq" },
+      { title: t("footer").links.support.items.wiki, href: "/discav/wiki" },
     ],
   },
   {
@@ -101,12 +104,12 @@ const links = [
 <FooterNewsletterSignup />
 
 <FooterBase
-  description={t("footer").description.finconnect}
-  iconHref="/finconnect"
+  description={t("footer").description.discav}
+  iconHref="/discern"
   {links}
 >
   <slot slot="logo">
-    <SvgLogomarkFinconnectColorBlack class="h-8 dark:hidden" />
-    <SvgLogomarkFinconnectColorWhite class="hidden h-8 dark:block" />
+    <SvgLogomarkDiscavColorBlack class="h-8 dark:hidden" />
+    <SvgLogomarkDiscavColorWhite class="hidden h-8 dark:block" />
   </slot>
 </FooterBase>

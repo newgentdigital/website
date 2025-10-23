@@ -1,0 +1,25 @@
+---
+import SvgLogomarkDiscavWhite from "../../assets/brand/logomark-discav-white.svg";
+import NavbarBase from "./NavbarBase.astro";
+import NavbarReturn from "./NavbarReturn.astro";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+
+const links = [
+  { href: "/discav/integrations", title: t("nav").links.integrations },
+  { href: "/discav/setup", title: t("nav").links.setup },
+  { href: "/discav/about", title: t("nav").links.about },
+  { href: "/wiki", title: t("nav").links.support, alternate: true },
+  { href: "/discav/pricing", title: t("nav").links.getStarted, cta: true },
+];
+---
+
+<NavbarBase iconHref="/discav" {links}>
+  <NavbarReturn slot="return" />
+
+  <slot slot="icon">
+    <SvgLogomarkDiscavWhite height={24} />
+  </slot>
+</NavbarBase>

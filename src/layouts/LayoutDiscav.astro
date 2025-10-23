@@ -1,0 +1,15 @@
+---
+import FooterDiscav from "../components/footer/FooterDiscav.astro";
+import NavbarDiscav from "../components/navigation/NavbarDiscav.astro";
+import LayoutBase from "./LayoutBase.astro";
+---
+
+<LayoutBase>
+  <NavbarDiscav slot="navbar" />
+
+  <slot slot="body">
+    <slot name="content" />
+  </slot>
+
+  <FooterDiscav slot="footer" />
+</LayoutBase>
