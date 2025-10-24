@@ -17,6 +17,7 @@ function updateNavbar() {
     container.style.transition = "";
   } else if (currentScrollY > lastScrollY) {
     container.style.transform = `translateY(-${actionsHeight}px)`;
+    window.toggleActionsDropdown?.(false);
   } else {
     container.style.transform = "translateY(0)";
   }
