@@ -2,6 +2,7 @@
 import { getRelativeLocaleUrl } from "astro:i18n";
 import SvgIconWhite from "../../assets/brand/icon-white.svg";
 import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import RiMenuLine from "../icons/ri/RiMenuLine.astro";
 import LanguageSwitcher from "../settings/LanguageSwitcher.astro";
 import NavbarMobileMenu from "./NavbarMobileMenu.astro";
 
@@ -29,6 +30,7 @@ const isActive = (href: string) => {
 const { iconHref = "/", links = [], ctaHideIcon = false } = Astro.props;
 ---
 
+<NavbarMobileMenu {links} />
 <slot name="return" />
 
 <div
@@ -152,7 +154,13 @@ const { iconHref = "/", links = [], ctaHideIcon = false } = Astro.props;
           class="flex divide-x divide-zinc-300 border-l border-zinc-300 dark:divide-zinc-700 dark:border-zinc-700"
         >
           <li class="flex items-center px-4 md:hidden">
-            <NavbarMobileMenu {links} />
+            <button
+              id="mobile-nav-toggle"
+              aria-controls="mobile-nav"
+              aria-expanded="false"
+            >
+              <RiMenuLine aria-hidden="true" />
+            </button>
           </li>
           <li class="flex items-center">
             <LanguageSwitcher />

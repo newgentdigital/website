@@ -3,7 +3,6 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLangFromUrl, useTranslation } from "../../i18n/utils";
 import RiArrowRightLine from "../icons/ri/RiArrowRightLine.astro";
 import RiCloseLine from "../icons/ri/RiCloseLine.astro";
-import RiMenuLine from "../icons/ri/RiMenuLine.astro";
 import SimpleIconsGithub from "../icons/simple-icons/SimpleIconsGithub.astro";
 import SimpleIconsInstagram from "../icons/simple-icons/SimpleIconsInstagram.astro";
 import SimpleIconsLinkedIn from "../icons/simple-icons/SimpleIconsLinkedIn.astro";
@@ -41,12 +40,8 @@ interface Props {
 const { links = [] } = Astro.props;
 ---
 
-<button id="mobile-nav-toggle" aria-controls="mobile-nav" aria-expanded="false">
-  <RiMenuLine aria-hidden="true" />
-</button>
-
 <aside
-  class="fixed inset-0 z-50 hidden bg-zinc-50 p-6 dark:bg-zinc-900"
+  class="fixed inset-0 z-50 hidden bg-zinc-50 p-6 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100"
   id="mobile-nav"
 >
   <div class="flex h-full flex-col justify-between gap-4">
