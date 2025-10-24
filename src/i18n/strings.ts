@@ -24,6 +24,7 @@ export const strings = {
       actionbar: {
         label: "Åtgärdsfält",
         serviceStatus: "Tjänstestatus",
+        login: "Logga in",
         platforms: {
           label: "Plattformar",
           items: {
@@ -277,6 +278,7 @@ export const strings = {
       actionbar: {
         label: "Actions bar",
         serviceStatus: "Service status",
+        login: "Sign in",
         platforms: {
           label: "Platforms",
           items: {

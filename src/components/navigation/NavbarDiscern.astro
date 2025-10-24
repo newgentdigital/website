@@ -40,7 +40,7 @@ const actionBarLinks = [
   },
   {
     href: "/",
-    title: "Newgent Digital",
+    title: t("nav").actionbar.platforms.items.newgent.label,
     description: t("nav").actionbar.platforms.items.newgent.description,
   },
 ];
@@ -48,7 +48,11 @@ const actionBarLinks = [
 
 <NavbarBase iconHref="/discern" {links}>
   <NavbarReturn slot="return" />
-  <NavbarActionsBar links={actionBarLinks} slot="actions" />
+  <NavbarActionsBar
+    links={actionBarLinks}
+    platformsLabel={t("nav").actionbar.login}
+    slot="actions"
+  />
 
   <slot slot="icon">
     <SvgLogomarkDiscernWhite height={24} />
