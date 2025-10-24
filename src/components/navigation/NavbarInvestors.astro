@@ -19,11 +19,53 @@ const links = [
   },
   { href: "/investors/news", title: t("nav").links.news, cta: true },
 ];
+
+const actionBarLinks = [
+  {
+    href: "https://bi.newgent.digital/",
+    title:
+      t("nav").actionbar.platforms.items.investors.subItems.businessIntelligence
+        .label,
+    description:
+      t("nav").actionbar.platforms.items.investors.subItems.businessIntelligence
+        .description,
+    isSecure: true,
+  },
+  {
+    href: "https://archive.newgent.digital/",
+    title:
+      t("nav").actionbar.platforms.items.investors.subItems.documentArchive
+        .label,
+    description:
+      t("nav").actionbar.platforms.items.investors.subItems.documentArchive
+        .description,
+    isSecure: true,
+  },
+  {
+    href: "https://mantle.newgent.digital/",
+    title:
+      t("nav").actionbar.platforms.items.investors.subItems.equityManagement
+        .label,
+    description:
+      t("nav").actionbar.platforms.items.investors.subItems.equityManagement
+        .description,
+    isSecure: true,
+  },
+  {
+    href: "/",
+    title: t("nav").actionbar.platforms.items.newgent.label,
+    description: t("nav").actionbar.platforms.items.newgent.description,
+  },
+];
 ---
 
 <NavbarBase iconHref="/investors" {links}>
   <NavbarReturn slot="return" />
-  <NavbarActionsBar slot="actions" />
+  <NavbarActionsBar
+    links={actionBarLinks}
+    platformsLabel={t("nav").actionbar.login}
+    slot="actions"
+  />
 
   <slot slot="icon">
     <SvgLogomarkAktiebolagWhite height={24} />

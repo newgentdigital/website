@@ -7,9 +7,10 @@ declare global {
       container: string,
       options: {
         sitekey: string;
-        size: string;
-        callback: () => void;
-        "error-callback": (errorCode: string) => void;
+        size?: string;
+        theme?: string;
+        callback?: () => void;
+        "error-callback"?: (errorCode: string) => void;
       },
     ) => void;
     reset: (container: string) => void;

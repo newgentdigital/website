@@ -29,13 +29,13 @@ export const strings = {
           label: "Plattformar",
           items: {
             newgent: {
-              label: "Newgent",
+              label: "Newgent Digital",
               description: "Allt-i-ett nordisk mediebyrå",
             },
             finconnect: {
               label: "Finconnect",
               description: "Sveriges mest öppna finansintegration",
-              subitems: {
+              subItems: {
                 manageFinconnect: {
                   label: "Hantera Finconnect",
                   description:
@@ -51,7 +51,7 @@ export const strings = {
             discern: {
               label: "Discern",
               description: "Förvandla Discord till en marknadsföringsmotor",
-              subitems: {
+              subItems: {
                 manageDiscern: {
                   label: "Hantera Discern",
                   description:
@@ -67,7 +67,7 @@ export const strings = {
             discav: {
               label: "DiscAV",
               description: "Skanna Discord efter skadligt innehåll och virus",
-              subitems: {
+              subItems: {
                 manageDiscav: {
                   label: "Hantera DiscAV",
                   description:
@@ -83,6 +83,23 @@ export const strings = {
             investors: {
               label: "Investerare",
               description: "Investerarrelationer och finansiell information",
+              subItems: {
+                businessIntelligence: {
+                  label: "Business Intelligence-portal",
+                  description:
+                    "Få tillgång till detaljerad analys och realtidsrapporter om företagsresultat.",
+                },
+                documentArchive: {
+                  label: "Dokumentarkiv",
+                  description:
+                    "Bläddra och ladda ner dokument, handlingar och rapporter.",
+                },
+                equityManagement: {
+                  label: "Aktieförvaltning",
+                  description:
+                    "Hantera och spåra din aktieinformation och aktieinnehav.",
+                },
+              },
             },
             customerPortal: {
               label: "Kundportal via Stripe",
@@ -283,13 +300,13 @@ export const strings = {
           label: "Platforms",
           items: {
             newgent: {
-              label: "Newgent",
+              label: "Newgent Digital",
               description: "All-in-one nordic media agency",
             },
             finconnect: {
               label: "Finconnect",
               description: "Sweden's most open financial integration",
-              subitems: {
+              subItems: {
                 manageFinconnect: {
                   label: "Manage Finconnect",
                   description:
@@ -305,7 +322,7 @@ export const strings = {
             discern: {
               label: "Discern",
               description: "Turn Discord into a marketing powerhouse",
-              subitems: {
+              subItems: {
                 manageDiscern: {
                   label: "Manage Discern",
                   description:
@@ -321,7 +338,7 @@ export const strings = {
             discav: {
               label: "DiscAV",
               description: "Scan Discord for malicious content and viruses",
-              subitems: {
+              subItems: {
                 manageDiscav: {
                   label: "Manage DiscAV",
                   description:
@@ -337,6 +354,23 @@ export const strings = {
             investors: {
               label: "Investors",
               description: "Investor relations and financial information",
+              subItems: {
+                businessIntelligence: {
+                  label: "Business Intelligence Portal",
+                  description:
+                    "Access detailed analytics and real-time reports on company performance.",
+                },
+                documentArchive: {
+                  label: "Document Archive",
+                  description:
+                    "Browse and download investor documents, filings, and reports.",
+                },
+                equityManagement: {
+                  label: "Equity Management",
+                  description:
+                    "Manage and track your shareholder information and equity holdings.",
+                },
+              },
             },
             customerPortal: {
               label: "Customer Portal via Stripe",

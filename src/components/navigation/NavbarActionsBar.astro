@@ -3,11 +3,15 @@ import RiArrowDropDownLine from "../icons/ri/RiArrowDropDownLine.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLangFromUrl, useTranslation } from "../../i18n/utils";
 import StatusIndicator from "../settings/StatusIndicator.astro";
+import RiArrowRightLine from "../icons/ri/RiArrowRightLine.astro";
+import RiExternalLinkLine from "../icons/ri/RiExternalLinkLine.astro";
+import RiLock2Line from "../icons/ri/RiLock2Line.astro";
 
 interface Link {
   href: string;
   title: string;
   description?: string;
+  isSecure?: boolean;
 }
 
 interface Props {
@@ -27,26 +31,31 @@ const {
       href: "/",
       title: t("nav").actionbar.platforms.items.newgent.label,
       description: t("nav").actionbar.platforms.items.newgent.description,
+      isSecure: false,
     },
     {
       href: "/finconnect",
       title: t("nav").actionbar.platforms.items.finconnect.label,
       description: t("nav").actionbar.platforms.items.finconnect.description,
+      isSecure: false,
     },
     {
       href: "/discern",
       title: t("nav").actionbar.platforms.items.discern.label,
       description: t("nav").actionbar.platforms.items.discern.description,
+      isSecure: false,
     },
     {
       href: "/discav",
       title: t("nav").actionbar.platforms.items.discav.label,
       description: t("nav").actionbar.platforms.items.discav.description,
+      isSecure: false,
     },
     {
       href: "/investors",
       title: t("nav").actionbar.platforms.items.investors.label,
       description: t("nav").actionbar.platforms.items.investors.description,
+      isSecure: false,
     },
   ],
 } = Astro.props;
@@ -80,29 +89,34 @@ const {
       <ul
         class="absolute right-0 z-20 mt-2 hidden w-64 divide-y divide-zinc-200 border border-zinc-300 bg-zinc-50 shadow-lg dark:divide-zinc-700 dark:border-zinc-700 dark:bg-zinc-900"
         id="platform-dropdown-menu"
-        role="menu"
         aria-labelledby="platform-dropdown-toggle"
       >
         {
           links.map((link) => {
             const isExternal = link.href.startsWith("http");
             return (
-              <li role="none">
+              <li>
                 <a
-                  class="group block px-4 py-3 transition-colors hover:bg-zinc-100 focus:bg-zinc-100 focus:outline-none dark:hover:bg-zinc-800 dark:focus:bg-zinc-800"
+                  class="group block space-y-0.5 px-4 py-3 transition-colors hover:bg-zinc-100 focus:bg-zinc-100 focus:outline-none dark:hover:bg-zinc-800 dark:focus:bg-zinc-800"
                   href={
                     isExternal
                       ? link.href
                       : getRelativeLocaleUrl(lang, link.href)
                   }
-                  role="menuitem"
                   {...(isExternal && {
                     rel: "noopener noreferrer",
                     target: "_blank",
                   })}
                 >
-                  <div class="font-medium text-zinc-900 transition-opacity group-active:opacity-50 dark:text-zinc-100">
+                  <div class="flex items-center justify-between gap-1 font-medium text-zinc-900 transition-opacity group-active:opacity-50 dark:text-zinc-100">
                     {link.title}
+                    {link.isSecure ? (
+                      <RiLock2Line class="h-3 w-3 text-nwg-sky-500" />
+                    ) : isExternal ? (
+                      <RiExternalLinkLine class="h-3 w-3" />
+                    ) : (
+                      <RiArrowRightLine class="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                    )}
                   </div>
                   <div class="text-xs text-zinc-600 transition-opacity group-active:opacity-50 dark:text-zinc-400">
                     {link.description}

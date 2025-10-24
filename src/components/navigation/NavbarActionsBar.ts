@@ -12,15 +12,15 @@ function initPlatformDropdown() {
   if (!toggle || !menu || !arrow) return;
 
   function openDropdown() {
-    menu!.classList.remove("hidden");
-    arrow!.classList.add("rotate-180");
-    toggle!.setAttribute("aria-expanded", "true");
+    menu?.classList.remove("hidden");
+    arrow?.classList.add("rotate-180");
+    toggle?.setAttribute("aria-expanded", "true");
   }
 
   function closeDropdown() {
-    menu!.classList.add("hidden");
-    arrow!.classList.remove("rotate-180");
-    toggle!.setAttribute("aria-expanded", "false");
+    menu?.classList.add("hidden");
+    arrow?.classList.remove("rotate-180");
+    toggle?.setAttribute("aria-expanded", "false");
   }
 
   toggle.addEventListener("click", (e) => {
@@ -33,7 +33,7 @@ function initPlatformDropdown() {
     }
   });
 
-  document.addEventListener("click", (e) => {
+  document.addEventListener("click", () => {
     if (!menu.classList.contains("hidden")) {
       closeDropdown();
     }

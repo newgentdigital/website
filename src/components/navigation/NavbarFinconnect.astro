@@ -4,7 +4,6 @@ import NavbarBase from "./NavbarBase.astro";
 import NavbarReturn from "./NavbarReturn.astro";
 import { getLangFromUrl, useTranslation } from "../../i18n/utils";
 import NavbarActionsBar from "./NavbarActionsBar.astro";
-import { describe } from "node:test";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
@@ -21,24 +20,26 @@ const actionBarLinks = [
   {
     href: "https://finconnect.newgent.digital",
     title:
-      t("nav").actionbar.platforms.items.finconnect.subitems.manageFinconnect
+      t("nav").actionbar.platforms.items.finconnect.subItems.manageFinconnect
         .label,
     description:
-      t("nav").actionbar.platforms.items.finconnect.subitems.manageFinconnect
+      t("nav").actionbar.platforms.items.finconnect.subItems.manageFinconnect
         .description,
+    isSecure: true,
   },
   {
     href: "https://billing.newgent.digital/",
     title: t("nav").actionbar.platforms.items.customerPortal.label,
     description: t("nav").actionbar.platforms.items.customerPortal.description,
+    isSecure: true,
   },
   {
     href: "https://github.com/newgentdigital/finconnect",
     title:
-      t("nav").actionbar.platforms.items.finconnect.subitems.finconnectGithub
+      t("nav").actionbar.platforms.items.finconnect.subItems.finconnectGithub
         .label,
     description:
-      t("nav").actionbar.platforms.items.finconnect.subitems.finconnectGithub
+      t("nav").actionbar.platforms.items.finconnect.subItems.finconnectGithub
         .description,
   },
   {
