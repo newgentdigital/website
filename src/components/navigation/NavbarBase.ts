@@ -1,21 +1,21 @@
 let lastScrollY = 0;
 let ticking = false;
 
-function updateNavbar() {
-  const currentScrollY = window.scrollY;
-  const container = document.getElementById("navbar-container");
-  const actionsBar = document.getElementById("navbar-actions-bar");
+const container = document.getElementById("navbar-container");
+const actionsBar = document.getElementById("navbar-actions-bar");
 
+function updateNavbar() {
   if (!container || !actionsBar) return;
 
-  if (window.innerWidth >= 768) {
-    container.style.transform = "translateY(0)";
-    return;
-  }
-
+  const currentScrollY = window.scrollY;
   const actionsHeight = actionsBar.offsetHeight;
 
-  if (currentScrollY > lastScrollY && currentScrollY > actionsHeight) {
+  if (currentScrollY <= actionsHeight) {
+    container.style.transition = "none";
+    container.style.transform = "translateY(0)";
+    void container.offsetHeight; // Force reflow
+    container.style.transition = "";
+  } else if (currentScrollY > lastScrollY) {
     container.style.transform = `translateY(-${actionsHeight}px)`;
   } else {
     container.style.transform = "translateY(0)";
@@ -34,11 +34,5 @@ function handleScroll() {
   }
 }
 
-function handleResize() {
-  updateNavbar();
-}
-
 window.addEventListener("scroll", handleScroll, { passive: true });
-window.addEventListener("resize", handleResize, { passive: true });
-
 document.addEventListener("DOMContentLoaded", updateNavbar);
