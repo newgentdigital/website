@@ -301,7 +301,7 @@ export const strings = {
           items: {
             newgent: {
               label: "Newgent Digital",
-              description: "All-in-one nordic media agency",
+              description: "All-in-one Nordic media agency",
             },
             finconnect: {
               label: "Finconnect",
