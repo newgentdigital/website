@@ -2,6 +2,7 @@
 import SvgIconWhite from "../../assets/brand/icon-white.svg";
 import NavbarBase from "./NavbarBase.astro";
 import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import NavbarActionsBar from "./NavbarActionsBar.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
@@ -16,6 +17,8 @@ const links = [
 ---
 
 <NavbarBase {links}>
+  <NavbarActionsBar slot="actions" />
+
   <slot slot="icon">
     <SvgIconWhite height={24} width={24} />
   </slot>

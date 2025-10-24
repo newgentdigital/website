@@ -3,6 +3,7 @@ import SvgLogomarkAktiebolagWhite from "../../assets/brand/logomark-aktiebolag-w
 import NavbarBase from "./NavbarBase.astro";
 import NavbarReturn from "./NavbarReturn.astro";
 import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import NavbarActionsBar from "./NavbarActionsBar.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
@@ -22,6 +23,7 @@ const links = [
 
 <NavbarBase iconHref="/investors" {links}>
   <NavbarReturn slot="return" />
+  <NavbarActionsBar slot="actions" />
 
   <slot slot="icon">
     <SvgLogomarkAktiebolagWhite height={24} />

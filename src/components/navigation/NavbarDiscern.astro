@@ -3,6 +3,7 @@ import SvgLogomarkDiscernWhite from "../../assets/brand/logomark-discern-white.s
 import NavbarBase from "./NavbarBase.astro";
 import NavbarReturn from "./NavbarReturn.astro";
 import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import NavbarActionsBar from "./NavbarActionsBar.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
@@ -14,10 +15,42 @@ const links = [
   { href: "/wiki", title: t("nav").links.support, alternate: true },
   { href: "/discern/pricing", title: t("nav").links.getStarted, cta: true },
 ];
+
+const actionBarLinks = [
+  {
+    href: "https://discern.newgent.digital",
+    title:
+      t("nav").actionbar.platforms.items.discern.subitems.manageDiscern
+        .label,
+    description:
+      t("nav").actionbar.platforms.items.discern.subitems.manageDiscern
+        .description,
+  },
+  {
+    href: "https://billing.newgent.digital/",
+    title: t("nav").actionbar.platforms.items.customerPortal.label,
+    description: t("nav").actionbar.platforms.items.customerPortal.description,
+  },
+  {
+    href: "https://github.com/newgentdigital/discern",
+    title:
+      t("nav").actionbar.platforms.items.discern.subitems.discernGithub
+        .label,
+    description:
+      t("nav").actionbar.platforms.items.discern.subitems.discernGithub
+        .description,
+  },
+  {
+    href: "/",
+    title: "Newgent Digital",
+    description: t("nav").actionbar.platforms.items.newgent.description,
+  },
+];
 ---
 
 <NavbarBase iconHref="/discern" {links}>
   <NavbarReturn slot="return" />
+  <NavbarActionsBar links={actionBarLinks} slot="actions" />
 
   <slot slot="icon">
     <SvgLogomarkDiscernWhite height={24} />

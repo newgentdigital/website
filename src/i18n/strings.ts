@@ -34,18 +34,58 @@ export const strings = {
             finconnect: {
               label: "Finconnect",
               description: "Sveriges mest öppna finansintegration",
+              subitems: {
+                manageFinconnect: {
+                  label: "Hantera Finconnect",
+                  description:
+                    "Hantera dina Finconnect-inställningar och integrationer.",
+                },
+                finconnectGithub: {
+                  label: "Finconnect på GitHub",
+                  description:
+                    "Utforska Finconnects källkod och bidra till projektet.",
+                },
+              },
             },
             discern: {
               label: "Discern",
               description: "Förvandla Discord till en marknadsföringsmotor",
+              subitems: {
+                manageDiscern: {
+                  label: "Hantera Discern",
+                  description:
+                    "Hantera dina Discern-inställningar och anslutna servrar.",
+                },
+                discernGithub: {
+                  label: "Discern på GitHub",
+                  description:
+                    "Utforska Discerns källkod och bidra till projektet.",
+                },
+              },
             },
             discav: {
               label: "DiscAV",
               description: "Skanna Discord efter skadligt innehåll och virus",
+              subitems: {
+                manageDiscav: {
+                  label: "Hantera DiscAV",
+                  description:
+                    "Hantera dina DiscAV-inställningar och skannade servrar.",
+                },
+                discavGithub: {
+                  label: "DiscAV på GitHub",
+                  description:
+                    "Utforska DiscAVs källkod och bidra till projektet.",
+                },
+              },
             },
             investors: {
               label: "Investerare",
               description: "Investerarrelationer och finansiell information",
+            },
+            customerPortal: {
+              label: "Kundportal via Stripe",
+              description: "Hantera dina betalningar och betalningsmetoder.",
             },
           },
         },
@@ -247,18 +287,58 @@ export const strings = {
             finconnect: {
               label: "Finconnect",
               description: "Sweden's most open financial integration",
+              subitems: {
+                manageFinconnect: {
+                  label: "Manage Finconnect",
+                  description:
+                    "Manage your Finconnect settings and integrations.",
+                },
+                finconnectGithub: {
+                  label: "Finconnect on GitHub",
+                  description:
+                    "Explore Finconnect's source code and contribute to the project.",
+                },
+              },
             },
             discern: {
               label: "Discern",
               description: "Turn Discord into a marketing powerhouse",
+              subitems: {
+                manageDiscern: {
+                  label: "Manage Discern",
+                  description:
+                    "Manage your Discern settings and connected servers.",
+                },
+                discernGithub: {
+                  label: "Discern on GitHub",
+                  description:
+                    "Explore Discern's source code and contribute to the project.",
+                },
+              },
             },
             discav: {
               label: "DiscAV",
               description: "Scan Discord for malicious content and viruses",
+              subitems: {
+                manageDiscav: {
+                  label: "Manage DiscAV",
+                  description:
+                    "Manage your DiscAV settings and scanned servers.",
+                },
+                discavGithub: {
+                  label: "DiscAV on GitHub",
+                  description:
+                    "Explore DiscAV's source code and contribute to the project.",
+                },
+              },
             },
             investors: {
               label: "Investors",
               description: "Investor relations and financial information",
+            },
+            customerPortal: {
+              label: "Customer Portal via Stripe",
+              description: "Manage your payments and payment methods.",
             },
           },
         },
