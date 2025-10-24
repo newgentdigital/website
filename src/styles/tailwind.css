@@ -107,7 +107,7 @@
 
   /* BUTTONS: PRIMARY VARIANTS */
   .btn-primary {
-    @apply bg-gradient-to-b from-nwg-sky-500 to-nwg-sky-600 text-zinc-100 hover:from-nwg-sky-600 hover:to-nwg-sky-700;
+    @apply bg-linear-to-b from-nwg-sky-500 to-nwg-sky-600 text-zinc-100 hover:from-nwg-sky-600 hover:to-nwg-sky-700;
   }
 
   .btn-primary-outline {
@@ -116,7 +116,7 @@
 
   /* BUTTONS: SECONDARY VARIANTS */
   .btn-secondary {
-    @apply bg-gradient-to-b from-nwg-deep-sea-500 to-nwg-deep-sea-600 text-zinc-100 hover:from-nwg-deep-sea-600 hover:to-nwg-deep-sea-700;
+    @apply bg-linear-to-b from-nwg-deep-sea-500 to-nwg-deep-sea-600 text-zinc-100 hover:from-nwg-deep-sea-600 hover:to-nwg-deep-sea-700;
   }
 
   .btn-secondary-outline {
@@ -125,7 +125,7 @@
 
   /* BUTTONS: TERTIARY VARIANTS */
   .btn-tertiary {
-    @apply bg-gradient-to-b from-nwg-day-100 to-nwg-day-200 text-nwg-day-700 hover:from-nwg-day-200 hover:to-nwg-day-300 dark:from-nwg-day-700 dark:to-nwg-day-800 dark:text-nwg-day-200 dark:hover:from-nwg-day-600 dark:hover:to-nwg-day-700;
+    @apply bg-linear-to-b from-nwg-day-100 to-nwg-day-200 text-nwg-day-700 hover:from-nwg-day-200 hover:to-nwg-day-300 dark:from-nwg-day-700 dark:to-nwg-day-800 dark:text-nwg-day-200 dark:hover:from-nwg-day-600 dark:hover:to-nwg-day-700;
   }
 
   .btn-tertiary-outline {

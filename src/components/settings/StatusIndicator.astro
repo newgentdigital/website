@@ -16,19 +16,15 @@ const t = useTranslation(lang);
 >
   <div class="relative h-2 w-2" id="status-indicator">
     <div
+      class="absolute inset-0 animate-ping rounded-full duration-300"
       id="status-dot-ping"
-      class:list={[
-        "absolute",
-        "inset-0",
-        "animate-ping",
-        "rounded-full",
-        statusColorClass,
-      ]}
+      class:list={statusColorClass}
     >
     </div>
     <div
+      class="absolute inset-0 rounded-full"
       id="status-dot-static"
-      class:list={["absolute", "inset-0", "rounded-full", statusColorClass]}
+      class:list={statusColorClass}
     >
     </div>
   </div>
