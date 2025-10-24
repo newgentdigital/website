@@ -1,0 +1,42 @@
+---
+import type { SystemStatus } from "../../utils/systemStatus.utils";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const currentStatus: SystemStatus = "operational";
+const statusColorClass = "bg-green-500";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+---
+
+<a
+  class="link link-ghost flex items-center gap-1.5"
+  href="https://status.newgent.digital"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <div class="relative h-2 w-2" id="status-indicator">
+    <div
+      id="status-dot-ping"
+      class:list={[
+        "absolute",
+        "inset-0",
+        "animate-ping",
+        "rounded-full",
+        statusColorClass,
+      ]}
+    >
+    </div>
+    <div
+      id="status-dot-static"
+      class:list={["absolute", "inset-0", "rounded-full", statusColorClass]}
+    >
+    </div>
+  </div>
+  <span id="status-text" data-status={currentStatus}>
+    {t("nav").actionbar.serviceStatus}
+  </span>
+</a>
+
+<script>
+  import "./StatusIndicator";
+</script>

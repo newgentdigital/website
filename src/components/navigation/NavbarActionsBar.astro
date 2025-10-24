@@ -1,0 +1,122 @@
+---
+import RiArrowDropDownLine from "../icons/ri/RiArrowDropDownLine.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import StatusIndicator from "../settings/StatusIndicator.astro";
+
+interface Link {
+  href: string;
+  title: string;
+  description?: string;
+}
+
+interface Props {
+  showStatus?: boolean;
+  platformsLabel?: string;
+  links?: Link[];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+
+const {
+  showStatus = true,
+  platformsLabel = t("nav").actionbar.platforms.label,
+  links = [
+    {
+      href: "/",
+      title: "Newgent",
+      description: t("nav").actionbar.platforms.items.newgent.description,
+    },
+    {
+      href: "/finconnect",
+      title: "Finconnect",
+      description: t("nav").actionbar.platforms.items.finconnect.description,
+    },
+    {
+      href: "/discern",
+      title: "Discern",
+      description: t("nav").actionbar.platforms.items.discern.description,
+    },
+    {
+      href: "/discav",
+      title: "DiscAV",
+      description: t("nav").actionbar.platforms.items.discav.description,
+    },
+    {
+      href: "/investors",
+      title: "Investors",
+      description: t("nav").actionbar.platforms.items.investors.description,
+    },
+  ],
+} = Astro.props;
+---
+
+<div
+  class="border-b border-zinc-300 bg-zinc-100 px-2 sm:sticky sm:top-0 sm:z-20 sm:px-0 dark:border-zinc-700 dark:bg-zinc-900"
+  id="navbar-actions-bar"
+>
+  <nav
+    class="mx-auto flex max-w-5xl border-x border-zinc-300 px-4 py-1 text-xs font-medium tracking-tight sm:mx-auto dark:border-zinc-700"
+    class:list={showStatus ? "justify-between" : "justify-end"}
+    aria-label={t("nav").actionbar.label}
+  >
+    {showStatus && <StatusIndicator />}
+
+    <div class="relative">
+      <button
+        class="link link-ghost flex items-center hover:cursor-pointer"
+        id="platform-dropdown-toggle"
+        aria-expanded="false"
+        aria-haspopup="true"
+      >
+        <span>{platformsLabel}</span>
+        <RiArrowDropDownLine
+          class="transition-transform duration-250"
+          id="platform-dropdown-arrow"
+        />
+      </button>
+
+      <ul
+        class="absolute right-0 z-20 mt-2 hidden w-64 divide-y divide-zinc-200 border border-zinc-300 bg-zinc-50 shadow-lg dark:divide-zinc-700 dark:border-zinc-700 dark:bg-zinc-900"
+        id="platform-dropdown-menu"
+        role="menu"
+        aria-labelledby="platform-dropdown-toggle"
+      >
+        {
+          links.map((link) => {
+            const isExternal = link.href.startsWith("http");
+            return (
+              <li role="none">
+                <a
+                  class="group block px-4 py-3 transition-colors hover:bg-zinc-100 focus:bg-zinc-100 focus:outline-none dark:hover:bg-zinc-800 dark:focus:bg-zinc-800"
+                  href={
+                    isExternal
+                      ? link.href
+                      : getRelativeLocaleUrl(lang, link.href)
+                  }
+                  role="menuitem"
+                  {...(isExternal && {
+                    rel: "noopener noreferrer",
+                    target: "_blank",
+                  })}
+                >
+                  <div class="font-medium text-zinc-900 transition-opacity group-active:opacity-50 dark:text-zinc-100">
+                    {link.title}
+                  </div>
+                  <div class="text-xs text-zinc-600 transition-opacity group-active:opacity-50 dark:text-zinc-400">
+                    {link.description}
+                  </div>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<script>
+  import "./NavbarActionsBar";
+</script>

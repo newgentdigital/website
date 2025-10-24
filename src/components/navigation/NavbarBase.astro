@@ -30,9 +30,10 @@ const { iconHref = "/", links = [], ctaHideIcon = false } = Astro.props;
 ---
 
 <slot name="return" />
+<slot name="actions" />
 
 <div
-  class="sticky top-0 z-10 mx-auto border-b border-zinc-300 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900"
+  class="sticky top-0 z-10 mx-auto border-b border-zinc-300 bg-zinc-100 sm:top-[33px] dark:border-zinc-700 dark:bg-zinc-900"
 >
   <nav
     class="mx-2 flex max-w-5xl justify-between border-x border-zinc-300 text-zinc-900 sm:mx-auto dark:border-zinc-700 dark:text-zinc-100"

@@ -3,6 +3,7 @@ function initMobileNav() {
   const mobileNav = document.getElementById("mobile-nav");
   const mobileNavClose = document.getElementById("mobile-nav-close");
   const body = document.body;
+  const navbarActionsBar = document.getElementById("navbar-actions-bar");
 
   if (!mobileNavToggle || !mobileNav || !mobileNavClose) return;
 
@@ -10,12 +11,14 @@ function initMobileNav() {
     mobileNav.classList.remove("hidden");
     body.style.overflow = "hidden";
     mobileNavToggle.setAttribute("aria-expanded", "true");
+    if (navbarActionsBar) navbarActionsBar.classList.add("hidden");
   });
 
   mobileNavClose.addEventListener("click", () => {
     mobileNav.classList.add("hidden");
     body.style.overflow = "";
     mobileNavToggle.setAttribute("aria-expanded", "false");
+    if (navbarActionsBar) navbarActionsBar.classList.remove("hidden");
   });
 
   document.addEventListener("keydown", (e) => {
@@ -23,6 +26,7 @@ function initMobileNav() {
       mobileNav.classList.add("hidden");
       body.style.overflow = "";
       mobileNavToggle.setAttribute("aria-expanded", "false");
+      if (navbarActionsBar) navbarActionsBar.classList.remove("hidden");
     }
   });
 
@@ -32,6 +36,7 @@ function initMobileNav() {
       mobileNav.classList.add("hidden");
       body.style.overflow = "";
       mobileNavToggle.setAttribute("aria-expanded", "false");
+      if (navbarActionsBar) navbarActionsBar.classList.remove("hidden");
     });
   });
 }

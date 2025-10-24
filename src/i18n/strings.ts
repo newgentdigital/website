@@ -21,6 +21,35 @@ export const strings = {
         getStarted: "Kom igång",
         destinations: "Destinationer",
       },
+      actionbar: {
+        label: "Åtgärdsfält",
+        serviceStatus: "Tjänstestatus",
+        platforms: {
+          label: "Plattformar",
+          items: {
+            newgent: {
+              label: "Newgent",
+              description: "Allt-i-ett nordisk mediebyrå",
+            },
+            finconnect: {
+              label: "Finconnect",
+              description: "Sveriges mest öppna finansintegration",
+            },
+            discern: {
+              label: "Discern",
+              description: "Förvandla Discord till en marknadsföringsmotor",
+            },
+            discav: {
+              label: "DiscAV",
+              description: "Skanna Discord efter skadligt innehåll och virus",
+            },
+            investors: {
+              label: "Investerare",
+              description: "Investerarrelationer och finansiell information",
+            },
+          },
+        },
+      },
     },
     footer: {
       footerNavigation: "Sidfotens navigering",
@@ -204,6 +233,35 @@ export const strings = {
         support: "Support",
         getStarted: "Get started",
         destinations: "Destinations",
+      },
+      actionbar: {
+        label: "Actions bar",
+        serviceStatus: "Service status",
+        platforms: {
+          label: "Platforms",
+          items: {
+            newgent: {
+              label: "Newgent",
+              description: "All-in-one nordic media agency",
+            },
+            finconnect: {
+              label: "Finconnect",
+              description: "Sweden's most open financial integration",
+            },
+            discern: {
+              label: "Discern",
+              description: "Turn Discord into a marketing powerhouse",
+            },
+            discav: {
+              label: "DiscAV",
+              description: "Scan Discord for malicious content and viruses",
+            },
+            investors: {
+              label: "Investors",
+              description: "Investor relations and financial information",
+            },
+          },
+        },
       },
     },
     footer: {
