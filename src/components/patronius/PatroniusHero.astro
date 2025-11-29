@@ -1,5 +1,5 @@
 ---
-import { Dithering } from "@paper-design/shaders-react";
+import { GodRays } from "@paper-design/shaders-react";
 import { getLangFromUrl, useTranslation } from "../../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -8,31 +8,37 @@ const t = useTranslation(lang);
 
 <section class="relative h-[500px] overflow-hidden">
   <div class="absolute inset-0 -z-50 dark:hidden" aria-hidden="true">
-    <Dithering
+    <GodRays
+      bloom={0.1}
       client:only="react"
-      colorBack="#fafafa"
-      colorFront="#ff2e2e"
+      colorBack="#ffffff"
+      colorBloom="#5865F2"
+      colors={["#5865F2", "#7289DA", "#99AAB5", "#ffffff"]}
+      density={0.5}
       height={500}
-      rotation={120}
-      scale={1}
-      shape="warp"
-      size={2}
-      speed={0.15}
-      type="4x4"
+      intensity={1}
+      midIntensity={0.5}
+      midSize={0.25}
+      offsetY={-0.55}
+      speed={0.5}
+      spotty={1}
     />
   </div>
   <div class="absolute inset-0 -z-50 hidden dark:block" aria-hidden="true">
-    <Dithering
+    <GodRays
+      bloom={0.5}
       client:only="react"
-      colorBack="#09090b"
-      colorFront="#ff2e2e"
+      colorBack="#23272A"
+      colorBloom="#5865F2"
+      colors={["#5865F2", "#7289DA", "#99AAB5", "#ffffff"]}
+      density={0.5}
       height={500}
-      rotation={120}
-      scale={1}
-      shape="warp"
-      size={2}
-      speed={0.15}
-      type="4x4"
+      intensity={1}
+      midIntensity={0.5}
+      midSize={0.25}
+      offsetY={-0.55}
+      speed={0.5}
+      spotty={1}
     />
   </div>
 
@@ -40,10 +46,10 @@ const t = useTranslation(lang);
     <span
       class="input-label-wide font-display font-semibold text-zinc-900 dark:text-zinc-100"
     >
-      {t("home").shellguard.hero.label}
+      {t("home").patronius.hero.label}
     </span>
     <h1 class="h1">
-      {t("home").shellguard.hero.heading}
+      {t("home").patronius.hero.heading}
     </h1>
   </header>
 

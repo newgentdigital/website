@@ -1,0 +1,115 @@
+---
+import SvgLogomarkPatroniusColorBlack from "../../assets/brand/logomark-patronius-color-black.svg";
+import SvgLogomarkPatroniusColorWhite from "../../assets/brand/logomark-patronius-color-white.svg";
+import FooterBase from "./FooterBase.astro";
+import FooterNewsletterSignup from "./FooterNewsletterSignup.astro";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+
+const links = [
+  {
+    category: t("footer").links.newgent.label,
+    href: "/company",
+    links: [
+      { title: t("footer").links.newgent.items.about, href: "/company" },
+      { title: t("footer").links.newgent.items.team, href: "/team" },
+      { title: t("footer").links.newgent.items.careers, href: "/careers" },
+      { title: t("footer").links.newgent.items.awards, href: "/awards" },
+      { title: t("footer").links.newgent.items.partners, href: "/partners" },
+      { title: t("footer").links.newgent.items.investors, href: "/investors" },
+      { title: t("footer").links.newgent.items.handbook, href: "/handbook" },
+    ],
+  },
+  {
+    category: t("footer").links.finconnectIntegrations.label,
+    href: "/patronius/integrations",
+    links: [
+      {
+        title: "Open Collective",
+        href: "/patronius/integrations/open-collective",
+      },
+      {
+        title: "Thanks.dev",
+        href: "/patronius/integrations/thanks-dev",
+      },
+      {
+        title: "LiberaPay",
+        href: "/patronius/integrations/liberapay",
+      },
+      {
+        title: t("footer").links.finconnectIntegrations.items.allIntegrations,
+        href: "/patronius/integrations",
+      },
+    ],
+  },
+  {
+    category: t("footer").links.resources.label,
+    links: [
+      {
+        title: t("footer").links.resources.items.aboutPatronius,
+        href: "/patronius/about",
+      },
+      {
+        title: t("footer").links.resources.items.setupPatronius,
+        href: "/patronius/setup",
+      },
+      { title: t("footer").links.resources.items.blog, href: "/blog" },
+      { title: t("footer").links.resources.items.presskit, href: "/press-kit" },
+      {
+        title: t("footer").links.resources.items.discern,
+        href: "/discern",
+      },
+      {
+        title: t("footer").links.resources.items.shellguard,
+        href: "/shellguard",
+      },
+    ],
+  },
+  {
+    category: t("footer").links.support.label,
+    links: [
+      {
+        title: t("footer").links.resources.items.opensource,
+        href: "/patronius/oss",
+      },
+      { title: t("footer").links.support.items.hire, href: "/hire" },
+      { title: t("footer").links.support.items.contact, href: "/contact" },
+      { title: t("footer").links.support.items.faq, href: "/patronius/faq" },
+      { title: t("footer").links.support.items.wiki, href: "/patronius/wiki" },
+    ],
+  },
+  {
+    category: t("footer").links.legal.label,
+    href: "/legal",
+    links: [
+      { title: t("footer").links.legal.items.terms, href: "/legal/terms" },
+      { title: t("footer").links.legal.items.privacy, href: "/legal/privacy" },
+      { title: t("footer").links.legal.items.cookies, href: "/legal/cookies" },
+      {
+        title: t("footer").links.legal.items.disclaimer,
+        href: "/legal/disclaimer",
+      },
+      { title: t("footer").links.legal.items.imprint, href: "/legal/imprint" },
+      {
+        title: t("footer").links.legal.items.attributions,
+        href: "/attributions/patronius",
+      },
+    ],
+  },
+];
+---
+
+<FooterNewsletterSignup />
+
+<FooterBase
+  description={t("footer").description.patronius}
+  iconHref="/patronius"
+  {links}
+>
+  <slot slot="logo">
+    <SvgLogomarkPatroniusColorBlack class="h-8 dark:hidden" />
+    <SvgLogomarkPatroniusColorWhite class="hidden h-8 dark:block" />
+  </slot>
+</FooterBase>

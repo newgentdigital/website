@@ -1,0 +1,64 @@
+---
+import SvgLogomarkPatroniusWhite from "../../assets/brand/logomark-patronius-white.svg";
+import NavbarBase from "./NavbarBase.astro";
+import NavbarReturn from "./NavbarReturn.astro";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import NavbarActionsBar from "./NavbarActionsBar.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+
+const links = [
+  { href: "/patronius/integrations", title: t("nav").links.integrations },
+  { href: "/patronius/setup", title: t("nav").links.setup },
+  { href: "/patronius/about", title: t("nav").links.about },
+  { href: "/wiki", title: t("nav").links.support, alternate: true },
+  { href: "/patronius/pricing", title: t("nav").links.getStarted, cta: true },
+];
+
+const actionBarLinks = [
+  {
+    href: "https://patronius.newgent.digital",
+    title:
+      t("nav").actionbar.platforms.items.patronius.subItems.managePatronius
+        .label,
+    description:
+      t("nav").actionbar.platforms.items.patronius.subItems.managePatronius
+        .description,
+    isSecure: true,
+  },
+  {
+    href: "https://billing.newgent.digital/",
+    title: t("nav").actionbar.platforms.items.customerPortal.label,
+    description: t("nav").actionbar.platforms.items.customerPortal.description,
+    isSecure: true,
+  },
+  {
+    href: "https://github.com/newgentdigital/patronius",
+    title:
+      t("nav").actionbar.platforms.items.patronius.subItems.patroniusGithub
+        .label,
+    description:
+      t("nav").actionbar.platforms.items.patronius.subItems.patroniusGithub
+        .description,
+  },
+  {
+    href: "/",
+    title: t("nav").actionbar.platforms.items.newgent.label,
+    description: t("nav").actionbar.platforms.items.newgent.description,
+  },
+];
+---
+
+<NavbarBase iconHref="/patronius" {links}>
+  <NavbarReturn slot="return" />
+  <NavbarActionsBar
+    links={actionBarLinks}
+    platformsLabel={t("nav").actionbar.login}
+    slot="actions"
+  />
+
+  <slot slot="icon">
+    <SvgLogomarkPatroniusWhite height={24} />
+  </slot>
+</NavbarBase>
