@@ -1,5 +1,5 @@
 import type { CookieConsentConfig } from "vanilla-cookieconsent";
-import "vanilla-cookieconsent";
+import { acceptedService } from "vanilla-cookieconsent";
 
 const CAT_NECESSARY = "necessary";
 const CAT_SECURITY = "security";
@@ -26,10 +26,6 @@ const serviceCategories = {
   [SERVICE_AD_PERSONALIZATION]: CAT_ADVERTISEMENT,
 } as const;
 
-interface CookieConsentGlobal {
-  acceptedService(service: string, category: string): boolean;
-}
-
 // @ts-expect-error: dataLayer is not defined on Window
 window.dataLayer = window.dataLayer || [];
 function gtag(...args: unknown[]) {
@@ -54,9 +50,7 @@ gtag("consent", "default", {
 function updateGtagConsent() {
   const consent: Record<string, string> = {};
   for (const [service, category] of Object.entries(serviceCategories)) {
-    consent[service] = (
-      window as unknown as { CookieConsent: CookieConsentGlobal }
-    ).CookieConsent.acceptedService(service, category)
+    consent[service] = acceptedService(service, category)
       ? "granted"
       : "denied";
   }
