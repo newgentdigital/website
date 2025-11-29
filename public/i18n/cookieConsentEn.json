@@ -1,0 +1,75 @@
+{
+  "consentModal": {
+    "label": "Cookie Consent",
+    "title": "Yum, yum, yum! 🍪",
+    "description": "{{revisionMessage}} We use cookies to improve your experience, analyze traffic, and offer personalized content. You can choose which cookies you want to allow.",
+    "acceptAllBtn": "Accept all",
+    "acceptNecessaryBtn": "Only essentials",
+    "showPreferencesBtn": "Manage settings",
+    "closeIconLabel": "Close",
+    "revisionMessage": "We have updated our cookie policy.",
+    "footer": "<a href=\"/en/legal/privacy\">Privacy Policy</a>\n<a href=\"/en/legal/terms\">Terms of Service</a>"
+  },
+  "preferencesModal": {
+    "title": "Cookie Settings",
+    "acceptAllBtn": "Accept all cookies",
+    "acceptNecessaryBtn": "Only essential cookies",
+    "savePreferencesBtn": "Save settings",
+    "closeIconLabel": "Close",
+    "sections": [
+      {
+        "title": "How we use cookies",
+        "description": "We use cookies to improve functionality, security, and analytics. You can read more about each category below."
+      },
+      {
+        "title": "Essential",
+        "description": "These cookies are necessary for the website to function properly and cannot be disabled in our systems.",
+        "linkedCategory": "necessary"
+      },
+      {
+        "title": "Security",
+        "description": "Security cookies help us protect your information and prevent fraud.",
+        "linkedCategory": "security"
+      },
+      {
+        "title": "Functionality",
+        "description": "Functionality cookies allow the website to remember your choices and improve your user experience.",
+        "linkedCategory": "functionality"
+      },
+      {
+        "title": "Analytics",
+        "description": "Analytics cookies help us understand how the website is used and improve our services.",
+        "linkedCategory": "analytics"
+      },
+      {
+        "title": "Advertising",
+        "description": "Advertising cookies are used to show relevant ads and measure the effectiveness of our campaigns.",
+        "linkedCategory": "advertisement",
+        "cookieTable": {
+          "caption": "List of cookies",
+          "headers": {
+            "name": "Name",
+            "description": "Description",
+            "duration": "Duration"
+          },
+          "body": [
+            {
+              "name": "cookie-name",
+              "description": "cookie-description",
+              "duration": "cookie-duration"
+            },
+            {
+              "name": "cookie-name-2",
+              "description": "cookie-description-2",
+              "duration": "cookie-duration-2"
+            }
+          ]
+        }
+      },
+      {
+        "title": "More information",
+        "description": "If you have any questions about privacy or cookies, <a class=\"cc__link\" href=\"/en/contact\">get in touch</a> or visit our <a class=\"cc__link\" href=\"/en/legal/cookies\">Cookie Policy</a> for details about all cookies, their duration, purpose, and instructions on withdrawing your consent."
+      }
+    ]
+  }
+}

@@ -33,17 +33,87 @@ export function getLangFromUrl(url: URL) {
  *   fallback to the default locale.
  */
 export function useTranslation(locale: keyof typeof strings) {
-  /**
-   * Translate a key to the specified locale, falling back to defaultLocale if
-   * the key is not found.
-   *
-   * @param key - The translation key.
-   * @returns The translated string or object.
-   */
+  const isObject = (v: unknown): v is Record<string, unknown> =>
+    v !== null && typeof v === "object";
+
+  function createProxy(
+    localeObj: unknown,
+    defaultObj: unknown,
+    path: string,
+  ): unknown {
+    const collectKeys = () => {
+      const s = new Set<string>();
+      if (isObject(localeObj)) Object.keys(localeObj).forEach((k) => s.add(k));
+      if (isObject(defaultObj))
+        Object.keys(defaultObj).forEach((k) => s.add(k));
+      return [...s];
+    };
+
+    return new Proxy(
+      {},
+      {
+        get(_, prop) {
+          if (prop === Symbol.toPrimitive) {
+            return () => String(localeObj ?? defaultObj ?? path);
+          }
+
+          const key = String(prop);
+          const locVal = isObject(localeObj) ? localeObj[key] : undefined;
+          const defVal = isObject(defaultObj) ? defaultObj[key] : undefined;
+          const nextPath = `${path}.${key}`;
+
+          if (locVal !== undefined) {
+            return isObject(locVal)
+              ? createProxy(locVal, defVal, nextPath)
+              : locVal;
+          }
+          if (defVal !== undefined) {
+            return isObject(defVal)
+              ? createProxy(undefined, defVal, nextPath)
+              : defVal;
+          }
+          return nextPath;
+        },
+
+        ownKeys() {
+          return collectKeys();
+        },
+
+        getOwnPropertyDescriptor(_, prop) {
+          return collectKeys().includes(prop as string)
+            ? { configurable: true, enumerable: true }
+            : undefined;
+        },
+      },
+    );
+  }
+
   return function t<K extends keyof (typeof strings)[typeof defaultLocale]>(
     key: K,
   ): (typeof strings)[typeof defaultLocale][K] {
-    return strings[locale][key] || strings[defaultLocale][key];
+    const localeObj = (strings as Record<string, Record<string, unknown>>)[
+      locale
+    ]?.[key as string];
+    const defaultObj = (strings as Record<string, Record<string, unknown>>)[
+      defaultLocale
+    ]?.[key as string];
+    const basePath = `${locale}.${String(key)}`;
+
+    if (localeObj !== undefined) {
+      return (
+        isObject(localeObj)
+          ? createProxy(localeObj, defaultObj, basePath)
+          : localeObj
+      ) as (typeof strings)[typeof defaultLocale][K];
+    }
+    if (defaultObj !== undefined) {
+      return (
+        isObject(defaultObj)
+          ? createProxy(undefined, defaultObj, basePath)
+          : defaultObj
+      ) as (typeof strings)[typeof defaultLocale][K];
+    }
+    return basePath as unknown as (typeof strings)[typeof defaultLocale][K];
   };
 }
 

@@ -1,5 +1,5 @@
 ---
-import SvgLogomarkDiscavWhite from "../../assets/brand/logomark-discav-white.svg";
+import SvgLogomarkShellguardWhite from "../../assets/brand/logomark-shellguard-white.svg";
 import NavbarBase from "./NavbarBase.astro";
 import NavbarReturn from "./NavbarReturn.astro";
 import { getLangFromUrl, useTranslation } from "../../i18n/utils";
@@ -9,20 +9,21 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
 
 const links = [
-  { href: "/discav/integrations", title: t("nav").links.integrations },
-  { href: "/discav/setup", title: t("nav").links.setup },
-  { href: "/discav/about", title: t("nav").links.about },
+  { href: "/shellguard/integrations", title: t("nav").links.integrations },
+  { href: "/shellguard/setup", title: t("nav").links.setup },
+  { href: "/shellguard/about", title: t("nav").links.about },
   { href: "/wiki", title: t("nav").links.support, alternate: true },
-  { href: "/discav/pricing", title: t("nav").links.getStarted, cta: true },
+  { href: "/shellguard/pricing", title: t("nav").links.getStarted, cta: true },
 ];
 
 const actionBarLinks = [
   {
-    href: "https://discav.newgent.digital",
+    href: "https://shellguard.newgent.digital",
     title:
-      t("nav").actionbar.platforms.items.discav.subItems.manageDiscav.label,
+      t("nav").actionbar.platforms.items.shellguard.subItems.manageShellguard
+        .label,
     description:
-      t("nav").actionbar.platforms.items.discav.subItems.manageDiscav
+      t("nav").actionbar.platforms.items.shellguard.subItems.manageShellguard
         .description,
     isSecure: true,
   },
@@ -33,11 +34,12 @@ const actionBarLinks = [
     isSecure: true,
   },
   {
-    href: "https://github.com/newgentdigital/discav",
+    href: "https://github.com/newgentdigital/shellguard",
     title:
-      t("nav").actionbar.platforms.items.discav.subItems.discavGithub.label,
+      t("nav").actionbar.platforms.items.shellguard.subItems.shellguardGithub
+        .label,
     description:
-      t("nav").actionbar.platforms.items.discav.subItems.discavGithub
+      t("nav").actionbar.platforms.items.shellguard.subItems.shellguardGithub
         .description,
   },
   {
@@ -48,7 +50,7 @@ const actionBarLinks = [
 ];
 ---
 
-<NavbarBase iconHref="/discav" {links}>
+<NavbarBase iconHref="/shellguard" {links}>
   <NavbarReturn slot="return" />
   <NavbarActionsBar
     links={actionBarLinks}
@@ -57,6 +59,6 @@ const actionBarLinks = [
   />
 
   <slot slot="icon">
-    <SvgLogomarkDiscavWhite height={24} />
+    <SvgLogomarkShellguardWhite height={24} />
   </slot>
 </NavbarBase>

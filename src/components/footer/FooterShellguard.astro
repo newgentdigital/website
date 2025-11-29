@@ -1,6 +1,6 @@
 ---
-import SvgLogomarkDiscavColorBlack from "../../assets/brand/logomark-discav-color-black.svg";
-import SvgLogomarkDiscavColorWhite from "../../assets/brand/logomark-discav-color-white.svg";
+import SvgLogomarkShellguardColorBlack from "../../assets/brand/logomark-shellguard-color-black.svg";
+import SvgLogomarkShellguardColorWhite from "../../assets/brand/logomark-shellguard-color-white.svg";
 import FooterBase from "./FooterBase.astro";
 import FooterNewsletterSignup from "./FooterNewsletterSignup.astro";
 import { getLangFromUrl, useTranslation } from "../../i18n/utils";
@@ -24,27 +24,27 @@ const links = [
   },
   {
     category: t("footer").links.finconnectIntegrations.label,
-    href: "/discav/integrations",
+    href: "/shellguard/integrations",
     links: [
       {
         title: "ClamAV",
-        href: "/discav/integrations/clamav",
+        href: "/shellguard/integrations/clamav",
       },
       {
         title: "VirusTotal",
-        href: "/discav/integrations/virustotal",
+        href: "/shellguard/integrations/virustotal",
       },
       {
         title: "Triage",
-        href: "/discav/integrations/triage",
+        href: "/shellguard/integrations/triage",
       },
       {
         title: "Hybrid Analysis",
-        href: "/discav/integrations/hybrid-analysis",
+        href: "/shellguard/integrations/hybrid-analysis",
       },
       {
         title: t("footer").links.finconnectIntegrations.items.allIntegrations,
-        href: "/discav/integrations",
+        href: "/shellguard/integrations",
       },
     ],
   },
@@ -52,12 +52,12 @@ const links = [
     category: t("footer").links.resources.label,
     links: [
       {
-        title: t("footer").links.resources.items.aboutDiscav,
-        href: "/discav/about",
+        title: t("footer").links.resources.items.aboutShellguard,
+        href: "/shellguard/about",
       },
       {
-        title: t("footer").links.resources.items.setupDiscav,
-        href: "/discav/setup",
+        title: t("footer").links.resources.items.setupShellguard,
+        href: "/shellguard/setup",
       },
       { title: t("footer").links.resources.items.blog, href: "/blog" },
       { title: t("footer").links.resources.items.presskit, href: "/press-kit" },
@@ -76,12 +76,12 @@ const links = [
     links: [
       {
         title: t("footer").links.resources.items.opensource,
-        href: "/discav/oss",
+        href: "/shellguard/oss",
       },
       { title: t("footer").links.support.items.hire, href: "/hire" },
       { title: t("footer").links.support.items.contact, href: "/contact" },
-      { title: t("footer").links.support.items.faq, href: "/discav/faq" },
-      { title: t("footer").links.support.items.wiki, href: "/discav/wiki" },
+      { title: t("footer").links.support.items.faq, href: "/shellguard/faq" },
+      { title: t("footer").links.support.items.wiki, href: "/shellguard/wiki" },
     ],
   },
   {
@@ -96,6 +96,10 @@ const links = [
         href: "/legal/disclaimer",
       },
       { title: t("footer").links.legal.items.imprint, href: "/legal/imprint" },
+      {
+        title: t("footer").links.legal.items.attributions,
+        href: "/attributions/shellguard",
+      },
     ],
   },
 ];
@@ -104,12 +108,12 @@ const links = [
 <FooterNewsletterSignup />
 
 <FooterBase
-  description={t("footer").description.discav}
-  iconHref="/discern"
+  description={t("footer").description.shellguard}
+  iconHref="/shellguard"
   {links}
 >
   <slot slot="logo">
-    <SvgLogomarkDiscavColorBlack class="h-8 dark:hidden" />
-    <SvgLogomarkDiscavColorWhite class="hidden h-8 dark:block" />
+    <SvgLogomarkShellguardColorBlack class="h-8 dark:hidden" />
+    <SvgLogomarkShellguardColorWhite class="hidden h-8 dark:block" />
   </slot>
 </FooterBase>

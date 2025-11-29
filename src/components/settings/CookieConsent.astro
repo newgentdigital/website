@@ -1,0 +1,22 @@
+---
+import "vanilla-cookieconsent/dist/cookieconsent.css";
+import "../../styles/cookieconsent.css";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+---
+
+<button
+  class="link link-ghost cursor-pointer text-sm text-zinc-500"
+  data-cc="show-consentModal"
+>
+  {t("footer").manageCookies}
+</button>
+
+<script>
+  import { run } from "vanilla-cookieconsent";
+  import { config } from "./CookieConsent";
+
+  run(config);
+</script>

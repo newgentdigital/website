@@ -27,13 +27,6 @@ export default defineConfig({
   }),
 
   integrations: [
-    sitemap({
-      i18n: {
-        defaultLocale: defaultLocale,
-        locales: sitemapSupportedLocales,
-      },
-    }),
-    mdx(),
     sentry({
       telemetry: false,
       sourceMapsUploadOptions: {
@@ -42,6 +35,13 @@ export default defineConfig({
         authToken: process.env.SENTRY_AUTH_TOKEN,
       },
     }),
+    sitemap({
+      i18n: {
+        defaultLocale: defaultLocale,
+        locales: sitemapSupportedLocales,
+      },
+    }),
+    mdx(),
     react(),
   ],
 
@@ -110,16 +110,6 @@ export default defineConfig({
         context: "server",
         access: "secret",
         default: "2x0000000000000000000000000000000AA",
-      }),
-      BETTERSTACK_API_TOKEN: envField.string({
-        context: "server",
-        access: "secret",
-        default: "bt_xxxxxxxxx",
-      }),
-      BETTERSTACK_STATUS_PAGE_ID: envField.string({
-        context: "server",
-        access: "public",
-        default: "123456",
       }),
     },
   },

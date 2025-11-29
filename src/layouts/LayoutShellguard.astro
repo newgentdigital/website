@@ -1,0 +1,15 @@
+---
+import FooterShellguard from "../components/footer/FooterShellguard.astro";
+import NavbarShellguard from "../components/navigation/NavbarShellguard.astro";
+import LayoutBase from "./LayoutBase.astro";
+---
+
+<LayoutBase>
+  <NavbarShellguard slot="navbar" />
+
+  <slot slot="body">
+    <slot name="content" />
+  </slot>
+
+  <FooterShellguard slot="footer" />
+</LayoutBase>

@@ -1,0 +1,75 @@
+{
+  "consentModal": {
+    "label": "Samtycke till cookies",
+    "title": "Mums, mums, mums! 🍪",
+    "description": "{{revisionMessage}} Vi använder cookies för att förbättra din upplevelse, analysera trafik och erbjuda personligt innehåll. Du kan välja vilka cookies du vill tillåta.",
+    "acceptAllBtn": "Acceptera alla",
+    "acceptNecessaryBtn": "Endast nödvändiga",
+    "showPreferencesBtn": "Hantera inställningar",
+    "closeIconLabel": "Stäng",
+    "revisionMessage": "Vi har uppdaterat vår cookiepolicy.",
+    "footer": "<a href=\"/legal/privacy\">Integritetspolicy</a>\n<a href=\"/legal/terms\">Användarvillkor</a>"
+  },
+  "preferencesModal": {
+    "title": "Cookieinställningar",
+    "acceptAllBtn": "Acceptera alla cookies",
+    "acceptNecessaryBtn": "Endast nödvändiga cookies",
+    "savePreferencesBtn": "Spara inställningar",
+    "closeIconLabel": "Stäng",
+    "sections": [
+      {
+        "title": "Hur vi använder cookies",
+        "description": "Vi använder cookies för att förbättra funktionalitet, säkerhet och analys. Du kan läsa mer om varje kategori nedan."
+      },
+      {
+        "title": "Nödvändiga",
+        "description": "Dessa cookies är nödvändiga för att webbplatsen ska fungera korrekt och kan inte stängas av i våra system.",
+        "linkedCategory": "necessary"
+      },
+      {
+        "title": "Säkerhet",
+        "description": "Säkerhetscookies hjälper oss att skydda din information och förhindra bedrägerier.",
+        "linkedCategory": "security"
+      },
+      {
+        "title": "Funktionalitet",
+        "description": "Funktionalitetscookies gör att webbplatsen kan komma ihåg dina val och förbättra användarupplevelsen.",
+        "linkedCategory": "functionality"
+      },
+      {
+        "title": "Analys",
+        "description": "Analyscookies hjälper oss att förstå hur webbplatsen används och förbättra våra tjänster.",
+        "linkedCategory": "analytics"
+      },
+      {
+        "title": "Marknadsföring",
+        "description": "Marknadsföringscookies används för att visa relevanta annonser och mäta effektiviteten av våra kampanjer.",
+        "linkedCategory": "advertisement",
+        "cookieTable": {
+          "caption": "Lista över cookies",
+          "headers": {
+            "name": "Namn",
+            "description": "Beskrivning",
+            "duration": "Livslängd"
+          },
+          "body": [
+            {
+              "name": "cookie-name",
+              "description": "cookie-description",
+              "duration": "cookie-duration"
+            },
+            {
+              "name": "cookie-name-2",
+              "description": "cookie-description-2",
+              "duration": "cookie-duration-2"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Mer information",
+        "description": "Om du har frågor om integritet eller cookies, <a class=\"cc__link\" href=\"/contact\">kontakta oss</a> eller besök vår <a class=\"cc__link\" href=\"/legal/cookies\">Cookiepolicy</a> för detaljer om alla cookies, deras varaktighet, syfte och instruktioner om hur du återkallar ditt samtycke."
+      }
+    ]
+  }
+}

@@ -64,19 +64,19 @@ export const strings = {
                 },
               },
             },
-            discav: {
-              label: "DiscAV",
+            shellguard: {
+              label: "Shellguard",
               description: "Skanna Discord efter skadligt innehåll och virus",
               subItems: {
-                manageDiscav: {
-                  label: "Hantera DiscAV",
+                manageShellguard: {
+                  label: "Hantera Shellguard",
                   description:
-                    "Hantera dina DiscAV-inställningar och skannade servrar.",
+                    "Hantera dina Shellguard-inställningar och skannade servrar.",
                 },
-                discavGithub: {
-                  label: "DiscAV på GitHub",
+                shellguardGithub: {
+                  label: "Shellguard på GitHub",
                   description:
-                    "Utforska DiscAVs källkod och bidra till projektet.",
+                    "Utforska Shellguards källkod och bidra till projektet.",
                 },
               },
             },
@@ -113,8 +113,8 @@ export const strings = {
       footerNavigation: "Sidfotens navigering",
       description: {
         base: "Newgent är den heltäckande, 360° digitala kreativa mediebyrån du har drömt om. Vi är baserade i Skellefteå, och betjänar kunder över hela världen. Vi är redo att leda ditt varumärke in i nästa generation, oavsett utmaning.",
-        discav:
-          "DiscAV by Newgent är ett kraftfullt verktyg för att skanna Discord-servrar efter skadligt innehåll snabbt och enkelt. Skydda ditt community genom att identifiera och ta bort virus, malware och oönskat material effektivt.",
+        shellguard:
+          "Shellguard by Newgent är ett kraftfullt verktyg för att skanna Discord-servrar efter skadligt innehåll snabbt och enkelt. Skydda ditt community genom att identifiera och ta bort virus, malware och oönskat material effektivt.",
         discern:
           "Discern by Newgent är ett kraftfullt verktyg för övervakning och analys av Discord-serverar som förvandlar ditt community till en marknadsföringsmotor. Få insikter, spåra engagemang och optimera strategier enkelt.",
         finconnect:
@@ -127,6 +127,7 @@ export const strings = {
       newgentOperates:
         "Newgent verkar som NWG Digital AB i Sverige, organisationsnummer 559386-0066.",
       viewSource: "Visa källkoden på GitHub",
+      manageCookies: "Hantera cookies",
       newsletterSignup: {
         heading: "Anmäl dig till",
         description:
@@ -200,9 +201,9 @@ export const strings = {
             discern: "Discern av Newgent",
             setupDiscern: "Setup Discern",
             aboutDiscern: "Om Discern",
-            discav: "DiscAV av Newgent",
-            setupDiscav: "Setup DiscAV",
-            aboutDiscav: "Om DiscAV",
+            shellguard: "Shellguard av Newgent",
+            setupShellguard: "Setup Shellguard",
+            aboutShellguard: "Om Shellguard",
           },
         },
         support: {
@@ -222,6 +223,7 @@ export const strings = {
             cookies: "Cookiepolicy",
             disclaimer: "Ansvarsfriskrivning",
             imprint: "Impressum",
+            attributions: "Tillskrivning",
           },
         },
       },
@@ -243,9 +245,9 @@ export const strings = {
           heading: "Driver och producerar den nya digitala generationen.",
         },
       },
-      discav: {
+      shellguard: {
         hero: {
-          label: "Hitta virus med DiscAV",
+          label: "Hitta virus med Shellguard",
           heading: "Skanna Discord efter skadligt innehåll snabbt och enkelt.",
         },
       },
@@ -335,19 +337,19 @@ export const strings = {
                 },
               },
             },
-            discav: {
-              label: "DiscAV",
+            shellguard: {
+              label: "Shellguard",
               description: "Scan Discord for malicious content and viruses",
               subItems: {
-                manageDiscav: {
-                  label: "Manage DiscAV",
+                manageShellguard: {
+                  label: "Manage Shellguard",
                   description:
-                    "Manage your DiscAV settings and scanned servers.",
+                    "Manage your Shellguard settings and scanned servers.",
                 },
-                discavGithub: {
-                  label: "DiscAV on GitHub",
+                shellguardGithub: {
+                  label: "Shellguard on GitHub",
                   description:
-                    "Explore DiscAV's source code and contribute to the project.",
+                    "Explore Shellguard's source code and contribute to the project.",
                 },
               },
             },
@@ -384,8 +386,8 @@ export const strings = {
       footerNavigation: "Footer Navigation",
       description: {
         base: "Newgent is the all-in-one, 360° digital creative & media agency you've been dreaming of. Based in Skellefteå, Sweden — serving clients worldwide. We're ready to lead your brand for the next generation, no matter the challenge.",
-        discav:
-          "DiscAV by Newgent is a powerful tool to scan Discord servers for malicious content quickly and easily. Protect your community by identifying and removing viruses, malware, and unwanted material effectively.",
+        shellguard:
+          "Shellguard by Newgent is a powerful tool to scan Discord servers for malicious content quickly and easily. Protect your community by identifying and removing viruses, malware, and unwanted material effectively.",
         discern:
           "Discern by Newgent is a powerful Discord community monitoring and analytics tool that transforms your community into a marketing powerhouse. Gain insights, track engagement, and optimize your strategies with ease.",
         finconnect:
@@ -398,6 +400,7 @@ export const strings = {
       newgentOperates:
         "Newgent operates as NWG Digital AB in Sweden, organization number 559386-0066.",
       viewSource: "View the source code on GitHub",
+      manageCookies: "Manage cookies",
       newsletterSignup: {
         heading: "Sign up for",
         description:
@@ -471,9 +474,9 @@ export const strings = {
             discern: "Discern by Newgent",
             setupDiscern: "Setup Discern",
             aboutDiscern: "About Discern",
-            discav: "DiscAV by Newgent",
-            setupDiscav: "Setup DiscAV",
-            aboutDiscav: "About DiscAV",
+            shellguard: "Shellguard by Newgent",
+            setupShellguard: "Setup Shellguard",
+            aboutShellguard: "About Shellguard",
           },
         },
         support: {
@@ -493,6 +496,7 @@ export const strings = {
             cookies: "Cookie Policy",
             disclaimer: "Disclaimer",
             imprint: "Imprint",
+            attributions: "Attributions",
           },
         },
       },
@@ -513,9 +517,9 @@ export const strings = {
           heading: "Powering and producing the new digital generation.",
         },
       },
-      discav: {
+      shellguard: {
         hero: {
-          label: "Find viruses with DiscAV",
+          label: "Find viruses with Shellguard",
           heading: "Scan Discord for malicious content quickly and easily.",
         },
       },

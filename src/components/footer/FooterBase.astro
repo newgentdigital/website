@@ -5,6 +5,7 @@ import ThemeSwitcher from "../settings/ThemeSwitcher.astro";
 import SimpleIconsInstagram from "../icons/simple-icons/SimpleIconsInstagram.astro";
 import SimpleIconsLinkedIn from "../icons/simple-icons/SimpleIconsLinkedIn.astro";
 import SimpleIconsGithub from "../icons/simple-icons/SimpleIconsGithub.astro";
+import CookieConsent from "../settings/CookieConsent.astro";
 
 interface Link {
   category: string;
@@ -171,15 +172,21 @@ const { description = "", iconHref = "/", links = [] } = Astro.props;
         </p>
       </div>
 
-      <a
-        class="link link-ghost font-mono text-sm text-zinc-500"
-        href="https://github.com/newgentdigital/website"
-        rel="noopener noreferrer"
-        target="_blank"
-        aria-label={t("footer").viewSource}
-      >
-        {commitHash}
-      </a>
+      <div class="flex flex-wrap items-center gap-2">
+        <a
+          class="link link-ghost font-mono text-sm text-zinc-500"
+          href="https://github.com/newgentdigital/website"
+          rel="noopener noreferrer"
+          target="_blank"
+          aria-label={t("footer").viewSource}
+        >
+          {commitHash}
+        </a>
+
+        <span class="text-xs text-zinc-500">•</span>
+
+        <CookieConsent />
+      </div>
     </section>
   </footer>
 </div>

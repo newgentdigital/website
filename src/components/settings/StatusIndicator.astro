@@ -1,34 +1,29 @@
 ---
-import type { SystemStatus } from "../../utils/systemStatus.utils";
 import { getLangFromUrl, useTranslation } from "../../i18n/utils";
 
-const currentStatus: SystemStatus = "operational";
-const statusColorClass = "bg-green-500";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
 ---
 
 <a
   class="link link-ghost flex items-center gap-1.5"
-  href={`https://status.newgent.digital/${lang}`}
+  href="https://status.newgent.digital"
   rel="noopener noreferrer"
   target="_blank"
 >
   <div class="relative h-2 w-2" id="status-indicator">
     <div
-      class="absolute inset-0 animate-ping rounded-full duration-300"
+      class="absolute inset-0 animate-ping rounded-full bg-green-500 duration-300"
       id="status-dot-ping"
-      class:list={statusColorClass}
     >
     </div>
     <div
-      class="absolute inset-0 rounded-full"
+      class="absolute inset-0 rounded-full bg-green-500"
       id="status-dot-static"
-      class:list={statusColorClass}
     >
     </div>
   </div>
-  <span id="status-text" data-status={currentStatus}>
+  <span id="status-text" data-status="operational">
     {t("nav").actionbar.serviceStatus}
   </span>
 </a>
