@@ -61,15 +61,19 @@ async function setFormIdempotencyKey(form: HTMLFormElement) {
  * form field. Handles form validation and Turnstile expiration checks.
  *
  * @param form - The HTML form element to manage.
+ * @param containerId - The ID of the Turnstile container.
  */
-async function manageTurnstileForm(form: HTMLFormElement) {
+async function manageTurnstileForm(
+  form: HTMLFormElement,
+  containerId: string = TURNSTILE_CONTAINER_ID,
+) {
   let turnstileRendered = false;
   const allFields = form.querySelectorAll(ALL_FIELDS_SELECTOR);
 
   allFields.forEach((field) => {
     field.addEventListener("focus", () => {
       if (!turnstileRendered) {
-        turnstile.render(TURNSTILE_CONTAINER_ID, {
+        turnstile.render(containerId, {
           sitekey: TURNSTILE_SITE_KEY,
           size: "flexible",
           theme: localStorage.getItem("theme") || "auto",
@@ -84,8 +88,8 @@ async function manageTurnstileForm(form: HTMLFormElement) {
         turnstileRendered = true;
       }
 
-      turnstile.isExpired(TURNSTILE_CONTAINER_ID, function () {
-        turnstile.reset(TURNSTILE_CONTAINER_ID);
+      turnstile.isExpired(containerId, function () {
+        turnstile.reset(containerId);
       });
     });
   });
@@ -180,10 +184,12 @@ async function checkFormValidity(form: HTMLFormElement) {
  * @param form - The HTML form element to attach listeners to.
  * @param action - Optional action function to call with the form data if
  *   captcha verification succeeds.
+ * @param turnstileContainerId - Optional ID for the Turnstile container.
  */
 export async function attachFormListeners(
   form: HTMLFormElement,
   action?: (formData: FormData) => void,
+  turnstileContainerId: string = TURNSTILE_CONTAINER_ID,
 ) {
   const requiredFields = form.querySelectorAll(REQUIRED_FIELDS_SELECTOR);
 
@@ -222,15 +228,15 @@ export async function attachFormListeners(
           action(formData);
         }
       } else {
-        turnstile.reset(TURNSTILE_CONTAINER_ID);
+        turnstile.reset(turnstileContainerId);
       }
     } catch (error) {
       console.error(error);
-      turnstile.reset(TURNSTILE_CONTAINER_ID);
+      turnstile.reset(turnstileContainerId);
     }
   });
 
   await setFormIdempotencyKey(form);
-  await manageTurnstileForm(form);
+  await manageTurnstileForm(form, turnstileContainerId);
   await checkFormValidity(form);
 }
