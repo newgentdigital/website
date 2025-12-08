@@ -2,15 +2,18 @@
 import { getRelativeLocaleUrl } from "astro:i18n";
 import SvgIconWhite from "../../assets/brand/icon-white.svg";
 import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import RiArrowDropDownLine from "../icons/ri/RiArrowDropDownLine.astro";
 import RiMenuLine from "../icons/ri/RiMenuLine.astro";
 import LanguageSwitcher from "../settings/LanguageSwitcher.astro";
+import NavbarMegaMenu, { type MegaMenu } from "./NavbarMegaMenu.astro";
 import NavbarMobileMenu from "./NavbarMobileMenu.astro";
 
-interface Link {
+export interface Link {
   href: string;
   title: string;
   alternate?: boolean;
   cta?: boolean;
+  megaMenu?: MegaMenu;
 }
 
 interface Props {
@@ -43,7 +46,7 @@ const { iconHref = "/", links = [], ctaHideIcon = false } = Astro.props;
     class="mx-auto border-b border-zinc-300 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900"
   >
     <nav
-      class="mx-2 flex max-w-5xl justify-between border-x border-zinc-300 text-zinc-900 sm:mx-auto dark:border-zinc-700 dark:text-zinc-100"
+      class="relative mx-2 flex max-w-5xl justify-between border-x border-zinc-300 text-zinc-900 sm:mx-auto dark:border-zinc-700 dark:text-zinc-100"
       aria-label=`${t("nav").mainNavigation}`
     >
       <div class="flex">
@@ -67,8 +70,9 @@ const { iconHref = "/", links = [], ctaHideIcon = false } = Astro.props;
               .filter((link) => !link.cta && !link.alternate)
               .map((link) => {
                 const isExternal = link.href.startsWith("http");
+                const hasMegaMenu = !!link.megaMenu;
                 return (
-                  <li>
+                  <li class={hasMegaMenu ? "group" : ""}>
                     <a
                       class="link flex h-full items-center px-6 hover:bg-nwg-sky-500 hover:text-zinc-100 active:opacity-50"
                       href={
@@ -83,7 +87,15 @@ const { iconHref = "/", links = [], ctaHideIcon = false } = Astro.props;
                       aria-current={isActive(link.href) ? "page" : undefined}
                     >
                       {link.title}
+                      {hasMegaMenu && (
+                        <RiArrowDropDownLine class="h-7 w-7 transition-transform duration-250 group-hover:rotate-180" />
+                      )}
                     </a>
+                    {hasMegaMenu && (
+                      <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100">
+                        <NavbarMegaMenu megaMenu={link.megaMenu!} />
+                      </div>
+                    )}
                   </li>
                 );
               })

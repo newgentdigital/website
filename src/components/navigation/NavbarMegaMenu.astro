@@ -1,0 +1,132 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLangFromUrl } from "../../i18n/utils";
+import RiArrowRightLine from "../icons/ri/RiArrowRightLine.astro";
+import { Image } from "astro:assets";
+
+export interface MegaMenuItem {
+  title: string;
+  description?: string;
+  href: string;
+  icon?: any;
+}
+
+export interface MegaMenuColumn {
+  title?: string;
+  items: MegaMenuItem[];
+}
+
+export interface MegaMenuFeatured {
+  title: string;
+  description: string;
+  href: string;
+  image?: string;
+  ctaText?: string;
+}
+
+export interface MegaMenu {
+  columns: MegaMenuColumn[];
+  featured?: MegaMenuFeatured;
+}
+
+interface Props {
+  megaMenu: MegaMenu;
+}
+
+const { megaMenu } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+---
+
+<div
+  class="absolute top-full left-0 z-20 w-full border-y border-zinc-300 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900"
+>
+  <div class="mx-auto grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-12">
+    <div
+      class={`grid gap-8 p-8 ${megaMenu.featured ? "lg:col-span-8 lg:grid-cols-2" : "lg:col-span-12 lg:grid-cols-3"}`}
+    >
+      {
+        megaMenu.columns.map((column) => (
+          <div class="divide-y divide-zinc-200 dark:divide-zinc-700">
+            {column.title && (
+              <h3 class="mb-4 pb-2 text-xs font-semibold tracking-widest text-zinc-900 dark:text-zinc-100">
+                {column.title.toUpperCase()}
+              </h3>
+            )}
+            <ul class="space-y-4">
+              {column.items.map((item) => {
+                const isExternal = item.href.startsWith("http");
+                return (
+                  <li>
+                    <a
+                      class="flex items-start gap-3 p-2 transition hover:bg-zinc-200/50 active:opacity-70 dark:hover:bg-zinc-800"
+                      href={
+                        isExternal
+                          ? item.href
+                          : getRelativeLocaleUrl(lang, item.href)
+                      }
+                      {...(isExternal && {
+                        rel: "noopener noreferrer",
+                        target: "_blank",
+                      })}
+                    >
+                      {item.icon && (
+                        <div>
+                          <item.icon class="mt-1 h-5 w-5 text-nwg-sky-600 dark:text-nwg-sky-400" />
+                        </div>
+                      )}
+                      <div>
+                        <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                          {item.title}
+                        </div>
+                        {item.description && (
+                          <p class="p mt-1 text-sm leading-normal text-zinc-500">
+                            {item.description}
+                          </p>
+                        )}
+                      </div>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    {
+      megaMenu.featured && (
+        <div class="lg:col-span-4">
+          <div class="h-full bg-nwg-sky-500 p-6">
+            {megaMenu.featured.image && (
+              <Image
+                class="mb-4 max-h-64 w-full rounded object-cover select-none"
+                alt=""
+                fit="cover"
+                format="avif"
+                height={160}
+                layout="constrained"
+                position="center"
+                src={megaMenu.featured.image}
+                width={400}
+              />
+            )}
+            <h3 class="h3 mb-1 text-lg text-zinc-100">
+              {megaMenu.featured.title}
+            </h3>
+            <p class="p mb-4 text-sm leading-normal font-light text-zinc-100">
+              {megaMenu.featured.description}
+            </p>
+            <a
+              class="link link-ghost inline-flex items-center gap-1 text-zinc-100 transition-none"
+              href={getRelativeLocaleUrl(lang, megaMenu.featured.href)}
+            >
+              {megaMenu.featured.ctaText || "Learn more"}
+              <RiArrowRightLine class="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      )
+    }
+  </div>
+</div>
