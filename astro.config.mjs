@@ -3,6 +3,7 @@ import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
+import autoParamAstro from "@newgentdigital/auto-param-astro";
 import sentry from "@sentry/astro";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField, fontProviders } from "astro/config";
@@ -43,6 +44,12 @@ export default defineConfig({
     }),
     mdx(),
     react(),
+    autoParamAstro({
+      params: {
+        ref: "newgent.digital",
+      },
+      exemptDomains: ["newgent.digital", "*.newgent.digital"],
+    }),
   ],
 
   vite: {
