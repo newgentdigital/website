@@ -149,5 +149,6 @@ export default defineConfig({
 
     clientPrerender: true,
     contentIntellisense: true,
+    svgo: true,
   },
 });
