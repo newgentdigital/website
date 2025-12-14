@@ -107,6 +107,8 @@ export const footer = {
         contact: "Kontakta oss",
         faq: "Vanliga frågor",
         wiki: "Wiki",
+        status: "Status",
+        tools: "Öppna verktyg",
       },
     },
     legal: {

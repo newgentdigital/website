@@ -107,6 +107,8 @@ export const footer = {
         contact: "Contact us",
         faq: "FAQ",
         wiki: "Wiki",
+        status: "Status",
+        tools: "Public tools",
       },
     },
     legal: {
