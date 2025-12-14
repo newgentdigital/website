@@ -1,0 +1,14 @@
+---
+import SectionWrapperHorizontal from "../sections/SectionWrapperHorizontal.astro";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+---
+
+<SectionWrapperHorizontal ctaHref="/contact" ctaText={t("tools").hero.ctaText}>
+  <h1 class="h3" slot="header">{t("tools").hero.heading}</h1>
+  <p class="p" slot="content">
+    {t("tools").hero.description}
+  </p>
+</SectionWrapperHorizontal>

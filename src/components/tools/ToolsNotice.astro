@@ -1,0 +1,16 @@
+---
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+---
+
+<aside class="px-8 sm:px-12">
+  <div class="space-y-2 border border-zinc-300 p-6 dark:border-zinc-700">
+    <h2 class="h6">{t("tools").notice.title}</h2>
+
+    <p class="p text-zinc-600 dark:text-zinc-400">
+      {t("tools").notice.description}
+    </p>
+  </div>
+</aside>

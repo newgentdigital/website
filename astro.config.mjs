@@ -66,6 +66,11 @@ export default defineConfig({
         hostname: "placehold.co",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.jsdelivr.net",
+        pathname: "/gh/selfhst/icons/**",
+      },
     ],
   },
 

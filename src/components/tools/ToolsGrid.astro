@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import RiArrowRightLine from "../icons/ri/RiArrowRightLine.astro";
+import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslation(lang);
+
+const tools = [
+  {
+    name: "BentoPDF",
+    description: t("tools").serviceDescriptions.bentopdf,
+    icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/bentopdf.svg",
+    learnMoreUrl: "https://github.com/alam00000/bentopdf?ref=newgent.digital",
+    websiteUrl: "https://pdf.newgent.digital/",
+    websiteLabel: "pdf.newgent.digital",
+  },
+  {
+    name: "VERT",
+    description: t("tools").serviceDescriptions.vert,
+    icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/vert.svg",
+    learnMoreUrl: "https://github.com/VERT-sh/VERT?ref=newgent.digital",
+    websiteUrl: "https://vert.newgent.digital/",
+    websiteLabel: "vert.newgent.digital",
+  },
+  {
+    name: "vertd",
+    description: t("tools").serviceDescriptions.vertd,
+    icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/vert.svg",
+    learnMoreUrl: "https://github.com/VERT-sh/vertd?ref=newgent.digital",
+    websiteUrl: "https://vertd.newgent.digital/",
+    websiteLabel: "vertd.newgent.digital",
+  },
+];
+---
+
+<section
+  class="grid grid-cols-1 gap-6 p-8 sm:grid-cols-2 sm:p-12 lg:grid-cols-3"
+>
+  {
+    tools
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map((tool) => (
+        <article class="space-y-6 border border-zinc-300 pt-6 dark:border-zinc-700">
+          <div class="flex items-center gap-4 px-6">
+            <Image
+              class="select-none"
+              alt=""
+              height={32}
+              src={tool.icon}
+              width={32}
+            />
+            <h2 class="h6">{tool.name}</h2>
+          </div>
+
+          <p class="p line-clamp-3 px-6 text-zinc-600 lg:line-clamp-4 dark:text-zinc-400">
+            {tool.description}
+          </p>
+
+          <a
+            class="link link-secondary group mb-2 flex w-fit items-center gap-1 px-6"
+            href={tool.learnMoreUrl}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {t("tools").grid.learnMore} {tool.name}
+            <RiArrowRightLine class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </a>
+
+          <a
+            class="btn btn-lg btn-primary mt-8"
+            href={tool.websiteUrl}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {tool.websiteLabel}
+          </a>
+        </article>
+      ))
+  }
+</section>

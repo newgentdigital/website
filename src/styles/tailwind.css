@@ -93,7 +93,11 @@
 
   /* BUTTONS */
   .btn {
-    @apply flex items-center justify-center gap-2 px-4 py-2 font-medium tracking-tight transition-all selection:bg-nwg-sky-200 hover:cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-nwg-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100 active:scale-95 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 dark:selection:bg-nwg-sky-800 dark:focus-visible:ring-offset-zinc-950;
+    @apply flex items-center justify-center gap-2 px-4 py-2 font-medium tracking-tight transition-all selection:bg-nwg-sky-200 hover:cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-nwg-sky-500 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100 active:opacity-75 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 dark:selection:bg-nwg-sky-800 dark:focus-visible:ring-offset-zinc-950;
+  }
+
+  .btn-anim {
+    @apply active:scale-95;
   }
 
   /* BUTTONS: SIZES */

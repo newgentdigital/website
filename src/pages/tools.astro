@@ -1,0 +1,16 @@
+---
+export const prerender = true;
+
+import LayoutNewgent from "../layouts/LayoutNewgent.astro";
+import ToolsHero from "../components/tools/ToolsHero.astro";
+import ToolsNotice from "../components/tools/ToolsNotice.astro";
+import ToolsGrid from "../components/tools/ToolsGrid.astro";
+---
+
+<LayoutNewgent>
+  <slot name="content">
+    <ToolsHero />
+    <ToolsNotice />
+    <ToolsGrid />
+  </slot>
+</LayoutNewgent>
