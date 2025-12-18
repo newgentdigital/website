@@ -103,10 +103,10 @@ export const nav = {
               description:
                 "Access detailed analytics and real-time reports on company performance.",
             },
-            documentArchive: {
-              label: "Document Archive",
+            boardManagement: {
+              label: "Board Management",
               description:
-                "Browse and download investor documents, filings, and reports.",
+                "Manage board- and leadership meetings, agendas, and minutes.",
             },
             equityManagement: {
               label: "Equity Management",

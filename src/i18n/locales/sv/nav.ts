@@ -104,10 +104,10 @@ export const nav = {
               description:
                 "Få tillgång till detaljerad analys och realtidsrapporter om företagsresultat.",
             },
-            documentArchive: {
-              label: "Dokumentarkiv",
+            boardManagement: {
+              label: "Styrelseförvaltning",
               description:
-                "Bläddra och ladda ner dokument, handlingar och rapporter.",
+                "Hantera styrelse- och ledningsmöten, agendor och protokoll.",
             },
             equityManagement: {
               label: "Aktieförvaltning",
