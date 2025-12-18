@@ -45,8 +45,13 @@ const tools = [
           <div class="flex items-center gap-4 px-6">
             <Image
               class="select-none"
-              alt=""
+              alt=`${tool.name} logo`
+              fit="cover"
+              format="avif"
               height={32}
+              layout="constrained"
+              position="center"
+              quality={80}
               src={tool.icon}
               width={32}
             />
