@@ -1,11 +1,7 @@
 ---
-import {
-  getLangFromUrl,
-  supportedLocales,
-  defaultLocale,
-} from "../../i18n/utils";
-import TwemojiFlagSweden from "../icons/twemoji/TwemojiFlagSweden.astro";
-import TwemojiFlagUnitedKingdom from "../icons/twemoji/TwemojiFlagUnitedKingdom.astro";
+import { getLangFromUrl, supportedLocales, defaultLocale } from "@/i18n/utils";
+import TwemojiFlagSweden from "@/components/icons/twemoji/TwemojiFlagSweden.astro";
+import TwemojiFlagUnitedKingdom from "@/components/icons/twemoji/TwemojiFlagUnitedKingdom.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const supportedLocalesArray = Object.keys(supportedLocales);

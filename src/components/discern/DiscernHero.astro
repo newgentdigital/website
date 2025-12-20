@@ -1,12 +1,12 @@
 ---
 import { LiquidMetal } from "@paper-design/shaders-react";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
 ---
 
-<section class="relative h-[500px] overflow-hidden">
+<section class="relative h-125 overflow-hidden">
   <div class="absolute inset-0 -z-50" aria-hidden="true">
     <LiquidMetal
       client:only="react"

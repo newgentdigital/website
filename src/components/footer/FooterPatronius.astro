@@ -1,9 +1,9 @@
 ---
-import SvgLogomarkPatroniusColorBlack from "../../assets/brand/logomark-patronius-color-black.svg";
-import SvgLogomarkPatroniusColorWhite from "../../assets/brand/logomark-patronius-color-white.svg";
+import SvgLogomarkPatroniusColorBlack from "@/assets/brand/logomark-patronius-color-black.svg";
+import SvgLogomarkPatroniusColorWhite from "@/assets/brand/logomark-patronius-color-white.svg";
 import FooterBase from "./FooterBase.astro";
 import FooterNewsletterSignup from "./FooterNewsletterSignup.astro";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
@@ -26,6 +26,10 @@ const links = [
     category: t("footer").links.finconnectIntegrations.label,
     href: "/patronius/integrations",
     links: [
+      {
+        title: "GitHub Sponsors",
+        href: "/patronius/integrations/github",
+      },
       {
         title: "Open Collective",
         href: "/patronius/integrations/open-collective",

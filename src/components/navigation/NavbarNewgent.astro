@@ -1,14 +1,93 @@
 ---
-import SvgIconWhite from "../../assets/brand/icon-white.svg";
+import SvgIconWhite from "@/assets/brand/icon-white.svg";
 import NavbarBase from "./NavbarBase.astro";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 import NavbarActionsBar from "./NavbarActionsBar.astro";
+import RiAiGenerate3DLine from "@/components/icons/ri/RiAiGenerate3dLine.astro";
+import RiCameraAiLine from "@/components/icons/ri/RiCameraAiLine.astro";
+import RiVideoOnAiLine from "@/components/icons/ri/RiVideoOnAiLine.astro";
+import RiFunctionAiLine from "@/components/icons/ri/RiFunctionAiLine.astro";
+import RiFontSizeAi from "@/components/icons/ri/RiFontSizeAi.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
 
 const links = [
-  { href: "/services", title: t("nav").links.services },
+  {
+    href: "/services",
+    title: t("nav").links.services,
+    megaMenu: {
+      columns: [
+        {
+          title: t("nav").megaMenu.newgent.designServices.label,
+          items: [
+            {
+              title:
+                t("nav").megaMenu.newgent.designServices.items.brandIdentity
+                  .label,
+              href: "/services/brand-identity",
+              description:
+                t("nav").megaMenu.newgent.designServices.items.brandIdentity
+                  .description,
+              icon: RiAiGenerate3DLine,
+            },
+            {
+              title:
+                t("nav").megaMenu.newgent.designServices.items.uiUxDesign.label,
+              href: "/services/ui-ux-design",
+              description:
+                t("nav").megaMenu.newgent.designServices.items.uiUxDesign
+                  .description,
+              icon: RiFunctionAiLine,
+            },
+            {
+              title:
+                t("nav").megaMenu.newgent.designServices.items.graphicDesign
+                  .label,
+              href: "/services/graphic-design",
+              description:
+                t("nav").megaMenu.newgent.designServices.items.graphicDesign
+                  .description,
+              icon: RiFontSizeAi,
+            },
+          ],
+        },
+        {
+          title: t("nav").megaMenu.newgent.mediaProduction.label,
+          items: [
+            {
+              title:
+                t("nav").megaMenu.newgent.mediaProduction.items.photography
+                  .label,
+              href: "/services/photography",
+              description:
+                t("nav").megaMenu.newgent.mediaProduction.items.photography
+                  .description,
+              icon: RiCameraAiLine,
+            },
+            {
+              title:
+                t("nav").megaMenu.newgent.mediaProduction.items.videoProduction
+                  .label,
+              href: "/services/video-production",
+              description:
+                t("nav").megaMenu.newgent.mediaProduction.items.videoProduction
+                  .description,
+              icon: RiVideoOnAiLine,
+            },
+          ],
+        },
+      ],
+      featured: {
+        title: t("nav").megaMenu.newgent.featuredItem.title,
+        description: t("nav").megaMenu.newgent.featuredItem.description,
+        href: "/blog",
+        image:
+          "https://images.unsplash.com/photo-1563841930606-67e2bce48b78?q=75&w=900",
+        ctaText: t("nav").megaMenu.newgent.featuredItem.ctaLabel,
+      },
+    },
+  },
   { href: "/company", title: t("nav").links.aboutUs },
   { href: "/work", title: t("nav").links.work },
   { href: "/contact", title: t("nav").links.contact, alternate: true },

@@ -1,9 +1,9 @@
 ---
-import SvgLogomarkFinconnectColorBlack from "../../assets/brand/logomark-finconnect-color-black.svg";
-import SvgLogomarkFinconnectColorWhite from "../../assets/brand/logomark-finconnect-color-white.svg";
+import SvgLogomarkFinconnectColorBlack from "@/assets/brand/logomark-finconnect-color-black.svg";
+import SvgLogomarkFinconnectColorWhite from "@/assets/brand/logomark-finconnect-color-white.svg";
 import FooterBase from "./FooterBase.astro";
 import FooterNewsletterSignup from "./FooterNewsletterSignup.astro";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);

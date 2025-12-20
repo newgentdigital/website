@@ -1,11 +1,11 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
-import RiArrowRightLine from "../icons/ri/RiArrowRightLine.astro";
-import RiCloseLine from "../icons/ri/RiCloseLine.astro";
-import SimpleIconsGithub from "../icons/simple-icons/SimpleIconsGithub.astro";
-import SimpleIconsInstagram from "../icons/simple-icons/SimpleIconsInstagram.astro";
-import SimpleIconsLinkedIn from "../icons/simple-icons/SimpleIconsLinkedIn.astro";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
+import RiArrowRightLine from "@/components/icons/ri/RiArrowRightLine.astro";
+import RiCloseLine from "@/components/icons/ri/RiCloseLine.astro";
+import SimpleIconsGithub from "@/components/icons/simple-icons/SimpleIconsGithub.astro";
+import SimpleIconsInstagram from "@/components/icons/simple-icons/SimpleIconsInstagram.astro";
+import SimpleIconsLinkedIn from "@/components/icons/simple-icons/SimpleIconsLinkedIn.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);

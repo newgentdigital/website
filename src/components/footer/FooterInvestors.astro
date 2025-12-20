@@ -1,9 +1,9 @@
 ---
-import SvgLogomarkAktiebolagColorBlack from "../../assets/brand/logomark-aktiebolag-color-black.svg";
-import SvgLogomarkAktiebolagColorWhite from "../../assets/brand/logomark-aktiebolag-color-white.svg";
+import SvgLogomarkAktiebolagColorBlack from "@/assets/brand/logomark-aktiebolag-color-black.svg";
+import SvgLogomarkAktiebolagColorWhite from "@/assets/brand/logomark-aktiebolag-color-white.svg";
 import FooterBase from "./FooterBase.astro";
 import FooterNewsletterSignup from "./FooterNewsletterSignup.astro";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);

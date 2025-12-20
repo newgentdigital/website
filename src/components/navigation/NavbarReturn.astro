@@ -1,7 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
-import RiArrowLeftLine from "../icons/ri/RiArrowLeftLine.astro";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
+import RiArrowLeftLine from "@/components/icons/ri/RiArrowLeftLine.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);

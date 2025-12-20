@@ -1,9 +1,9 @@
 ---
-import SvgLogomarkColorBlack from "../../assets/brand/logomark-color-black.svg";
-import SvgLogomarkColorWhite from "../../assets/brand/logomark-color-white.svg";
+import SvgLogomarkColorBlack from "@/assets/brand/logomark-color-black.svg";
+import SvgLogomarkColorWhite from "@/assets/brand/logomark-color-white.svg";
 import FooterBase from "./FooterBase.astro";
 import FooterNewsletterSignup from "./FooterNewsletterSignup.astro";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);

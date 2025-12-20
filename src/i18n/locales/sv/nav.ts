@@ -18,6 +18,164 @@ export const nav = {
     support: "Support",
     getStarted: "Kom igång",
     destinations: "Destinationer",
+    dataSources: "Datakällor",
+    analytics: "Analysverktyg",
+    paymentProviders: "Betalningsleverantörer",
+    accounting: "Bokföring & skatt",
+    crowdfunding: "Crowdfunding-plattformar",
+    rewardChannels: "Belöningskanaler",
+    scanEngines: "Skanningsmotorer",
+    alerting: "Varningar & övervakning",
+  },
+  megaMenu: {
+    newgent: {
+      designServices: {
+        label: "Designtjänster",
+        items: {
+          brandIdentity: {
+            label: "Varumärkesidentitet",
+            description:
+              "Samhållande varumärkesidentiteter som resonerar med din publik.",
+          },
+          graphicDesign: {
+            label: "Grafisk design",
+            description:
+              "Marknadsföringsmaterial, illustrationer och kreativa tillgångar.",
+          },
+          uiUxDesign: {
+            label: "UI/UX Design",
+            description: "Användargränssnittsdesign för webben och mobiler.",
+          },
+        },
+      },
+      mediaProduction: {
+        label: "Medieproduktion",
+        items: {
+          videoProduction: {
+            label: "Videoproduktion",
+            description:
+              "Videoinnehåll för marknadsföring, utbildning och berättande.",
+          },
+          photography: {
+            label: "Fotografi",
+            description:
+              "Fotografitjänster för evenemang, produkter och varumärken.",
+          },
+        },
+      },
+      featuredItem: {
+        title: "Se vad vi har skapat",
+        description:
+          "Utforska case studies och riktiga projekt från nordiska varumärken som litar på Newgent med sin kreativa vision.",
+        ctaLabel: "Visa case studies",
+      },
+    },
+    discern: {
+      integrations: {
+        metabaseDescription:
+          "Visualisera Discord-analys i vackra, interaktiva dashboards.",
+        grafanaDescription:
+          "Övervaka community-metrics i realtid med anpassade varningar.",
+      },
+      destinations: {
+        clickhouseDescription:
+          "Lagra community-data effektivt för blixtsnabb analys.",
+        influxdbDescription: "Följ tidsseriedata med högpresterande lagring.",
+        prometheusDescription:
+          "Exportera Discord-metrics för omfattande övervakningspipelines.",
+        postgresqlDescription:
+          "Lagra Discord-analytikdata i en relationsdatabas.",
+      },
+      featuredItem: {
+        title: "Hur communities växer med data",
+        description:
+          "Se hur Discord-servrar förvandlade analys till handling. Riktiga berättelser från marknadsförare och community managers som skalade smartare.",
+        ctaLabel: "Läs framgångshistorier",
+      },
+    },
+    finconnect: {
+      integrations: {
+        stripeDescription:
+          "Automatisera avstämning av betalningar och prenumerationer.",
+        wiseDescription:
+          "Synka internationella transaktioner automatiskt till din bokföring.",
+        revolutDescription:
+          "Anslut företagskonton för sömlös utgiftsuppföljning.",
+      },
+      destinations: {
+        fortnoxDescription:
+          "Automatisera svensk bokföring med direkt transaktionssynk.",
+        postgresqlDescription:
+          "Lagra transaktionsdata för anpassad rapportering och analys.",
+        skatteverketDescription:
+          "Generera skatterapporter automatiskt från anslutna leverantörer.",
+        webhooksDescription:
+          "Skicka finansiell data till vilket system som helst i realtid.",
+      },
+      featuredItem: {
+        title: "Från timmar till minuter: Kundberättelser",
+        description:
+          "Företag och revisorer delar hur Finconnect eliminerade manuell bokföring genom att anta automation. Se tiden som sparats och misstagen som undvikits.",
+        ctaLabel: "Läs deras berättelser",
+      },
+    },
+    patronius: {
+      integrations: {
+        openCollectiveDescription:
+          "Belöna backers direkt med automatiska Discord-förmåner.",
+        liberaPayDescription:
+          "Ge supportrar roller automatiskt när donationer anländer.",
+        githubSponsorsDescription:
+          "Ge sponsorer exklusiv tillgång till din Discord-community.",
+        thanksDevDescription:
+          "Belöna open source-bidragsgivare med automatiska Discord-belöningar.",
+      },
+      destinations: {
+        discordDescription:
+          "Tilldela förmåner automatiskt via självbetjäningsverifiering.",
+        grafanaDescription:
+          "Följ donatorsengagemang och belöningsdistributionsanalys.",
+        postgresqlDescription:
+          "Lagra donationshistorik för anpassade integrationer.",
+        webhooksDescription:
+          "Trigga anpassade åtgärder när supportrar ansluter eller uppgraderar.",
+      },
+      featuredItem: {
+        title: "Skapare som belönade smartare",
+        description:
+          "Lär av open source-projekt och innehållsskapare som automatiserade supporterbelöningar. Läs guider, se verkliga resultat och belöna dina supportrar.",
+        ctaLabel: "Se installationsguider",
+      },
+    },
+    shellguard: {
+      integrations: {
+        clamavDescription:
+          "Skanna bilagor automatiskt med pålitligt open-source-skydd.",
+        virusTotalDescription:
+          "Kontrollera filer mot 70+ antivirusmotorer direkt.",
+        hybridAnalysisDescription:
+          "Analysera misstänkta filer med avancerad beteendedetektering.",
+        triageDescription:
+          "Djupgående malware-analys för omfattande hotinformation.",
+        malwareBazaarDescription:
+          "Korsreferera filer mot kända malware-signaturer.",
+      },
+      destinations: {
+        discordDescription: "Varna moderatorer direkt när hot upptäcks.",
+        grafanaDescription:
+          "Övervaka säkerhetsmetrics och skanningsresultat i realtid.",
+        postgresqlDescription:
+          "Logga och analysera skanhändelser för efterlevnad och granskning.",
+        prometheusDescription:
+          "Spåra säkerhetsmetrics och hotdetektionshastigheter över tid.",
+      },
+      featuredItem: {
+        title: "Communities skyddade från hot",
+        description:
+          "Riktiga incidenter som fångades av Shellguard. Lär av serveradministratörer och community-moderatorer som stoppade attacker innan de spred sig.",
+        ctaLabel: "Visa kundberättelser",
+      },
+    },
   },
   actionbar: {
     label: "Åtgärdsfält",

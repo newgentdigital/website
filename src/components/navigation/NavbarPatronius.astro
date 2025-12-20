@@ -1,15 +1,113 @@
 ---
-import SvgLogomarkPatroniusWhite from "../../assets/brand/logomark-patronius-white.svg";
+import SvgLogomarkPatroniusWhite from "@/assets/brand/logomark-patronius-white.svg";
 import NavbarBase from "./NavbarBase.astro";
 import NavbarReturn from "./NavbarReturn.astro";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 import NavbarActionsBar from "./NavbarActionsBar.astro";
+import SimpleIconsOpencollective from "@/components/icons/simple-icons/SimpleIconsOpencollective.astro";
+import SimpleIconsLiberapay from "@/components/icons/simple-icons/SimpleIconsLiberapay.astro";
+import SimpleIconsGithub from "@/components/icons/simple-icons/SimpleIconsGithub.astro";
+import SimpleIconsDiscord from "@/components/icons/simple-icons/SimpleIconsDiscord.astro";
+import SimpleIconsGrafana from "@/components/icons/simple-icons/SimpleIconsGrafana.astro";
+import RiWebhookLine from "@/components/icons/ri/RiWebhookLine.astro";
+import SimpleIconsPostgresql from "@/components/icons/simple-icons/SimpleIconsPostgresql.astro";
+import RiBracesFill from "@/components/icons/ri/RiBracesFill.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
 
 const links = [
-  { href: "/patronius/integrations", title: t("nav").links.integrations },
+  {
+    href: "/patronius/integrations",
+    title: t("nav").links.integrations,
+    megaMenu: {
+      columns: [
+        {
+          title: t("nav").links.crowdfunding,
+          items: [
+            {
+              title: "GitHub Sponsors",
+              href: "/patronius/integrations/github",
+              description:
+                t("nav").megaMenu.patronius.integrations
+                  .githubSponsorsDescription,
+              icon: SimpleIconsGithub,
+              iconClass: "text-[#181717] dark:text-[#E7E8E8]",
+            },
+            {
+              title: "Open Collective",
+              href: "/patronius/integrations/opencollective",
+              description:
+                t("nav").megaMenu.patronius.integrations
+                  .openCollectiveDescription,
+              icon: SimpleIconsOpencollective,
+              iconClass: "text-[#7FADF2]",
+            },
+            {
+              title: "Liberapay",
+              href: "/patronius/integrations/liberapay",
+              description:
+                t("nav").megaMenu.patronius.integrations.liberaPayDescription,
+              icon: SimpleIconsLiberapay,
+              iconClass: "text-[#F6C915]",
+            },
+            {
+              title: "Thanks.dev",
+              href: "/patronius/integrations/thanksdev",
+              description:
+                t("nav").megaMenu.patronius.integrations.thanksDevDescription,
+              icon: RiBracesFill,
+              iconClass: "text-[#000000] dark:text-[#FFFFFF]",
+            },
+          ],
+        },
+        {
+          title: t("nav").links.rewardChannels,
+          items: [
+            {
+              title: "Discord",
+              href: "/patronius/integrations/discord",
+              description:
+                t("nav").megaMenu.patronius.destinations.discordDescription,
+              icon: SimpleIconsDiscord,
+              iconClass: "text-[#5865F2]",
+            },
+            {
+              title: "PostgreSQL",
+              href: "/patronius/integrations/postgresql",
+              description:
+                t("nav").megaMenu.patronius.destinations.postgresqlDescription,
+              icon: SimpleIconsPostgresql,
+              iconClass: "text-[#4169E1] dark:text-[#B3C3F3]",
+            },
+            {
+              title: "Grafana",
+              href: "/patronius/integrations/grafana",
+              description:
+                t("nav").megaMenu.patronius.destinations.grafanaDescription,
+              icon: SimpleIconsGrafana,
+              iconClass: "text-[#F46800]",
+            },
+            {
+              title: "Webhooks",
+              href: "/patronius/integrations/webhooks",
+              description:
+                t("nav").megaMenu.patronius.destinations.webhooksDescription,
+              icon: RiWebhookLine,
+            },
+          ],
+        },
+      ],
+      featured: {
+        title: t("nav").megaMenu.patronius.featuredItem.title,
+        description: t("nav").megaMenu.patronius.featuredItem.description,
+        href: "/patronius/setup",
+        image:
+          "https://images.unsplash.com/photo-1729860648746-c2308db24a85?q=75&w=900",
+        ctaText: t("nav").megaMenu.patronius.featuredItem.ctaLabel,
+      },
+    },
+  },
   { href: "/patronius/setup", title: t("nav").links.setup },
   { href: "/patronius/about", title: t("nav").links.about },
   { href: "/wiki", title: t("nav").links.support, alternate: true },

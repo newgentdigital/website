@@ -1,15 +1,121 @@
 ---
-import SvgLogomarkShellguardWhite from "../../assets/brand/logomark-shellguard-white.svg";
+import SvgLogomarkShellguardWhite from "@/assets/brand/logomark-shellguard-white.svg";
 import NavbarBase from "./NavbarBase.astro";
 import NavbarReturn from "./NavbarReturn.astro";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 import NavbarActionsBar from "./NavbarActionsBar.astro";
+import SimpleIconsGrafana from "@/components/icons/simple-icons/SimpleIconsGrafana.astro";
+import RiWebhookLine from "@/components/icons/ri/RiWebhookLine.astro";
+import SimpleIconsDiscord from "@/components/icons/simple-icons/SimpleIconsDiscord.astro";
+import SimpleIconsVirustotal from "@/components/icons/simple-icons/SimpleIconsVirustotal.astro";
+import SvgHybridAnalysis from "@/assets/external/hybridanalysis.svg";
+import SvgClamAv from "@/assets/external/clamav.svg";
+import SvgTriage from "@/assets/external/triage.svg";
+import SimpleIconsAbusedotch from "../icons/simple-icons/SimpleIconsAbusedotch.astro";
+import SimpleIconsPostgresql from "@/components/icons/simple-icons/SimpleIconsPostgresql.astro";
+import SimpleIconsPrometheus from "@/components/icons/simple-icons/SimpleIconsPrometheus.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
 
 const links = [
-  { href: "/shellguard/integrations", title: t("nav").links.integrations },
+  {
+    href: "/shellguard/integrations",
+    title: t("nav").links.integrations,
+    megaMenu: {
+      columns: [
+        {
+          title: t("nav").links.scanEngines,
+          items: [
+            {
+              title: "VirusTotal",
+              href: "/shellguard/integrations/virustotal",
+              description:
+                t("nav").megaMenu.shellguard.integrations.virusTotalDescription,
+              icon: SimpleIconsVirustotal,
+              iconClass: "text-[#394EFF] dark:text-[#6A7AFF]",
+            },
+            {
+              title: "ClamAV",
+              href: "/shellguard/integrations/clamav",
+              description:
+                t("nav").megaMenu.shellguard.integrations.clamavDescription,
+              icon: SvgClamAv,
+            },
+            {
+              title: "Hybrid Analysis",
+              href: "/shellguard/integrations/hybridanalysis",
+              description:
+                t("nav").megaMenu.shellguard.integrations
+                  .hybridAnalysisDescription,
+              icon: SvgHybridAnalysis,
+            },
+            {
+              title: "Triage",
+              href: "/shellguard/integrations/triage",
+              description:
+                t("nav").megaMenu.shellguard.integrations.triageDescription,
+              icon: SvgTriage,
+            },
+            {
+              title: "MalwareBazaar",
+              href: "/shellguard/integrations/malwarebazaar",
+              description:
+                t("nav").megaMenu.shellguard.integrations
+                  .malwareBazaarDescription,
+              icon: SimpleIconsAbusedotch,
+              iconClass: "text-[#00465B] dark:text-[#57D8FF]",
+            },
+          ],
+        },
+        {
+          title: t("nav").links.alerting,
+          items: [
+            {
+              title: "Discord",
+              href: "/shellguard/integrations/discord",
+              description:
+                t("nav").megaMenu.shellguard.destinations.discordDescription,
+              icon: SimpleIconsDiscord,
+              iconClass: "text-[#5865F2]",
+            },
+            {
+              title: "Prometheus",
+              href: "/shellguard/integrations/prometheus",
+              description:
+                t("nav").megaMenu.shellguard.destinations.prometheusDescription,
+              icon: SimpleIconsPrometheus,
+              iconClass: "text-[#E6522C]",
+            },
+            {
+              title: "Grafana",
+              href: "/shellguard/integrations/grafana",
+              description:
+                t("nav").megaMenu.shellguard.destinations.grafanaDescription,
+              icon: SimpleIconsGrafana,
+              iconClass: "text-[#F46800]",
+            },
+            {
+              title: "PostgreSQL",
+              href: "/shellguard/integrations/postgresql",
+              description:
+                t("nav").megaMenu.shellguard.destinations.postgresqlDescription,
+              icon: SimpleIconsPostgresql,
+              iconClass: "text-[#4169E1] dark:text-[#B3C3F3]",
+            },
+          ],
+        },
+      ],
+      featured: {
+        title: t("nav").megaMenu.shellguard.featuredItem.title,
+        description: t("nav").megaMenu.shellguard.featuredItem.description,
+        href: "/blog",
+        image:
+          "https://images.unsplash.com/photo-1762340915700-356b34475448?q=75&w=900",
+        ctaText: t("nav").megaMenu.shellguard.featuredItem.ctaLabel,
+      },
+    },
+  },
   { href: "/shellguard/setup", title: t("nav").links.setup },
   { href: "/shellguard/about", title: t("nav").links.about },
   { href: "/wiki", title: t("nav").links.support, alternate: true },

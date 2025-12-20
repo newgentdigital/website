@@ -1,9 +1,9 @@
 ---
-import SvgLogomarkShellguardColorBlack from "../../assets/brand/logomark-shellguard-color-black.svg";
-import SvgLogomarkShellguardColorWhite from "../../assets/brand/logomark-shellguard-color-white.svg";
+import SvgLogomarkShellguardColorBlack from "@/assets/brand/logomark-shellguard-color-black.svg";
+import SvgLogomarkShellguardColorWhite from "@/assets/brand/logomark-shellguard-color-white.svg";
 import FooterBase from "./FooterBase.astro";
 import FooterNewsletterSignup from "./FooterNewsletterSignup.astro";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
@@ -41,6 +41,10 @@ const links = [
       {
         title: "Hybrid Analysis",
         href: "/shellguard/integrations/hybrid-analysis",
+      },
+      {
+        title: "MalwareBazaar",
+        href: "/shellguard/integrations/malwarebazaar",
       },
       {
         title: t("footer").links.finconnectIntegrations.items.allIntegrations,

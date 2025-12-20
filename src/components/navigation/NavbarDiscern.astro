@@ -1,15 +1,94 @@
 ---
-import SvgLogomarkDiscernWhite from "../../assets/brand/logomark-discern-white.svg";
+import SvgLogomarkDiscernWhite from "@/assets/brand/logomark-discern-white.svg";
 import NavbarBase from "./NavbarBase.astro";
 import NavbarReturn from "./NavbarReturn.astro";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 import NavbarActionsBar from "./NavbarActionsBar.astro";
+import SimpleIconsMetabase from "@/components/icons/simple-icons/SimpleIconsMetabase.astro";
+import SimpleIconsGrafana from "@/components/icons/simple-icons/SimpleIconsGrafana.astro";
+import SimpleIconsClickhouse from "@/components/icons/simple-icons/SimpleIconsClickhouse.astro";
+import SimpleIconsInfluxdb from "@/components/icons/simple-icons/SimpleIconsInfluxdb.astro";
+import SimpleIconsPrometheus from "@/components/icons/simple-icons/SimpleIconsPrometheus.astro";
+import SimpleIconsPostgresql from "@/components/icons/simple-icons/SimpleIconsPostgresql.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
 
 const links = [
-  { href: "/discern/destinations", title: t("nav").links.destinations },
+  {
+    href: "/discern/destinations",
+    title: t("nav").links.destinations,
+    megaMenu: {
+      columns: [
+        {
+          title: t("nav").links.analytics,
+          items: [
+            {
+              title: "Grafana",
+              href: "/discern/destinations/grafana",
+              description:
+                t("nav").megaMenu.discern.integrations.grafanaDescription,
+              icon: SimpleIconsGrafana,
+              iconClass: "text-[#F46800]",
+            },
+            {
+              title: "Metabase",
+              href: "/discern/destinations/metabase",
+              description:
+                t("nav").megaMenu.discern.integrations.metabaseDescription,
+              icon: SimpleIconsMetabase,
+              iconClass: "text-[#509EE3]",
+            },
+          ],
+        },
+        {
+          title: t("nav").links.dataSources,
+          items: [
+            {
+              title: "ClickHouse",
+              href: "/discern/destinations/clickhouse",
+              description:
+                t("nav").megaMenu.discern.destinations.clickhouseDescription,
+              icon: SimpleIconsClickhouse,
+              iconClass: "text-[#FFCC01]",
+            },
+            {
+              title: "InfluxDB",
+              href: "/discern/destinations/influxdb",
+              description:
+                t("nav").megaMenu.discern.destinations.influxdbDescription,
+              icon: SimpleIconsInfluxdb,
+              iconClass: "text-[#22ADF6]",
+            },
+            {
+              title: "PostgreSQL",
+              href: "/discern/destinations/postgresql",
+              description:
+                t("nav").megaMenu.discern.destinations.postgresqlDescription,
+              icon: SimpleIconsPostgresql,
+              iconClass: "text-[#4169E1] dark:text-[#B3C3F3]",
+            },
+            {
+              title: "Prometheus",
+              href: "/discern/destinations/prometheus",
+              description:
+                t("nav").megaMenu.discern.destinations.prometheusDescription,
+              icon: SimpleIconsPrometheus,
+              iconClass: "text-[#E6522C]",
+            },
+          ],
+        },
+      ],
+      featured: {
+        title: t("nav").megaMenu.discern.featuredItem.title,
+        description: t("nav").megaMenu.discern.featuredItem.description,
+        href: "/blog",
+        image:
+          "https://images.unsplash.com/photo-1608222351212-18fe0ec7b13b?q=75&w=900",
+        ctaText: t("nav").megaMenu.discern.featuredItem.ctaLabel,
+      },
+    },
+  },
   { href: "/discern/setup", title: t("nav").links.setup },
   { href: "/discern/about", title: t("nav").links.about },
   { href: "/wiki", title: t("nav").links.support, alternate: true },

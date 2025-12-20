@@ -5,9 +5,9 @@
   "compilerOptions": {
     "types": ["./worker-configuration.d.ts", "node", "bun-types"],
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
-  },
-  "paths": {
-    "@/*": ["./src/*"]
+    "jsxImportSource": "react",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }

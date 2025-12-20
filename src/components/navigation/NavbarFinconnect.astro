@@ -1,15 +1,105 @@
 ---
-import SvgLogomarkFinconnectWhite from "../../assets/brand/logomark-finconnect-white.svg";
+import SvgLogomarkFinconnectWhite from "@/assets/brand/logomark-finconnect-white.svg";
 import NavbarBase from "./NavbarBase.astro";
 import NavbarReturn from "./NavbarReturn.astro";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 import NavbarActionsBar from "./NavbarActionsBar.astro";
+import SimpleIconsStripe from "@/components/icons/simple-icons/SimpleIconsStripe.astro";
+import SimpleIconsWise from "@/components/icons/simple-icons/SimpleIconsWise.astro";
+import SimpleIconsRevolut from "@/components/icons/simple-icons/SimpleIconsRevolut.astro";
+import SimpleIconsPostgresql from "@/components/icons/simple-icons/SimpleIconsPostgresql.astro";
+import SvgFortnox from "@/assets/external/fortnox.svg";
+import SvgFortnoxDark from "@/assets/external/fortnox-dark.svg";
+import SvgSkatteverket from "@/assets/external/skatteverket.svg";
+import SvgSkatteverketDark from "@/assets/external/skatteverket-dark.svg";
+import RiWebhookLine from "@/components/icons/ri/RiWebhookLine.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
 
 const links = [
-  { href: "/finconnect/integrations", title: t("nav").links.integrations },
+  {
+    href: "/finconnect/integrations",
+    title: t("nav").links.integrations,
+    megaMenu: {
+      columns: [
+        {
+          title: t("nav").links.paymentProviders,
+          items: [
+            {
+              title: "Stripe",
+              href: "/finconnect/integrations/stripe",
+              description:
+                t("nav").megaMenu.finconnect.integrations.stripeDescription,
+              icon: SimpleIconsStripe,
+              iconClass: "text-[#635BFF]",
+            },
+            {
+              title: "Wise",
+              href: "/finconnect/integrations/wise",
+              description:
+                t("nav").megaMenu.finconnect.integrations.wiseDescription,
+              icon: SimpleIconsWise,
+              iconClass: "text-[#9FE870]",
+            },
+            {
+              title: "Revolut",
+              href: "/finconnect/integrations/revolut",
+              description:
+                t("nav").megaMenu.finconnect.integrations.revolutDescription,
+              icon: SimpleIconsRevolut,
+              iconClass: "text-[#191C1F] dark:text-[#E6E3E0]",
+            },
+          ],
+        },
+        {
+          title: t("nav").links.accounting,
+          items: [
+            {
+              title: "Fortnox",
+              href: "/finconnect/integrations/fortnox",
+              description:
+                t("nav").megaMenu.finconnect.destinations.fortnoxDescription,
+              icon: SvgFortnoxDark,
+              iconDark: SvgFortnox,
+            },
+            {
+              title: "Skatteverket",
+              href: "/finconnect/integrations/skatteverket",
+              description:
+                t("nav").megaMenu.finconnect.destinations
+                  .skatteverketDescription,
+              icon: SvgSkatteverketDark,
+              iconDark: SvgSkatteverket,
+            },
+            {
+              title: "PostgreSQL",
+              href: "/finconnect/integrations/postgresql",
+              description:
+                t("nav").megaMenu.finconnect.destinations.postgresqlDescription,
+              icon: SimpleIconsPostgresql,
+              iconClass: "text-[#4169E1] dark:text-[#B3C3F3]",
+            },
+            {
+              title: "Webhooks",
+              href: "/finconnect/integrations/webhooks",
+              description:
+                t("nav").megaMenu.finconnect.destinations.webhooksDescription,
+              icon: RiWebhookLine,
+            },
+          ],
+        },
+      ],
+      featured: {
+        title: t("nav").megaMenu.finconnect.featuredItem.title,
+        description: t("nav").megaMenu.finconnect.featuredItem.description,
+        href: "/blog",
+        image:
+          "https://images.unsplash.com/photo-1556740758-90de374c12ad?q=75&w=900",
+        ctaText: t("nav").megaMenu.finconnect.featuredItem.ctaLabel,
+      },
+    },
+  },
   { href: "/finconnect/setup", title: t("nav").links.setup },
   { href: "/finconnect/about", title: t("nav").links.about },
   { href: "/wiki", title: t("nav").links.support, alternate: true },

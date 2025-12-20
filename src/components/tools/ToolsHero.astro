@@ -1,6 +1,6 @@
 ---
-import SectionWrapperHorizontal from "../sections/SectionWrapperHorizontal.astro";
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
+import SectionWrapperHorizontal from "@/components/sections/SectionWrapperHorizontal.astro";
+import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);

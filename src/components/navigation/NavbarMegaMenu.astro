@@ -1,7 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { getLangFromUrl } from "../../i18n/utils";
-import RiArrowRightLine from "../icons/ri/RiArrowRightLine.astro";
+import { getLangFromUrl } from "@/i18n/utils";
+import RiArrowRightLine from "@/components/icons/ri/RiArrowRightLine.astro";
 import { Image } from "astro:assets";
 
 export interface MegaMenuItem {
@@ -9,6 +9,8 @@ export interface MegaMenuItem {
   description?: string;
   href: string;
   icon?: any;
+  iconDark?: any;
+  iconClass?: string;
 }
 
 export interface MegaMenuColumn {
@@ -70,8 +72,22 @@ const lang = getLangFromUrl(Astro.url);
                       })}
                     >
                       {item.icon && (
-                        <div>
-                          <item.icon class="mt-1 h-5 w-5 text-nwg-sky-600 dark:text-nwg-sky-400" />
+                        <div
+                          class:list={[
+                            item.iconClass
+                              ? item.iconClass
+                              : "text-nwg-sky-600 dark:text-nwg-sky-400",
+                          ]}
+                        >
+                          <item.icon
+                            class="mt-1 h-5 w-5"
+                            class:list={[
+                              item.iconDark ? "block dark:hidden" : "",
+                            ]}
+                          />
+                          {item.iconDark && (
+                            <item.iconDark class="mt-1 hidden h-5 w-5 dark:block" />
+                          )}
                         </div>
                       )}
                       <div>
@@ -97,28 +113,31 @@ const lang = getLangFromUrl(Astro.url);
     {
       megaMenu.featured && (
         <div class="lg:col-span-4">
-          <div class="h-full bg-nwg-sky-500 p-6">
-            {megaMenu.featured.image && (
-              <Image
-                class="mb-4 max-h-64 w-full object-cover select-none"
-                alt=""
-                fit="cover"
-                format="avif"
-                height={160}
-                layout="constrained"
-                position="center"
-                src={megaMenu.featured.image}
-                width={400}
-              />
-            )}
-            <h3 class="h3 mb-1 text-lg text-zinc-100">
-              {megaMenu.featured.title}
-            </h3>
-            <p class="p mb-4 text-sm leading-normal font-light text-zinc-100">
-              {megaMenu.featured.description}
-            </p>
+          <div class="flex h-full flex-col justify-between bg-nwg-sky-500 p-6">
+            <div>
+              {megaMenu.featured.image && (
+                <Image
+                  class="mb-4 max-h-42 w-full object-cover select-none"
+                  alt=""
+                  fit="cover"
+                  format="avif"
+                  height={168}
+                  layout="constrained"
+                  position="center"
+                  src={megaMenu.featured.image}
+                  width={400}
+                />
+              )}
+              <h3 class="h3 mb-1 text-lg text-zinc-100">
+                {megaMenu.featured.title}
+              </h3>
+              <p class="p mb-4 text-sm leading-normal font-light text-zinc-100">
+                {megaMenu.featured.description}
+              </p>
+            </div>
+
             <a
-              class="link link-ghost inline-flex items-center gap-1 text-zinc-100 transition-none"
+              class="link link-ghost flex w-fit items-center gap-1 text-zinc-100 transition-none"
               href={getRelativeLocaleUrl(lang, megaMenu.featured.href)}
             >
               {megaMenu.featured.ctaText || "Learn more"}
