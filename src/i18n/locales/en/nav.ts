@@ -55,35 +55,6 @@ export const nav = {
           },
         },
       },
-      content: {
-        label: "Content & Marketing",
-        items: {
-          contentWriting: {
-            label: "Content Writing",
-            description:
-              "Clear, conversion-focused copy for pages, emails, and product launches.",
-          },
-          emailMarketing: {
-            label: "Email Marketing",
-            description: "Plan, write, and send campaigns that convert.",
-          },
-        },
-      },
-      web: {
-        label: "Web Services",
-        items: {
-          seoStrategy: {
-            label: "SEO Strategy",
-            description:
-              "Technical and on-page SEO with research-backed content plans.",
-          },
-          webDevelopment: {
-            label: "Web Development",
-            description:
-              "High-performance marketing sites and landing pages built to convert.",
-          },
-        },
-      },
       featuredItem: {
         title: "See what we've created",
         description:
@@ -107,8 +78,6 @@ export const nav = {
           "Store and query Discord analytics data in a relational database.",
       },
       automation: {
-        webhooksDescription:
-          "Send events to your tools for custom workflows and alerts.",
         zapierDescription:
           "Automate Discord insights into CRMs, sheets, and more—no code.",
         n8nDescription:
@@ -135,7 +104,6 @@ export const nav = {
           "Automate Swedish accounting with direct transaction sync.",
         skatteverketDescription:
           "Generate tax reports automatically from connected providers.",
-        webhooksDescription: "Push financial data to any system in real-time.",
       },
       featuredItem: {
         title: "From hours to minutes: Customer stories",
@@ -160,8 +128,8 @@ export const nav = {
           "Assign roles and perks automatically through self-service verification.",
         grafanaDescription:
           "Track donor engagement and reward distribution analytics.",
-        webhooksDescription:
-          "Trigger perk updates and CRM actions automatically.",
+        zapierDescription:
+          "Automate supporter data syncs to CRMs, sheets, and more—no code.",
       },
       featuredItem: {
         title: "Creators who rewarded smarter",
@@ -180,8 +148,6 @@ export const nav = {
           "Analyze suspicious files with advanced behavioral detection.",
         triageDescription:
           "Deep-dive malware analysis for comprehensive threat intelligence.",
-        malwareBazaarDescription:
-          "Cross-reference files against known malware signatures.",
       },
       destinations: {
         discordDescription:
@@ -190,8 +156,6 @@ export const nav = {
           "Monitor security metrics and scan results in real-time.",
         prometheusDescription:
           "Track security metrics and threat detection rates over time.",
-        webhooksDescription:
-          "Integrate scan results into your existing security workflows.",
       },
       featuredItem: {
         title: "Communities protected from threats",

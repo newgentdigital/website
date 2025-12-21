@@ -9,8 +9,8 @@ import SimpleIconsLiberapay from "@/components/icons/simple-icons/SimpleIconsLib
 import SimpleIconsGithub from "@/components/icons/simple-icons/SimpleIconsGithub.astro";
 import SimpleIconsDiscord from "@/components/icons/simple-icons/SimpleIconsDiscord.astro";
 import SimpleIconsGrafana from "@/components/icons/simple-icons/SimpleIconsGrafana.astro";
-import RiWebhookLine from "@/components/icons/ri/RiWebhookLine.astro";
 import RiBracesFill from "@/components/icons/ri/RiBracesFill.astro";
+import SimpleIconsZapier from "@/components/icons/simple-icons/SimpleIconsZapier.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
@@ -80,11 +80,12 @@ const links = [
               iconClass: "text-[#F46800]",
             },
             {
-              title: "Webhooks",
-              href: "/patronius/integrations/webhooks",
+              title: "Zapier",
+              href: "/patronius/integrations/zapier",
               description:
-                t("nav").megaMenu.patronius.destinations.webhooksDescription,
-              icon: RiWebhookLine,
+                t("nav").megaMenu.patronius.destinations.zapierDescription,
+              icon: SimpleIconsZapier,
+              iconClass: "text-[#FF4F00]",
             },
           ],
         },

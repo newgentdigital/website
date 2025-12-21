@@ -54,35 +54,6 @@ export const nav = {
           },
         },
       },
-      content: {
-        label: "Innehåll & marknadsföring",
-        items: {
-          contentWriting: {
-            label: "Copywriting",
-            description:
-              "Tydlig, konverteringsfokuserad text för sidor, e-post och lanseringar.",
-          },
-          emailMarketing: {
-            label: "E-postmarknadsföring",
-            description: "Planera, skriv och skicka kampanjer som konverterar.",
-          },
-        },
-      },
-      web: {
-        label: "Webbtjänster",
-        items: {
-          seoStrategy: {
-            label: "SEO-strategi",
-            description:
-              "Teknisk och on-page SEO med research-baserade innehållsplaner.",
-          },
-          webDevelopment: {
-            label: "Webbutveckling",
-            description:
-              "Högpresterande marknadssajter och landningssidor som konverterar.",
-          },
-        },
-      },
       featuredItem: {
         title: "Se vad vi har skapat",
         description:
@@ -105,8 +76,6 @@ export const nav = {
           "Lagra Discord-analytikdata i en relationsdatabas.",
       },
       automation: {
-        webhooksDescription:
-          "Skicka händelser till dina verktyg för egna flöden och varningar.",
         zapierDescription:
           "Automatisera Discord-insikter till CRM:er, kalkylblad och mer utan kod.",
         n8nDescription:
@@ -133,8 +102,6 @@ export const nav = {
           "Automatisera svensk bokföring med direkt transaktionssynk.",
         skatteverketDescription:
           "Generera skatterapporter automatiskt från anslutna leverantörer.",
-        webhooksDescription:
-          "Skicka finansiell data till vilket system som helst i realtid.",
       },
       featuredItem: {
         title: "Från timmar till minuter: Kundberättelser",
@@ -159,8 +126,8 @@ export const nav = {
           "Tilldela förmåner automatiskt via självbetjäningsverifiering.",
         grafanaDescription:
           "Följ donatorsengagemang och belöningsdistributionsanalys.",
-        webhooksDescription:
-          "Trigga förmånsuppdateringar och CRM-åtgärder automatiskt.",
+        zapierDescription:
+          "Automatisera synkronisering av supporterdata—utan kod.",
       },
       featuredItem: {
         title: "Skapare som belönade smartare",
@@ -179,8 +146,6 @@ export const nav = {
           "Analysera misstänkta filer med avancerad beteendedetektering.",
         triageDescription:
           "Djupgående malware-analys för omfattande hotinformation.",
-        malwareBazaarDescription:
-          "Korsreferera filer mot kända malware-signaturer.",
       },
       destinations: {
         discordDescription: "Varna moderatorer direkt när hot upptäcks.",
@@ -188,8 +153,6 @@ export const nav = {
           "Övervaka säkerhetsmetrics och skanningsresultat i realtid.",
         prometheusDescription:
           "Spåra säkerhetsmetrics och hotdetektionshastigheter över tid.",
-        webhooksDescription:
-          "Integrera skanningsresultat i dina befintliga säkerhetsarbetsflöden.",
       },
       featuredItem: {
         title: "Communities skyddade från hot",
