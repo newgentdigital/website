@@ -9,15 +9,15 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
 
 const links = [
-  { href: "/investors/financials", title: t("nav").links.financials },
-  { href: "/investors/governance", title: t("nav").links.governance },
-  { href: "/investors/events", title: t("nav").links.events },
+  { href: "/investors/financials", title: t("common").strings.s_0aeb7c83 },
+  { href: "/investors/governance", title: t("common").strings.s_823619e0 },
+  { href: "/investors/events", title: t("common").strings.s_c5497bca },
   {
     href: "/investors/contact",
     title: t("nav").links.contact,
     alternate: true,
   },
-  { href: "/investors/news", title: t("nav").links.news, cta: true },
+  { href: "/investors/news", title: t("common").strings.s_34c808d0, cta: true },
 ];
 
 const actionBarLinks = [

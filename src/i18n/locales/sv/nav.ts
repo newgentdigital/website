@@ -3,23 +3,17 @@ export const nav = {
   returnToNewgent: "Tillbaka till Newgent",
   mobileMenu: "Meny",
   links: {
-    services: "Tjänster",
     aboutUs: "Om oss",
     work: "Arbete",
     contact: "Kontakt",
-    hire: "Anlita Newgent",
-    financials: "Finanser",
-    governance: "Styrning",
-    events: "Events",
-    news: "Nyheter",
-    integrations: "Integrationer",
+    connections: "Anslutningar",
+    dataAndDashboards: "Data & dashboards",
+    securityStack: "Säkerhetsstack",
     setup: "Setup",
     about: "Om",
-    support: "Support",
     getStarted: "Kom igång",
-    destinations: "Destinationer",
-    dataSources: "Datakällor",
-    analytics: "Analysverktyg",
+    dashboards: "Dashboards",
+    dataPipelines: "Datapipelines",
     paymentProviders: "Betalningsleverantörer",
     accounting: "Bokföring & skatt",
     crowdfunding: "Crowdfunding-plattformar",
@@ -38,7 +32,6 @@ export const nav = {
               "Samhållande varumärkesidentiteter som resonerar med din publik.",
           },
           graphicDesign: {
-            label: "Grafisk design",
             description:
               "Marknadsföringsmaterial, illustrationer och kreativa tillgångar.",
           },
@@ -52,21 +45,48 @@ export const nav = {
         label: "Medieproduktion",
         items: {
           videoProduction: {
-            label: "Videoproduktion",
             description:
               "Videoinnehåll för marknadsföring, utbildning och berättande.",
           },
           photography: {
-            label: "Fotografi",
             description:
               "Fotografitjänster för evenemang, produkter och varumärken.",
+          },
+        },
+      },
+      content: {
+        label: "Innehåll & marknadsföring",
+        items: {
+          contentWriting: {
+            label: "Copywriting",
+            description:
+              "Tydlig, konverteringsfokuserad text för sidor, e-post och lanseringar.",
+          },
+          emailMarketing: {
+            label: "E-postmarknadsföring",
+            description: "Planera, skriv och skicka kampanjer som konverterar.",
+          },
+        },
+      },
+      web: {
+        label: "Webbtjänster",
+        items: {
+          seoStrategy: {
+            label: "SEO-strategi",
+            description:
+              "Teknisk och on-page SEO med research-baserade innehållsplaner.",
+          },
+          webDevelopment: {
+            label: "Webbutveckling",
+            description:
+              "Högpresterande marknadssajter och landningssidor som konverterar.",
           },
         },
       },
       featuredItem: {
         title: "Se vad vi har skapat",
         description:
-          "Utforska case studies och riktiga projekt från nordiska varumärken som litar på Newgent med sin kreativa vision.",
+          "Utforska case studies och riktiga projekt från nordiska varumärken som litar på Newgent med sin kreativa vision och kommunikation.",
         ctaLabel: "Visa case studies",
       },
     },
@@ -81,10 +101,16 @@ export const nav = {
         clickhouseDescription:
           "Lagra community-data effektivt för blixtsnabb analys.",
         influxdbDescription: "Följ tidsseriedata med högpresterande lagring.",
-        prometheusDescription:
-          "Exportera Discord-metrics för omfattande övervakningspipelines.",
         postgresqlDescription:
           "Lagra Discord-analytikdata i en relationsdatabas.",
+      },
+      automation: {
+        webhooksDescription:
+          "Skicka händelser till dina verktyg för egna flöden och varningar.",
+        zapierDescription:
+          "Automatisera Discord-insikter till CRM:er, kalkylblad och mer utan kod.",
+        n8nDescription:
+          "Orkestrera avancerade flöden och datasynkar med full kontroll.",
       },
       featuredItem: {
         title: "Hur communities växer med data",
@@ -105,8 +131,6 @@ export const nav = {
       destinations: {
         fortnoxDescription:
           "Automatisera svensk bokföring med direkt transaktionssynk.",
-        postgresqlDescription:
-          "Lagra transaktionsdata för anpassad rapportering och analys.",
         skatteverketDescription:
           "Generera skatterapporter automatiskt från anslutna leverantörer.",
         webhooksDescription:
@@ -135,10 +159,8 @@ export const nav = {
           "Tilldela förmåner automatiskt via självbetjäningsverifiering.",
         grafanaDescription:
           "Följ donatorsengagemang och belöningsdistributionsanalys.",
-        postgresqlDescription:
-          "Lagra donationshistorik för anpassade integrationer.",
         webhooksDescription:
-          "Trigga anpassade åtgärder när supportrar ansluter eller uppgraderar.",
+          "Trigga förmånsuppdateringar och CRM-åtgärder automatiskt.",
       },
       featuredItem: {
         title: "Skapare som belönade smartare",
@@ -164,10 +186,10 @@ export const nav = {
         discordDescription: "Varna moderatorer direkt när hot upptäcks.",
         grafanaDescription:
           "Övervaka säkerhetsmetrics och skanningsresultat i realtid.",
-        postgresqlDescription:
-          "Logga och analysera skanhändelser för efterlevnad och granskning.",
         prometheusDescription:
           "Spåra säkerhetsmetrics och hotdetektionshastigheter över tid.",
+        webhooksDescription:
+          "Integrera skanningsresultat i dina befintliga säkerhetsarbetsflöden.",
       },
       featuredItem: {
         title: "Communities skyddade från hot",
@@ -254,8 +276,6 @@ export const nav = {
           },
         },
         investors: {
-          label: "Investerare",
-          description: "Investerarrelationer och finansiell information",
           subItems: {
             businessIntelligence: {
               label: "Business Intelligence-portal",

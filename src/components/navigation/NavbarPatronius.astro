@@ -10,7 +10,6 @@ import SimpleIconsGithub from "@/components/icons/simple-icons/SimpleIconsGithub
 import SimpleIconsDiscord from "@/components/icons/simple-icons/SimpleIconsDiscord.astro";
 import SimpleIconsGrafana from "@/components/icons/simple-icons/SimpleIconsGrafana.astro";
 import RiWebhookLine from "@/components/icons/ri/RiWebhookLine.astro";
-import SimpleIconsPostgresql from "@/components/icons/simple-icons/SimpleIconsPostgresql.astro";
 import RiBracesFill from "@/components/icons/ri/RiBracesFill.astro";
 
 const lang = getLangFromUrl(Astro.url);
@@ -19,7 +18,7 @@ const t = useTranslation(lang);
 const links = [
   {
     href: "/patronius/integrations",
-    title: t("nav").links.integrations,
+    title: t("nav").links.connections,
     megaMenu: {
       columns: [
         {
@@ -73,14 +72,6 @@ const links = [
               iconClass: "text-[#5865F2]",
             },
             {
-              title: "PostgreSQL",
-              href: "/patronius/integrations/postgresql",
-              description:
-                t("nav").megaMenu.patronius.destinations.postgresqlDescription,
-              icon: SimpleIconsPostgresql,
-              iconClass: "text-[#4169E1] dark:text-[#B3C3F3]",
-            },
-            {
               title: "Grafana",
               href: "/patronius/integrations/grafana",
               description:
@@ -110,7 +101,7 @@ const links = [
   },
   { href: "/patronius/setup", title: t("nav").links.setup },
   { href: "/patronius/about", title: t("nav").links.about },
-  { href: "/wiki", title: t("nav").links.support, alternate: true },
+  { href: "/wiki", title: t("common").strings.s_f32d5a3b, alternate: true },
   { href: "/patronius/pricing", title: t("nav").links.getStarted, cta: true },
 ];
 

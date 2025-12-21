@@ -39,14 +39,7 @@ export const footer = {
         careers: "Karriär",
         awards: "Utmärkelser",
         partners: "Partners",
-        investors: "Investerare",
         handbook: "Företagshandbok",
-      },
-    },
-    discernDestinations: {
-      label: "Destinationer",
-      items: {
-        allDestinations: "Alla destinationer",
       },
     },
     finconnectIntegrations: {
@@ -56,23 +49,13 @@ export const footer = {
       },
     },
     investorResources: {
-      label: "Investerare",
       items: {
-        financials: "Finanser",
-        governance: "Styrning",
-        events: "Events",
-        news: "Nyheter",
         bylaws: "Bolagsordning",
         files: "Filer & dokument",
-        contact: "Kontakt",
       },
     },
     services: {
-      label: "Tjänster",
       items: {
-        photography: "Fotografering",
-        videoproduction: "Videoproduktion",
-        graphics: "Grafisk design",
         web: "Webbdesign",
         marketing: "Marknadsföring",
         recurring: "Löpande tjänster",
@@ -95,15 +78,12 @@ export const footer = {
         shellguard: "Shellguard av Newgent",
         setupShellguard: "Setup Shellguard",
         aboutShellguard: "Om Shellguard",
-        patronius: "Patronius av Newgent",
         setupPatronius: "Setup Patronius",
         aboutPatronius: "Om Patronius",
       },
     },
     support: {
-      label: "Support",
       items: {
-        hire: "Anlita Newgent",
         contact: "Kontakta oss",
         faq: "Vanliga frågor",
         wiki: "Wiki",

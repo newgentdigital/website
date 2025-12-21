@@ -29,6 +29,7 @@
     "deploy": "bun run cf-typegen && astro build && wrangler deploy",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "i18n:unused": "node scripts/find-unused-i18n.js",
     "lint": "eslint --ext .js,.ts,.astro .",
     "lint:fix": "eslint --fix --ext .js,.ts,.astro .",
     "preview": "bun run cf-typegen && astro build && wrangler dev"

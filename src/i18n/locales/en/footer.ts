@@ -39,14 +39,7 @@ export const footer = {
         careers: "Careers",
         awards: "Awards",
         partners: "Partners",
-        investors: "Investors",
         handbook: "Company Handbook",
-      },
-    },
-    discernDestinations: {
-      label: "Destinations",
-      items: {
-        allDestinations: "All destinations",
       },
     },
     finconnectIntegrations: {
@@ -56,23 +49,13 @@ export const footer = {
       },
     },
     investorResources: {
-      label: "Investors",
       items: {
-        financials: "Financials",
-        governance: "Governance",
-        events: "Events",
-        news: "News",
         bylaws: "Bylaws",
         files: "Files & documents",
-        contact: "Contact",
       },
     },
     services: {
-      label: "Services",
       items: {
-        photography: "Photography",
-        videoproduction: "Video Production",
-        graphics: "Graphic Design",
         web: "Web Design",
         marketing: "Marketing",
         recurring: "Recurring Services",
@@ -95,15 +78,12 @@ export const footer = {
         shellguard: "Shellguard by Newgent",
         setupShellguard: "Setup Shellguard",
         aboutShellguard: "About Shellguard",
-        patronius: "Patronius by Newgent",
         setupPatronius: "Setup Patronius",
         aboutPatronius: "About Patronius",
       },
     },
     support: {
-      label: "Support",
       items: {
-        hire: "Hire Newgent",
         contact: "Contact us",
         faq: "FAQ",
         wiki: "Wiki",

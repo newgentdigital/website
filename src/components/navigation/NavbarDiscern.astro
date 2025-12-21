@@ -8,8 +8,10 @@ import SimpleIconsMetabase from "@/components/icons/simple-icons/SimpleIconsMeta
 import SimpleIconsGrafana from "@/components/icons/simple-icons/SimpleIconsGrafana.astro";
 import SimpleIconsClickhouse from "@/components/icons/simple-icons/SimpleIconsClickhouse.astro";
 import SimpleIconsInfluxdb from "@/components/icons/simple-icons/SimpleIconsInfluxdb.astro";
-import SimpleIconsPrometheus from "@/components/icons/simple-icons/SimpleIconsPrometheus.astro";
 import SimpleIconsPostgresql from "@/components/icons/simple-icons/SimpleIconsPostgresql.astro";
+import RiWebhookLine from "@/components/icons/ri/RiWebhookLine.astro";
+import SimpleIconsZapier from "@/components/icons/simple-icons/SimpleIconsZapier.astro";
+import SimpleIconsN8N from "@/components/icons/simple-icons/SimpleIconsN8n.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
@@ -17,11 +19,11 @@ const t = useTranslation(lang);
 const links = [
   {
     href: "/discern/destinations",
-    title: t("nav").links.destinations,
+    title: t("nav").links.dataAndDashboards,
     megaMenu: {
       columns: [
         {
-          title: t("nav").links.analytics,
+          title: t("nav").links.dashboards,
           items: [
             {
               title: "Grafana",
@@ -39,10 +41,25 @@ const links = [
               icon: SimpleIconsMetabase,
               iconClass: "text-[#509EE3]",
             },
+            {
+              title: "Zapier",
+              href: "/discern/destinations/zapier",
+              description:
+                t("nav").megaMenu.discern.automation.zapierDescription,
+              icon: SimpleIconsZapier,
+              iconClass: "text-[#FF4F00]",
+            },
+            {
+              title: "n8n",
+              href: "/discern/destinations/n8n",
+              description: t("nav").megaMenu.discern.automation.n8nDescription,
+              icon: SimpleIconsN8N,
+              iconClass: "text-[#EA4B71]",
+            },
           ],
         },
         {
-          title: t("nav").links.dataSources,
+          title: t("nav").links.dataPipelines,
           items: [
             {
               title: "ClickHouse",
@@ -53,14 +70,6 @@ const links = [
               iconClass: "text-[#FFCC01]",
             },
             {
-              title: "InfluxDB",
-              href: "/discern/destinations/influxdb",
-              description:
-                t("nav").megaMenu.discern.destinations.influxdbDescription,
-              icon: SimpleIconsInfluxdb,
-              iconClass: "text-[#22ADF6]",
-            },
-            {
               title: "PostgreSQL",
               href: "/discern/destinations/postgresql",
               description:
@@ -69,12 +78,19 @@ const links = [
               iconClass: "text-[#4169E1] dark:text-[#B3C3F3]",
             },
             {
-              title: "Prometheus",
-              href: "/discern/destinations/prometheus",
+              title: "InfluxDB",
+              href: "/discern/destinations/influxdb",
               description:
-                t("nav").megaMenu.discern.destinations.prometheusDescription,
-              icon: SimpleIconsPrometheus,
-              iconClass: "text-[#E6522C]",
+                t("nav").megaMenu.discern.destinations.influxdbDescription,
+              icon: SimpleIconsInfluxdb,
+              iconClass: "text-[#22ADF6]",
+            },
+            {
+              title: "Webhooks",
+              href: "/discern/destinations/webhooks",
+              description:
+                t("nav").megaMenu.discern.automation.webhooksDescription,
+              icon: RiWebhookLine,
             },
           ],
         },
@@ -91,7 +107,7 @@ const links = [
   },
   { href: "/discern/setup", title: t("nav").links.setup },
   { href: "/discern/about", title: t("nav").links.about },
-  { href: "/wiki", title: t("nav").links.support, alternate: true },
+  { href: "/wiki", title: t("common").strings.s_f32d5a3b, alternate: true },
   { href: "/discern/pricing", title: t("nav").links.getStarted, cta: true },
 ];
 

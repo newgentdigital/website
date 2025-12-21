@@ -8,6 +8,10 @@ import RiCameraAiLine from "@/components/icons/ri/RiCameraAiLine.astro";
 import RiVideoOnAiLine from "@/components/icons/ri/RiVideoOnAiLine.astro";
 import RiFunctionAiLine from "@/components/icons/ri/RiFunctionAiLine.astro";
 import RiFontSizeAi from "@/components/icons/ri/RiFontSizeAi.astro";
+import RiQuillPenAiLine from "@/components/icons/ri/RiQuillPenAiLine.astro";
+import RiSearchAiLine from "@/components/icons/ri/RiSearchAiLine.astro";
+import RiCodeAiLine from "@/components/icons/ri/RiCodeAiLine.astro";
+import RiMailAiLine from "@/components/icons/ri/RiMailAiLine.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
@@ -15,7 +19,7 @@ const t = useTranslation(lang);
 const links = [
   {
     href: "/services",
-    title: t("nav").links.services,
+    title: t("common").strings.s_5cbd5840,
     megaMenu: {
       columns: [
         {
@@ -41,9 +45,7 @@ const links = [
               icon: RiFunctionAiLine,
             },
             {
-              title:
-                t("nav").megaMenu.newgent.designServices.items.graphicDesign
-                  .label,
+              title: t("common").strings.s_99f5cb27,
               href: "/services/graphic-design",
               description:
                 t("nav").megaMenu.newgent.designServices.items.graphicDesign
@@ -56,9 +58,7 @@ const links = [
           title: t("nav").megaMenu.newgent.mediaProduction.label,
           items: [
             {
-              title:
-                t("nav").megaMenu.newgent.mediaProduction.items.photography
-                  .label,
+              title: t("common").strings.s_b987e3f1,
               href: "/services/photography",
               description:
                 t("nav").megaMenu.newgent.mediaProduction.items.photography
@@ -66,14 +66,54 @@ const links = [
               icon: RiCameraAiLine,
             },
             {
-              title:
-                t("nav").megaMenu.newgent.mediaProduction.items.videoProduction
-                  .label,
+              title: t("common").strings.s_fb7bdd6c,
               href: "/services/video-production",
               description:
                 t("nav").megaMenu.newgent.mediaProduction.items.videoProduction
                   .description,
               icon: RiVideoOnAiLine,
+            },
+          ],
+        },
+        {
+          title: t("nav").megaMenu.newgent.content.label,
+          items: [
+            {
+              title:
+                t("nav").megaMenu.newgent.content.items.contentWriting.label,
+              href: "/services/content-writing",
+              description:
+                t("nav").megaMenu.newgent.content.items.contentWriting
+                  .description,
+              icon: RiQuillPenAiLine,
+            },
+            {
+              title:
+                t("nav").megaMenu.newgent.content.items.emailMarketing.label,
+              href: "/services/email-marketing",
+              description:
+                t("nav").megaMenu.newgent.content.items.emailMarketing
+                  .description,
+              icon: RiMailAiLine,
+            },
+          ],
+        },
+        {
+          title: t("nav").megaMenu.newgent.web.label,
+          items: [
+            {
+              title: t("nav").megaMenu.newgent.web.items.seoStrategy.label,
+              href: "/services/seo-strategy",
+              description:
+                t("nav").megaMenu.newgent.web.items.seoStrategy.description,
+              icon: RiSearchAiLine,
+            },
+            {
+              title: t("nav").megaMenu.newgent.web.items.webDevelopment.label,
+              href: "/services/web-development",
+              description:
+                t("nav").megaMenu.newgent.web.items.webDevelopment.description,
+              icon: RiCodeAiLine,
             },
           ],
         },
@@ -91,7 +131,7 @@ const links = [
   { href: "/company", title: t("nav").links.aboutUs },
   { href: "/work", title: t("nav").links.work },
   { href: "/contact", title: t("nav").links.contact, alternate: true },
-  { href: "/hire", title: t("nav").links.hire, cta: true },
+  { href: "/hire", title: t("common").strings.s_0709812d, cta: true },
 ];
 ---
 

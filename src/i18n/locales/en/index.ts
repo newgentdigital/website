@@ -1,3 +1,4 @@
+import { common } from "./common";
 import { footer } from "./footer";
 import { home } from "./home";
 import { nav } from "./nav";
@@ -10,4 +11,5 @@ export const en = {
   page404,
   home,
   tools,
+  common,
 };

@@ -12,7 +12,6 @@ import SvgHybridAnalysis from "@/assets/external/hybridanalysis.svg";
 import SvgClamAv from "@/assets/external/clamav.svg";
 import SvgTriage from "@/assets/external/triage.svg";
 import SimpleIconsAbusedotch from "../icons/simple-icons/SimpleIconsAbusedotch.astro";
-import SimpleIconsPostgresql from "@/components/icons/simple-icons/SimpleIconsPostgresql.astro";
 import SimpleIconsPrometheus from "@/components/icons/simple-icons/SimpleIconsPrometheus.astro";
 
 const lang = getLangFromUrl(Astro.url);
@@ -21,7 +20,7 @@ const t = useTranslation(lang);
 const links = [
   {
     href: "/shellguard/integrations",
-    title: t("nav").links.integrations,
+    title: t("nav").links.securityStack,
     megaMenu: {
       columns: [
         {
@@ -96,12 +95,11 @@ const links = [
               iconClass: "text-[#F46800]",
             },
             {
-              title: "PostgreSQL",
-              href: "/shellguard/integrations/postgresql",
+              title: "Webhooks",
+              href: "/shellguard/integrations/webhooks",
               description:
-                t("nav").megaMenu.shellguard.destinations.postgresqlDescription,
-              icon: SimpleIconsPostgresql,
-              iconClass: "text-[#4169E1] dark:text-[#B3C3F3]",
+                t("nav").megaMenu.shellguard.destinations.webhooksDescription,
+              icon: RiWebhookLine,
             },
           ],
         },
@@ -118,7 +116,7 @@ const links = [
   },
   { href: "/shellguard/setup", title: t("nav").links.setup },
   { href: "/shellguard/about", title: t("nav").links.about },
-  { href: "/wiki", title: t("nav").links.support, alternate: true },
+  { href: "/wiki", title: t("common").strings.s_f32d5a3b, alternate: true },
   { href: "/shellguard/pricing", title: t("nav").links.getStarted, cta: true },
 ];
 

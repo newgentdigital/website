@@ -3,23 +3,17 @@ export const nav = {
   returnToNewgent: "Return to Newgent",
   mobileMenu: "Menu",
   links: {
-    services: "Services",
     aboutUs: "About us",
     work: "Work",
     contact: "Contact",
-    hire: "Hire Newgent",
-    financials: "Financials",
-    governance: "Governance",
-    events: "Events",
-    news: "News",
-    integrations: "Integrations",
+    connections: "Connections",
+    dataAndDashboards: "Data & dashboards",
+    securityStack: "Security stack",
     setup: "Setup",
     about: "About",
-    support: "Support",
     getStarted: "Get started",
-    destinations: "Destinations",
-    dataSources: "Data sources",
-    analytics: "Analytics tools",
+    dashboards: "Dashboards",
+    dataPipelines: "Data pipelines",
     paymentProviders: "Payment providers",
     accounting: "Accounting & tax",
     crowdfunding: "Crowdfunding platforms",
@@ -38,7 +32,6 @@ export const nav = {
               "Cohesive brand identities that resonate with your audience.",
           },
           graphicDesign: {
-            label: "Graphic Design",
             description:
               "Marketing materials, illustrations, and creative assets.",
           },
@@ -53,21 +46,48 @@ export const nav = {
         label: "Media Production",
         items: {
           videoProduction: {
-            label: "Video Production",
             description:
               "Engaging video content for marketing, training, and storytelling.",
           },
           photography: {
-            label: "Photography",
             description:
               "Professional photography services for events, products, and branding.",
+          },
+        },
+      },
+      content: {
+        label: "Content & Marketing",
+        items: {
+          contentWriting: {
+            label: "Content Writing",
+            description:
+              "Clear, conversion-focused copy for pages, emails, and product launches.",
+          },
+          emailMarketing: {
+            label: "Email Marketing",
+            description: "Plan, write, and send campaigns that convert.",
+          },
+        },
+      },
+      web: {
+        label: "Web Services",
+        items: {
+          seoStrategy: {
+            label: "SEO Strategy",
+            description:
+              "Technical and on-page SEO with research-backed content plans.",
+          },
+          webDevelopment: {
+            label: "Web Development",
+            description:
+              "High-performance marketing sites and landing pages built to convert.",
           },
         },
       },
       featuredItem: {
         title: "See what we've created",
         description:
-          "Explore case studies and real projects from Nordic brands who trust Newgent with their creative vision.",
+          "Explore case studies and real projects from Nordic brands who trust Newgent with their creative vision and communications.",
         ctaLabel: "View case studies",
       },
     },
@@ -83,10 +103,16 @@ export const nav = {
           "Store community data efficiently for lightning-fast analytics.",
         influxdbDescription:
           "Track time-series metrics with high-performance storage.",
-        prometheusDescription:
-          "Export Discord metrics for comprehensive monitoring pipelines.",
         postgresqlDescription:
           "Store and query Discord analytics data in a relational database.",
+      },
+      automation: {
+        webhooksDescription:
+          "Send events to your tools for custom workflows and alerts.",
+        zapierDescription:
+          "Automate Discord insights into CRMs, sheets, and more—no code.",
+        n8nDescription:
+          "Orchestrate advanced workflows and data syncs with full control.",
       },
       featuredItem: {
         title: "How communities grow with data",
@@ -107,8 +133,6 @@ export const nav = {
       destinations: {
         fortnoxDescription:
           "Automate Swedish accounting with direct transaction sync.",
-        postgresqlDescription:
-          "Store and query transaction data for custom reporting and analysis.",
         skatteverketDescription:
           "Generate tax reports automatically from connected providers.",
         webhooksDescription: "Push financial data to any system in real-time.",
@@ -136,10 +160,8 @@ export const nav = {
           "Assign roles and perks automatically through self-service verification.",
         grafanaDescription:
           "Track donor engagement and reward distribution analytics.",
-        postgresqlDescription:
-          "Store supporter data and donation history for custom integrations.",
         webhooksDescription:
-          "Trigger custom actions when supporters join or upgrade.",
+          "Trigger perk updates and CRM actions automatically.",
       },
       featuredItem: {
         title: "Creators who rewarded smarter",
@@ -166,10 +188,10 @@ export const nav = {
           "Alert moderators instantly when threats are detected.",
         grafanaDescription:
           "Monitor security metrics and scan results in real-time.",
-        postgresqlDescription:
-          "Log and analyze scan events for compliance and auditing.",
         prometheusDescription:
           "Track security metrics and threat detection rates over time.",
+        webhooksDescription:
+          "Integrate scan results into your existing security workflows.",
       },
       featuredItem: {
         title: "Communities protected from threats",
@@ -255,8 +277,6 @@ export const nav = {
           },
         },
         investors: {
-          label: "Investors",
-          description: "Investor relations and financial information",
           subItems: {
             businessIntelligence: {
               label: "Business Intelligence Portal",
