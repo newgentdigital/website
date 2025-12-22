@@ -42,7 +42,7 @@ const tools = [
       .sort((a, b) => a.name.localeCompare(b.name))
       .map((tool) => (
         <article class="space-y-6 border border-zinc-300 pt-6 dark:border-zinc-700">
-          <div class="flex items-center gap-4 px-6">
+          <header class="flex items-center gap-4 px-6">
             <Image
               class="select-none"
               alt={`${tool.name} logo`}
@@ -56,7 +56,7 @@ const tools = [
               width={32}
             />
             <h2 class="h6">{tool.name}</h2>
-          </div>
+          </header>
 
           <p class="p line-clamp-3 px-6 text-zinc-600 lg:line-clamp-4 dark:text-zinc-400">
             {tool.description}

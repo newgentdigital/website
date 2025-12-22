@@ -95,7 +95,7 @@ const lang = getLangFromUrl(Astro.url);
                           {item.title}
                         </div>
                         {item.description && (
-                          <p class="p mt-1 text-sm leading-normal text-zinc-500">
+                          <p class="p mt-1 text-sm leading-normal font-normal text-zinc-500">
                             {item.description}
                           </p>
                         )}
@@ -112,7 +112,7 @@ const lang = getLangFromUrl(Astro.url);
 
     {
       megaMenu.featured && (
-        <div class="lg:col-span-4">
+        <aside class="lg:col-span-4">
           <div class="flex h-full flex-col justify-between bg-nwg-sky-500 p-6">
             <div>
               {megaMenu.featured.image && (
@@ -128,10 +128,10 @@ const lang = getLangFromUrl(Astro.url);
                   width={400}
                 />
               )}
-              <h3 class="h3 mb-1 text-lg text-zinc-100">
+              <h3 class="h3 mb-1 font-serif text-lg font-normal tracking-normal text-zinc-100">
                 {megaMenu.featured.title}
               </h3>
-              <p class="p mb-4 text-sm leading-normal font-light text-zinc-100">
+              <p class="p mb-4 text-sm leading-normal font-normal text-zinc-100">
                 {megaMenu.featured.description}
               </p>
             </div>
@@ -144,7 +144,7 @@ const lang = getLangFromUrl(Astro.url);
               <RiArrowRightLine class="h-4 w-4" />
             </a>
           </div>
-        </div>
+        </aside>
       )
     }
   </div>
