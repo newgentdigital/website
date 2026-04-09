@@ -1,0 +1,27 @@
+---
+export const prerender = true;
+
+import AttributionsList from "@/components/legal/AttributionsList.astro";
+import SectionWrapperVertical from "@/components/sections/SectionWrapperVertical.astro";
+import LayoutPatronius from "@/layouts/LayoutPatronius.astro";
+---
+
+<LayoutPatronius>
+  <slot name="content">
+    <SectionWrapperVertical>
+      <h1 class="h3" slot="header">Öppen källkod driver Patronius framåt</h1>
+      <p class="p" slot="content">
+        Alla utvecklare och deras öppna källkodsprojekt är avgörande för vad vi
+        gör. På denna sida hyllar vi dessa communities och deras bidrag.
+        Patronius är möjligt bara för att vi kan bygga på ett rikt ekosystem av
+        öppen källkod.
+      </p>
+    </SectionWrapperVertical>
+
+    <AttributionsList
+      packageJsonUrl={[
+        "https://raw.githubusercontent.com/newgentdigital/patronius/refs/heads/main/package.json",
+      ]}
+    />
+  </slot>
+</LayoutPatronius>

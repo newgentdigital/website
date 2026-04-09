@@ -67,7 +67,7 @@ export const footer = {
         blog: "Blogg",
         presskit: "Presskit",
         finconnect: "Finconnect av Newgent",
-        quotegenerator: "Offertgenerator",
+        consultation: "Gratis konsultation",
         pricecalculator: "Priskalkylator",
         installFinconnect: "Installera Finconnect",
         aboutFinconnect: "Om Finconnect",

@@ -1,0 +1,27 @@
+---
+export const prerender = true;
+
+import AttributionsList from "@/components/legal/AttributionsList.astro";
+import SectionWrapperVertical from "@/components/sections/SectionWrapperVertical.astro";
+import LayoutDiscern from "@/layouts/LayoutDiscern.astro";
+---
+
+<LayoutDiscern>
+  <slot name="content">
+    <SectionWrapperVertical>
+      <h1 class="h3" slot="header">Discern is built on open source</h1>
+      <p class="p" slot="content">
+        Open source and its communities are the heart of what we create. We are
+        grateful for these contributions and want to use this page to
+        acknowledge these projects. Without the extensive range of open source,
+        Discern would not be what it is today.
+      </p>
+    </SectionWrapperVertical>
+
+    <AttributionsList
+      packageJsonUrl={[
+        "https://raw.githubusercontent.com/newgentdigital/discern/refs/heads/main/package.json",
+      ]}
+    />
+  </slot>
+</LayoutDiscern>

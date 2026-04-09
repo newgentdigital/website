@@ -1,0 +1,27 @@
+---
+export const prerender = true;
+
+import AttributionsList from "@/components/legal/AttributionsList.astro";
+import SectionWrapperVertical from "@/components/sections/SectionWrapperVertical.astro";
+import LayoutShellguard from "@/layouts/LayoutShellguard.astro";
+---
+
+<LayoutShellguard>
+  <slot name="content">
+    <SectionWrapperVertical>
+      <h1 class="h3" slot="header">Shellguard with open source</h1>
+      <p class="p" slot="content">
+        Open source and their work is indispensable to us. We dedicate this page
+        to reiterate our gratitude for the projects that form the backbone of
+        Shellguard. With a selection of open source we can deliver the value our
+        users expect.
+      </p>
+    </SectionWrapperVertical>
+
+    <AttributionsList
+      packageJsonUrl={[
+        "https://raw.githubusercontent.com/newgentdigital/shellguard/refs/heads/main/package.json",
+      ]}
+    />
+  </slot>
+</LayoutShellguard>

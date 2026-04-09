@@ -1,0 +1,23 @@
+---
+export const prerender = true;
+
+import AttributionsList from "@/components/legal/AttributionsList.astro";
+import SectionWrapperVertical from "@/components/sections/SectionWrapperVertical.astro";
+import LayoutNewgent from "@/layouts/LayoutNewgent.astro";
+---
+
+<LayoutNewgent>
+  <slot name="content">
+    <SectionWrapperVertical>
+      <h1 class="h3" slot="header">Newgent älskar öppen källkod</h1>
+      <p class="p" slot="content">
+        Vi älskar öppen källkod och de communities som bygger den. Därför vill
+        vi ägna den här sidan åt att ge beröm där det är förtjänt. Vi använder
+        <span class="italic">mycket</span> öppen källkod i våra projekt, och vi vill
+        se till att dessa projekt får den uppskattning de förtjänar.
+      </p>
+    </SectionWrapperVertical>
+
+    <AttributionsList />
+  </slot>
+</LayoutNewgent>

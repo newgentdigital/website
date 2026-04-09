@@ -1,6 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLangFromUrl } from "@/i18n/utils";
+import { isExternalLink } from "@/utils/link.utils";
 import RiArrowRightLine from "@/components/icons/ri/RiArrowRightLine.astro";
 
 interface Props {
@@ -23,7 +24,11 @@ const { ctaText, ctaHref, hideHeaderCta } = Astro.props;
         <a
           class="link link-primary group hidden items-center gap-1 whitespace-nowrap"
           class:list={`${hideHeaderCta ? "sm:hidden" : "sm:flex"}`}
-          href={getRelativeLocaleUrl(lang, ctaHref)}
+          href={
+            isExternalLink(ctaHref)
+              ? ctaHref
+              : getRelativeLocaleUrl(lang, ctaHref)
+          }
         >
           {ctaText}
           <RiArrowRightLine class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -41,7 +46,11 @@ const { ctaText, ctaHref, hideHeaderCta } = Astro.props;
       <a
         class="link link-primary group flex w-fit items-center gap-1"
         class:list={`${hideHeaderCta ? "sm:flex" : "sm:hidden"}`}
-        href={getRelativeLocaleUrl(lang, ctaHref)}
+        href={
+          isExternalLink(ctaHref)
+            ? ctaHref
+            : getRelativeLocaleUrl(lang, ctaHref)
+        }
       >
         {ctaText}
         <RiArrowRightLine class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

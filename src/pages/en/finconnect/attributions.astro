@@ -1,0 +1,28 @@
+---
+export const prerender = true;
+
+import AttributionsList from "@/components/legal/AttributionsList.astro";
+import SectionWrapperVertical from "@/components/sections/SectionWrapperVertical.astro";
+import LayoutFinconnect from "@/layouts/LayoutFinconnect.astro";
+---
+
+<LayoutFinconnect>
+  <slot name="content">
+    <SectionWrapperVertical>
+      <h1 class="h3" slot="header">Finconnect stands on open source</h1>
+      <p class="p" slot="content">
+        Behind every success lies community. We are proud to build on open
+        source and want, on this page, to highlight the projects that make it
+        possible. Our use of open source is <span class="italic"
+          >fundamental</span
+        > to Finconnect's success and growth.
+      </p>
+    </SectionWrapperVertical>
+
+    <AttributionsList
+      packageJsonUrl={[
+        "https://raw.githubusercontent.com/newgentdigital/finconnect/refs/heads/main/package.json",
+      ]}
+    />
+  </slot>
+</LayoutFinconnect>

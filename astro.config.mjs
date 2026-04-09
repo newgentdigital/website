@@ -48,7 +48,12 @@ export default defineConfig({
       params: {
         ref: "newgent.digital",
       },
-      exemptDomains: ["newgent.digital", "*.newgent.digital"],
+      exemptDomains: [
+        "newgent.digital",
+        "*.newgent.digital",
+        "newgent.se",
+        "*.newgent.se",
+      ],
     }),
   ],
 

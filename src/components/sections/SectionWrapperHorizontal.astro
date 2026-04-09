@@ -1,6 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLangFromUrl } from "@/i18n/utils";
+import { isExternalLink } from "@/utils/link.utils";
 import RiArrowRightLine from "@/components/icons/ri/RiArrowRightLine.astro";
 
 interface Props {
@@ -31,7 +32,11 @@ const { ctaText, ctaHref, stickyHeader } = Astro.props;
       ctaText && ctaHref ? (
         <a
           class="link link-primary group flex w-fit items-center gap-1"
-          href={getRelativeLocaleUrl(lang, ctaHref)}
+          href={
+            isExternalLink(ctaHref)
+              ? ctaHref
+              : getRelativeLocaleUrl(lang, ctaHref)
+          }
         >
           {ctaText}
           <RiArrowRightLine class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
