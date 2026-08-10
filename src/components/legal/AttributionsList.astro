@@ -1,56 +1,84 @@
 ---
+import {
+  GENERATED_ATTRIBUTIONS,
+  type AttributionScope,
+} from "@/data/attributions.generated";
+
 import RiScalesLine from "../icons/ri/RiScalesLine.astro";
 import RiUser5Line from "../icons/ri/RiUser5Line.astro";
 import SimpleIconsGo from "../icons/simple-icons/SimpleIconsGo.astro";
 import SimpleIconsNpm from "../icons/simple-icons/SimpleIconsNpm.astro";
-import { getAttributions } from "./AttributionsList";
+import SimpleIconsRust from "../icons/simple-icons/SimpleIconsRust.astro";
 
 interface Props {
-  packageJsonUrl?: string[];
+  /** Which product's dependency report to render. */
+  scope: AttributionScope;
 }
 
-const { packageJsonUrl } = Astro.props;
-const attributions = await getAttributions(packageJsonUrl);
+const { scope } = Astro.props;
+const attributions = GENERATED_ATTRIBUTIONS[scope];
+
+// Each ecosystem keeps its own brand colour for the watermark. The classes are
+// written out in full rather than interpolated so Tailwind's scanner sees them.
+const sources = {
+  npm: {
+    Icon: SimpleIconsNpm,
+    label: "npm package",
+    tint: "text-[#CB3837]/15 group-hover:text-[#CB3837]/30",
+  },
+  go: {
+    Icon: SimpleIconsGo,
+    label: "Go module",
+    tint: "text-[#00ADD8]/15 group-hover:text-[#00ADD8]/30",
+  },
+  rust: {
+    Icon: SimpleIconsRust,
+    label: "Rust crate",
+    tint: "text-[#DEA584]/15 group-hover:text-[#DEA584]/30",
+  },
+} as const;
 ---
 
 <section
   class="grid grid-cols-1 gap-6 overflow-hidden px-8 pb-8 sm:grid-cols-2 sm:px-12 sm:pb-8 lg:grid-cols-3"
 >
   {
-    attributions.map((attribution) => (
-      <a
-        class="group relative flex flex-col overflow-hidden border border-zinc-300 p-6 transition-colors hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-600"
-        href={attribution.link}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <div class="flex flex-col gap-4">
-          <h2 class="h2 line-clamp-1 font-mono text-base font-normal tracking-normal">
-            {attribution.name}
-          </h2>
-          <div class="flex flex-col gap-2 text-sm">
-            <div class="p line-clamp-1 flex items-center gap-2">
-              <RiUser5Line class="h-4 w-4" aria-hidden="true" />
-              {attribution.author}
-            </div>
-            <div class="p line-clamp-1 flex items-center gap-2">
-              <RiScalesLine class="h-4 w-4" aria-hidden="true" />
-              {attribution.license}
+    attributions.map((attribution) => {
+      const { Icon, label, tint } = sources[attribution.source];
+      return (
+        <a
+          class="group relative flex flex-col overflow-hidden border border-zinc-300 p-6 transition-colors hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-600"
+          href={attribution.link}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <div class="flex flex-col gap-4">
+            <h2 class="h2 line-clamp-1 font-mono text-base font-normal tracking-normal">
+              {attribution.name}
+            </h2>
+            <div class="flex flex-col gap-2 text-sm">
+              <div class="p line-clamp-1 flex items-center gap-2">
+                <RiUser5Line class="h-4 w-4" aria-hidden="true" />
+                {attribution.author}
+              </div>
+              <div class="p line-clamp-1 flex items-center gap-2">
+                <RiScalesLine class="h-4 w-4" aria-hidden="true" />
+                {attribution.license}
+              </div>
             </div>
           </div>
-        </div>
-        {attribution.source === "npm" ? (
-          <SimpleIconsNpm
-            class="absolute -right-6 -bottom-6 h-28 w-28 text-[#CB3837]/15 transition-colors group-hover:text-[#CB3837]/30"
+          {/* The watermark is decorative, so the ecosystem it stands for is
+              carried in text for anyone not seeing it. */}
+          <Icon
+            class:list={[
+              "absolute -right-6 -bottom-6 h-28 w-28 transition-colors",
+              tint,
+            ]}
             aria-hidden="true"
           />
-        ) : (
-          <SimpleIconsGo
-            class="absolute -right-6 -bottom-6 h-28 w-28 text-[#00ADD8]/15 transition-colors group-hover:text-[#00ADD8]/30"
-            aria-hidden="true"
-          />
-        )}
-      </a>
-    ))
+          <span class="sr-only">{label}</span>
+        </a>
+      );
+    })
   }
 </section>
