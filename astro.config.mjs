@@ -1,7 +1,6 @@
 // @ts-check
 import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
-import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import autoParamAstro from "@newgentdigital/auto-param-astro";
 // The package does export a default; oxlint's resolver cannot follow its
@@ -49,7 +48,6 @@ export default defineConfig({
       },
     }),
     mdx(),
-    react(),
     autoParamAstro({
       params: {
         ref: "newgent.digital",

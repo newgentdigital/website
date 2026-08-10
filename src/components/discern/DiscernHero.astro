@@ -1,5 +1,5 @@
 ---
-import { LiquidMetal } from "@paper-design/shaders-react";
+import ShaderCanvas from "@/components/shaders/ShaderCanvas.astro";
 import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -7,24 +7,24 @@ const t = useTranslation(lang);
 ---
 
 <section class="relative h-125 overflow-hidden">
-  <div class="absolute inset-0 -z-50" aria-hidden="true">
-    <LiquidMetal
-      client:only="react"
-      colorBack="#5865f2"
-      colorTint="#e0e3ff"
-      contour={0}
-      distortion={0}
-      height={500}
-      repetition={5}
-      rotation={180}
-      scale={2}
-      shape="none"
-      shiftBlue={0.25}
-      shiftRed={0.25}
-      softness={1}
-      speed={0.75}
-    />
-  </div>
+  <ShaderCanvas
+    class="absolute inset-0 -z-50"
+    shader="liquidMetal"
+    params={{
+      colorBack: "#5865f2",
+      colorTint: "#e0e3ff",
+      contour: 0,
+      distortion: 0,
+      repetition: 5,
+      rotation: 180,
+      scale: 2,
+      shape: "none",
+      shiftBlue: 0.25,
+      shiftRed: 0.25,
+      softness: 1,
+      speed: 0.75,
+    }}
+  />
 
   <header class="absolute bottom-0 left-0 flex flex-col gap-4 p-8 sm:p-12">
     <span

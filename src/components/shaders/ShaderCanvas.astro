@@ -1,0 +1,26 @@
+---
+import type { ShaderCanvasParams, ShaderName } from "./ShaderCanvas.types";
+
+interface Props {
+  /** Which Paper shader to mount. */
+  shader: ShaderName;
+  /** Shader parameters, using the same names as the Paper Shaders presets. */
+  params: ShaderCanvasParams;
+  /** Classes for the element the canvas is sized against. */
+  class?: string;
+}
+
+const { shader, params, class: className } = Astro.props;
+---
+
+<div
+  class={className}
+  data-shader={shader}
+  data-shader-params={JSON.stringify(params)}
+  aria-hidden="true"
+>
+</div>
+
+<script>
+  import "./ShaderCanvas";
+</script>

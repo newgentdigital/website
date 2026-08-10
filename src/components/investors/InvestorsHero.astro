@@ -1,5 +1,5 @@
 ---
-import { GodRays } from "@paper-design/shaders-react";
+import ShaderCanvas from "@/components/shaders/ShaderCanvas.astro";
 import { getLangFromUrl, useTranslation } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -7,40 +7,40 @@ const t = useTranslation(lang);
 ---
 
 <section class="relative h-125 overflow-hidden">
-  <div class="absolute inset-0 -z-50 dark:hidden" aria-hidden="true">
-    <GodRays
-      bloom={0.1}
-      client:only="react"
-      colorBack="#fafafa"
-      colorBloom="#3083ff"
-      colors={["#69d4f2", "#083b87", "#2e82ff", "#000000"]}
-      density={0.5}
-      height={500}
-      intensity={1}
-      midIntensity={0.5}
-      midSize={0.25}
-      offsetY={-0.55}
-      speed={1.5}
-      spotty={1}
-    />
-  </div>
-  <div class="absolute inset-0 -z-50 hidden dark:block" aria-hidden="true">
-    <GodRays
-      bloom={0.5}
-      client:only="react"
-      colorBack="#09090b"
-      colorBloom="#3083ff"
-      colors={["#69d4f2", "#083b87", "#2e82ff", "#ffffff"]}
-      density={0.5}
-      height={500}
-      intensity={1}
-      midIntensity={0.5}
-      midSize={0.25}
-      offsetY={-0.55}
-      speed={1.5}
-      spotty={1}
-    />
-  </div>
+  <ShaderCanvas
+    class="absolute inset-0 -z-50 dark:hidden"
+    shader="godRays"
+    params={{
+      bloom: 0.1,
+      colorBack: "#fafafa",
+      colorBloom: "#3083ff",
+      colors: ["#69d4f2", "#083b87", "#2e82ff", "#000000"],
+      density: 0.5,
+      intensity: 1,
+      midIntensity: 0.5,
+      midSize: 0.25,
+      offsetY: -0.55,
+      speed: 1.5,
+      spotty: 1,
+    }}
+  />
+  <ShaderCanvas
+    class="absolute inset-0 -z-50 hidden dark:block"
+    shader="godRays"
+    params={{
+      bloom: 0.5,
+      colorBack: "#09090b",
+      colorBloom: "#3083ff",
+      colors: ["#69d4f2", "#083b87", "#2e82ff", "#ffffff"],
+      density: 0.5,
+      intensity: 1,
+      midIntensity: 0.5,
+      midSize: 0.25,
+      offsetY: -0.55,
+      speed: 1.5,
+      spotty: 1,
+    }}
+  />
 
   <header class="absolute bottom-0 left-0 flex flex-col gap-4 p-8 sm:p-12">
     <span
