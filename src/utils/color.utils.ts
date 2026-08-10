@@ -29,6 +29,13 @@ export async function hexToRgb(
   };
 }
 
+/** Applies the sRGB gamma correction used by the WCAG luminance formula. */
+function adjust(channel: number): number {
+  return channel <= 0.03928
+    ? channel / 12.92
+    : Math.pow((channel + 0.055) / 1.055, 2.4);
+}
+
 /**
  * Calculates the contrast color (black or white) for a given hex color based on
  * WCAG relative luminance formula.
@@ -49,10 +56,6 @@ export async function getContrastHex(hex: string): Promise<string | null> {
   const r = rgb.r / 255;
   const g = rgb.g / 255;
   const b = rgb.b / 255;
-
-  // Apply gamma correction to adjust for human perceived brightness
-  const adjust = (c: number) =>
-    c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
 
   // Calculate perceived brightness using weighted values for red, green, and blue
   const L = 0.2126 * adjust(r) + 0.7152 * adjust(g) + 0.0722 * adjust(b);

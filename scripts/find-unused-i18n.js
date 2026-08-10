@@ -4,11 +4,9 @@
 import crypto from "crypto";
 import fs from "fs/promises";
 import path from "path";
-import { fileURLToPath } from "url";
 import ts from "typescript";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, "..");
+const ROOT = path.resolve(import.meta.dirname, "..");
 const LOCALES_ROOT = path.join(ROOT, "src", "i18n", "locales");
 const SOURCE_ROOT = path.join(ROOT, "src");
 const FILE_EXTENSIONS = new Set([".ts", ".tsx", ".js", ".jsx", ".astro"]);
@@ -58,7 +56,7 @@ function collectKeysFromObjectLiteral(node, prefix, out) {
     if (!key) continue;
     const nextPath = prefix ? `${prefix}.${key}` : key;
     // If this property is an object, recurse to find deeper leaves.
-    if (ts.isPropertyAssignment(prop) && prop.initializer) {
+    if (ts.isPropertyAssignment(prop)) {
       if (ts.isObjectLiteralExpression(prop.initializer)) {
         collectKeysFromObjectLiteral(prop.initializer, nextPath, out);
         continue;
@@ -126,7 +124,7 @@ function extractLocaleLeavesWithValues(sourceText, fileName) {
       const key = extractPropertyName(prop.name);
       if (!key) continue;
       const nextPath = prefix ? `${prefix}.${key}` : key;
-      if (ts.isPropertyAssignment(prop) && prop.initializer) {
+      if (ts.isPropertyAssignment(prop)) {
         if (ts.isObjectLiteralExpression(prop.initializer)) {
           collectLeaves(prop.initializer, nextPath);
           continue;
@@ -143,7 +141,10 @@ function extractLocaleLeavesWithValues(sourceText, fileName) {
       const isExported = node.modifiers?.some(
         (m) => m.kind === ts.SyntaxKind.ExportKeyword,
       );
-      if (!isExported) return ts.forEachChild(node, visit);
+      if (!isExported) {
+        ts.forEachChild(node, visit);
+        return;
+      }
       for (const decl of node.declarationList.declarations) {
         if (!ts.isIdentifier(decl.name)) continue;
         const init = decl.initializer;
@@ -419,8 +420,12 @@ async function collectUsedKeys() {
 function compare(localeKeys, usedKeys) {
   const results = [];
   for (const [locale, keys] of localeKeys) {
-    const unused = [...keys].filter((k) => !usedKeys.has(k)).sort();
-    const missing = [...usedKeys].filter((k) => !keys.has(k)).sort();
+    const unused = [...keys]
+      .filter((k) => !usedKeys.has(k))
+      .toSorted((a, b) => a.localeCompare(b));
+    const missing = [...usedKeys]
+      .filter((k) => !keys.has(k))
+      .toSorted((a, b) => a.localeCompare(b));
     results.push({ locale, unused, missing, total: keys.size });
   }
   return results;
@@ -675,7 +680,6 @@ function findDuplicateStrings(localeLeavesWithValues, threshold) {
 
 function buildConsolidationMapping(candidates, localeLeavesWithValues) {
   const mappings = new Map();
-  const enMap = localeLeavesWithValues.get("en") || new Map();
   const svMap = localeLeavesWithValues.get("sv") || new Map();
   for (const { value, keys } of candidates) {
     const id = `s_${hashString(value)}`;
@@ -697,11 +701,11 @@ function replaceUsageInText(text, oldFullPath, newFullPath) {
   const base = parts[0];
   const chain = parts.slice(1).join(".");
   const re = new RegExp(
-    `t\\(\\s*['\"]${base}['\"]\\s*\\)\\s*(?:\\.\\s*[\\w$]+\\s*)*`,
+    `t\\(\\s*['"]${base}['"]\\s*\\)\\s*(?:\\.\\s*[\\w$]+\\s*)*`,
     "g",
   );
   return text.replace(re, (m) => {
-    const normalized = m.replace(/\s+/g, "");
+    const normalized = m.replaceAll(/\s+/g, "");
     if (!normalized.endsWith(`.${chain}`)) return m;
     const newId = newFullPath.split(".").pop();
     return `t('common').strings.${newId}`;
@@ -745,7 +749,7 @@ async function consolidateRepeatedStrings(
   console.log("  Candidates:");
   for (const { value, keys } of candidates) {
     const id = `s_${hashString(value)}`;
-    console.log(`   - ${id}: \"${value}\" -> ${keys.join(", ")}`);
+    console.log(`   - ${id}: "${value}" -> ${keys.join(", ")}`);
   }
   if (!apply) {
     console.log(

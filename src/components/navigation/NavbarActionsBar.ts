@@ -1,68 +1,56 @@
+// querySelector<T> already returns `T | null`, so no cast is needed to narrow
+// the element type and the null case stays visible.
+const selectors = {
+  menu: "#platform-dropdown-menu",
+  arrow: "#platform-dropdown-arrow",
+  toggle: "#platform-dropdown-toggle",
+} as const;
+
+function elements() {
+  const menu = document.querySelector<HTMLUListElement>(selectors.menu);
+  const arrow = document.querySelector<HTMLElement>(selectors.arrow);
+  const toggle = document.querySelector<HTMLButtonElement>(selectors.toggle);
+
+  if (!menu || !arrow || !toggle) return null;
+  return { menu, arrow, toggle };
+}
+
 function toggleActionsDropdown(open: boolean) {
-  const menu = document.getElementById(
-    "platform-dropdown-menu",
-  ) as HTMLUListElement | null;
-  const arrow = document.getElementById(
-    "platform-dropdown-arrow",
-  ) as HTMLElement | null;
-  const toggle = document.getElementById(
-    "platform-dropdown-toggle",
-  ) as HTMLButtonElement | null;
+  const found = elements();
+  if (!found) return;
 
-  if (!menu || !arrow || !toggle) return;
-
-  if (open) {
-    menu.classList.remove("hidden");
-    arrow.classList.add("rotate-180");
-    toggle.setAttribute("aria-expanded", "true");
-  } else {
-    menu.classList.add("hidden");
-    arrow.classList.remove("rotate-180");
-    toggle.setAttribute("aria-expanded", "false");
-  }
+  const { menu, arrow, toggle } = found;
+  menu.classList.toggle("hidden", !open);
+  arrow.classList.toggle("rotate-180", open);
+  toggle.setAttribute("aria-expanded", String(open));
 }
 
 function initPlatformDropdown() {
-  const toggle = document.getElementById(
-    "platform-dropdown-toggle",
-  ) as HTMLButtonElement | null;
-  const menu = document.getElementById(
-    "platform-dropdown-menu",
-  ) as HTMLUListElement | null;
-  const arrow = document.getElementById(
-    "platform-dropdown-arrow",
-  ) as HTMLElement | null;
+  const found = elements();
+  if (!found) return;
 
-  if (!toggle || !menu || !arrow) return;
+  const { menu, toggle } = found;
 
-  toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const isOpen = !menu.classList.contains("hidden");
-    if (isOpen) {
-      toggleActionsDropdown(false);
-    } else {
-      toggleActionsDropdown(true);
-    }
+  toggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleActionsDropdown(menu.classList.contains("hidden"));
   });
 
   document.addEventListener("click", () => {
-    if (!menu.classList.contains("hidden")) {
+    if (!menu.classList.contains("hidden")) toggleActionsDropdown(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !menu.classList.contains("hidden")) {
       toggleActionsDropdown(false);
     }
   });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !menu.classList.contains("hidden")) {
-      toggleActionsDropdown(false);
-    }
-  });
-
-  const links = menu.querySelectorAll("a");
-  links.forEach((link) => {
+  for (const link of menu.querySelectorAll("a")) {
     link.addEventListener("click", () => {
       toggleActionsDropdown(false);
     });
-  });
+  }
 }
 
 window.toggleActionsDropdown = toggleActionsDropdown;
@@ -70,3 +58,8 @@ window.toggleActionsDropdown = toggleActionsDropdown;
 document.addEventListener("DOMContentLoaded", () => {
   initPlatformDropdown();
 });
+
+// The export keeps this file a module, matching how it is bundled. Treated as a
+// global script, TypeScript would hoist `toggleActionsDropdown` onto
+// `globalThis` and hide the fact that callers must handle its absence.
+export { toggleActionsDropdown };

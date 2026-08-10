@@ -55,8 +55,9 @@ export async function getFileSize(
 
     return fileSize;
   } catch (error) {
-    throw new Error(
-      `Unable to get '${filePath}' size: ${(error as Error).message}`,
-    );
+    const reason = error instanceof Error ? error.message : String(error);
+    throw new Error(`Unable to get '${filePath}' size: ${reason}`, {
+      cause: error,
+    });
   }
 }

@@ -18,6 +18,9 @@ declare global {
   };
 }
 
+/** The element types matched by the field selectors below. */
+type FormField = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+
 /** The ID selector for the Turnstile container. */
 const TURNSTILE_CONTAINER_ID = "#cf-turnstile";
 /** The name attribute for the Turnstile response input. */
@@ -45,15 +48,11 @@ const IDEMPOTENCY_KEY_SELECTOR = `input[name="${IDEMPOTENCY_KEY_NAME}"]`;
  *   added.
  */
 async function setFormIdempotencyKey(form: HTMLFormElement) {
-  const idempotencyKey = crypto.randomUUID();
-
-  if (form) {
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = IDEMPOTENCY_KEY_NAME;
-    input.value = idempotencyKey;
-    form.appendChild(input);
-  }
+  const input = document.createElement("input");
+  input.type = "hidden";
+  input.name = IDEMPOTENCY_KEY_NAME;
+  input.value = crypto.randomUUID();
+  form.appendChild(input);
 }
 
 /**
@@ -101,9 +100,7 @@ async function manageTurnstileForm(
  * @param field - The form field to validate.
  * @returns True if the field is valid, false otherwise.
  */
-function validateField(
-  field: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
-): boolean {
+function validateField(field: FormField): boolean {
   const value = field.value.trim();
 
   if (value === "" && !field.hasAttribute("required")) {
@@ -116,17 +113,12 @@ function validateField(
   }
 
   if (field.type === "tel") {
-    const phoneRegex = /^\+?[\d\s\-\(\)]+$/;
+    const phoneRegex = /^\+?[\d\s\-()]+$/;
     return phoneRegex.test(value) && value.length >= 7; // Minimum length check
   }
 
   if (field.type === "url") {
-    try {
-      new URL(value);
-      return true;
-    } catch {
-      return false;
-    }
+    return URL.canParse(value);
   }
 
   if (field.hasAttribute("pattern")) {
@@ -147,29 +139,51 @@ function validateField(
 }
 
 /**
+ * Collects the required fields of a form.
+ *
+ * `querySelectorAll<FormField>` cannot be used: the Workers types merge extra
+ * members into the global `Element`, so `HTMLSelectElement` no longer satisfies
+ * the generic's `extends Element` constraint. Narrowing per element avoids
+ * that.
+ *
+ * @param form - The HTML form element to read.
+ * @returns The required input, textarea and select elements.
+ */
+function getRequiredFields(form: HTMLFormElement): FormField[] {
+  const fields: FormField[] = [];
+
+  for (const element of form.querySelectorAll(REQUIRED_FIELDS_SELECTOR)) {
+    if (
+      element instanceof HTMLInputElement ||
+      element instanceof HTMLTextAreaElement ||
+      element instanceof HTMLSelectElement
+    ) {
+      fields.push(element);
+    }
+  }
+
+  return fields;
+}
+
+/**
  * Checks form validity by ensuring all required fields are filled and the
  * client-side captcha is valid. Disables the submit button if form is invalid.
  *
  * @param form - The HTML form element to check.
  */
 async function checkFormValidity(form: HTMLFormElement) {
-  const submitButton = form.querySelector(
+  const submitButton = form.querySelector<HTMLButtonElement>(
     SUBMIT_BUTTON_SELECTOR,
-  ) as HTMLButtonElement;
-  const requiredFields = form.querySelectorAll(REQUIRED_FIELDS_SELECTOR);
+  );
+  if (!submitButton) return;
 
-  const allRequiredFilled = Array.from(requiredFields).every(
-    (field) =>
-      (
-        field as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      ).value.trim() !== "",
+  const requiredFields = getRequiredFields(form);
+
+  const allRequiredFilled = requiredFields.every(
+    (field) => field.value.trim() !== "",
   );
 
-  const allFieldsValid = Array.from(requiredFields).every((field) =>
-    validateField(
-      field as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
-    ),
-  );
+  const allFieldsValid = requiredFields.every((field) => validateField(field));
 
   submitButton.disabled =
     !allRequiredFilled ||
@@ -201,23 +215,28 @@ export async function attachFormListeners(
     }
   });
 
-  const submitButton = form.querySelector(
+  const submitButton = form.querySelector<HTMLButtonElement>(
     SUBMIT_BUTTON_SELECTOR,
-  ) as HTMLButtonElement;
+  );
 
-  submitButton.addEventListener("click", async (event) => {
+  submitButton?.addEventListener("click", async (event) => {
     event.preventDefault();
 
-    const turnstileRespone = form.querySelector(
+    const turnstileResponse = form.querySelector<HTMLInputElement>(
       TURNSTILE_RESPONSE_SELECTOR,
-    ) as HTMLInputElement;
+    );
 
-    const idempotencyKeyInput = form.querySelector(
+    const idempotencyKeyInput = form.querySelector<HTMLInputElement>(
       IDEMPOTENCY_KEY_SELECTOR,
-    ) as HTMLInputElement;
+    );
+
+    if (!turnstileResponse || !idempotencyKeyInput) {
+      turnstile.reset(turnstileContainerId);
+      return;
+    }
 
     const captchaData = new FormData();
-    captchaData.append(TURNSTILE_RESPONSE_NAME, turnstileRespone.value);
+    captchaData.append(TURNSTILE_RESPONSE_NAME, turnstileResponse.value);
     captchaData.append(IDEMPOTENCY_KEY_NAME, idempotencyKeyInput.value);
 
     try {

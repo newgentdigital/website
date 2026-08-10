@@ -1,46 +1,37 @@
 import { actions } from "astro:actions";
+
 import { attachFormListeners } from "../../utils/form.utils";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById(
-    "footer-newsletter-form",
-  ) as HTMLFormElement;
+  // querySelector<T> returns `T | null`, so the absence of an element is
+  // handled rather than asserted away.
+  const form = document.querySelector<HTMLFormElement>(
+    "#footer-newsletter-form",
+  );
+  const errorDiv = document.querySelector<HTMLElement>("#newsletter-error");
+  const errorText = document.querySelector<HTMLElement>(
+    "#newsletter-error-text",
+  );
+  const successDiv = document.querySelector<HTMLElement>("#newsletter-success");
+
+  if (!form || !errorDiv || !errorText || !successDiv) return;
 
   const action = async (formData: FormData) => {
     const result = await actions.signupEmailList.resend(formData);
 
     if (result.error) {
-      const errorDiv = document.getElementById(
-        "newsletter-error",
-      ) as HTMLElement;
-      const errorText = document.getElementById(
-        "newsletter-error-text",
-      ) as HTMLElement;
-
-      const message =
+      errorText.textContent =
         result.error instanceof Error
           ? result.error.message
           : "Something went wrong, please try again.";
-      errorText.textContent = message;
       errorDiv.classList.remove("hidden");
-
-      const successDiv = document.getElementById(
-        "newsletter-success",
-      ) as HTMLElement;
       successDiv.classList.add("hidden");
     } else {
-      const successDiv = document.getElementById(
-        "newsletter-success",
-      ) as HTMLElement;
-      const errorDiv = document.getElementById(
-        "newsletter-error",
-      ) as HTMLElement;
-
       successDiv.classList.remove("hidden");
       errorDiv.classList.add("hidden");
       form.reset();
     }
   };
 
-  attachFormListeners(form, action);
+  void attachFormListeners(form, action);
 });

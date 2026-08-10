@@ -9,8 +9,9 @@ function updateNavbar() {
 
   const currentScrollY = window.scrollY;
   const actionsHeight = actionsBar.offsetHeight;
-  const returnElement = container.previousElementSibling as HTMLElement | null;
-  const returnHeight = returnElement?.offsetHeight ?? 0;
+  const returnElement = container.previousElementSibling;
+  const returnHeight =
+    returnElement instanceof HTMLElement ? returnElement.offsetHeight : 0;
   const totalHeight = actionsHeight + returnHeight;
 
   if (currentScrollY <= totalHeight) {

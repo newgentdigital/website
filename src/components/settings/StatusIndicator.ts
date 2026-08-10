@@ -37,11 +37,18 @@ interface CachedStatus {
   timestamp: number;
 }
 
-const impactToStatus: Record<string, SystemStatus> = {
+// Keyed by the API's impact strings, which are open-ended: an unrecognised
+// impact yields `undefined` rather than a `SystemStatus`.
+const impactToStatus: Record<string, SystemStatus | undefined> = {
   partial_outage: "partial_outage",
   degraded_performance: "degraded_performance",
   full_outage: "full_outage",
 };
+
+/** Narrows an untrusted `data-status` attribute to a known status. */
+function isSystemStatus(value: string | null): value is SystemStatus {
+  return value !== null && Object.hasOwn(STATUS_COLORS, value);
+}
 
 /**
  * Updates the status indicator elements on the page with the given status and
@@ -133,7 +140,7 @@ async function fetchStatus(): Promise<SystemStatus | null> {
     const data: IncidentIoResponse = await response.json();
     const worstImpact = data.ongoing_incidents?.[0]?.current_worst_impact;
     const status: SystemStatus = worstImpact
-      ? impactToStatus[worstImpact] || "operational"
+      ? (impactToStatus[worstImpact] ?? "operational")
       : data.in_progress_maintenances?.length
         ? "maintenance"
         : "operational";
@@ -142,11 +149,12 @@ async function fetchStatus(): Promise<SystemStatus | null> {
     return status;
   } catch (error) {
     console.error("Failed to fetch status:", error);
-    return (
-      (document
-        .getElementById("status-text")
-        ?.getAttribute("data-status") as SystemStatus) || null
-    );
+
+    const rendered =
+      document
+        .querySelector<HTMLElement>("#status-text")
+        ?.getAttribute("data-status") ?? null;
+    return isSystemStatus(rendered) ? rendered : null;
   }
 }
 
@@ -160,7 +168,7 @@ async function refreshStatus() {
     const lang = (document.documentElement.lang || "en").startsWith("sv")
       ? "sv"
       : "en";
-    const statusText = STATUS_TRANSLATIONS[result][lang as "en" | "sv"];
+    const statusText = STATUS_TRANSLATIONS[result][lang];
     updateStatusIndicator(result, statusText);
   }
 }

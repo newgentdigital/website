@@ -1,7 +1,11 @@
 import { en } from "./locales/en";
 import { sv } from "./locales/sv";
 
-export const strings = {
+/**
+ * Typing every locale against `sv` makes divergence a type error rather than a
+ * runtime fallback, and lets `t()` index the tables without casting.
+ */
+export const strings: Record<"sv" | "en", typeof sv> = {
   sv,
   en,
 };
@@ -25,9 +29,15 @@ export const sitemapSupportedLocales = Object.fromEntries(
  * @param url - The URL to extract the language from.
  * @returns The language code if supported, otherwise the default locale.
  */
+function isSupportedLocale(
+  value: string,
+): value is keyof typeof supportedLocales {
+  return Object.hasOwn(supportedLocales, value);
+}
+
 export function getLangFromUrl(url: URL) {
   const lang = url.pathname.split("/")[1];
-  if (lang in supportedLocales) return lang as keyof typeof supportedLocales;
+  if (isSupportedLocale(lang)) return lang;
   return defaultLocale;
 }
 
@@ -42,10 +52,7 @@ export function useTranslation(locale: keyof typeof strings) {
   return function t<K extends keyof (typeof strings)[typeof defaultLocale]>(
     key: K,
   ): (typeof strings)[typeof defaultLocale][K] {
-    return (
-      // eslint-disable-next-line
-      (strings[locale] as any)[key] ?? (strings[defaultLocale] as any)[key]
-    );
+    return strings[locale][key] ?? strings[defaultLocale][key];
   };
 }
 

@@ -1,4 +1,5 @@
 import type { CookieConsentConfig } from "vanilla-cookieconsent";
+
 import { acceptedService } from "vanilla-cookieconsent";
 
 const CAT_NECESSARY = "necessary";
