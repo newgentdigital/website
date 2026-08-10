@@ -1,7 +1,7 @@
-import { z } from "astro:content";
+import { z } from "astro/zod";
 
 export const contactSchema = z.object({
-  contactEmail: z.string().email().optional(),
+  contactEmail: z.email().optional(),
   contactPhone: z
     .array(
       z.object({
@@ -23,14 +23,12 @@ export const contactSchema = z.object({
     )
     .optional(),
   contactWebsite: z
-    .string()
     .url("Must be a valid URL")
     .startsWith("https://", "Must start with https://")
     .optional(),
   contactSocial: z
     .object({
       facebook: z
-        .string()
         .url("Must be a valid URL")
         .startsWith(
           "https://www.facebook.com/",
@@ -38,7 +36,6 @@ export const contactSchema = z.object({
         )
         .optional(),
       github: z
-        .string()
         .url("Must be a valid URL")
         .startsWith(
           "https://github.com/",
@@ -46,7 +43,6 @@ export const contactSchema = z.object({
         )
         .optional(),
       instagram: z
-        .string()
         .url("Must be a valid URL")
         .startsWith(
           "https://www.instagram.com/",
@@ -54,7 +50,6 @@ export const contactSchema = z.object({
         )
         .optional(),
       linkedin: z
-        .string()
         .url("Must be a valid URL")
         .startsWith(
           "https://www.linkedin.com/",
@@ -62,7 +57,6 @@ export const contactSchema = z.object({
         )
         .optional(),
       tiktok: z
-        .string()
         .url("Must be a valid URL")
         .startsWith(
           "https://www.tiktok.com/",
@@ -70,12 +64,10 @@ export const contactSchema = z.object({
         )
         .optional(),
       twitter: z
-        .string()
         .url("Must be a valid URL")
         .startsWith("https://x.com/", "Must start with https://x.com/")
         .optional(),
       youtube: z
-        .string()
         .url("Must be a valid URL")
         .startsWith(
           "https://www.youtube.com/",

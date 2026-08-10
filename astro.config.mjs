@@ -4,9 +4,18 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import autoParamAstro from "@newgentdigital/auto-param-astro";
+// The package does export a default; oxlint's resolver cannot follow its
+// `exports` map to find it.
+// oxlint-disable-next-line import/default
 import sentry from "@sentry/astro";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig, envField, fontProviders } from "astro/config";
+import {
+  defineConfig,
+  envField,
+  fontProviders,
+  svgoOptimizer,
+} from "astro/config";
+
 import {
   defaultLocale,
   sitemapSupportedLocales,
@@ -19,22 +28,19 @@ export default defineConfig({
   site: "https://newgent.digital",
   output: "static",
   redirects,
+  session: false,
 
   adapter: cloudflare({
     imageService: "compile",
-    platformProxy: {
-      enabled: true,
-    },
+    prerenderEnvironment: "node",
   }),
 
   integrations: [
     sentry({
       telemetry: false,
-      sourceMapsUploadOptions: {
-        project: "website",
-        org: "newgentdigital",
-        authToken: process.env.SENTRY_AUTH_TOKEN,
-      },
+      org: "newgentdigital",
+      project: "website",
+      authToken: process.env.SENTRY_AUTH_TOKEN,
     }),
     sitemap({
       i18n: {
@@ -131,36 +137,37 @@ export default defineConfig({
     },
   },
 
-  experimental: {
-    fonts: [
-      {
-        provider: fontProviders.fontsource(),
-        name: "Inter",
-        cssVariable: "--font-inter",
-        weights: ["100 900"],
-      },
-      {
-        provider: fontProviders.fontsource(),
-        name: "Instrument Serif",
-        cssVariable: "--font-instrument-serif",
-        weights: ["400"],
-      },
-      {
-        provider: fontProviders.fontsource(),
-        name: "Geist Mono",
-        cssVariable: "--font-geist-mono",
-        weights: ["100 900"],
-      },
-      {
-        provider: fontProviders.fontsource(),
-        name: "Anek Latin",
-        cssVariable: "--font-anek-latin",
-        weights: ["100 800"],
-      },
-    ],
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "Inter",
+      cssVariable: "--font-inter",
+      weights: ["100 900"],
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: "Instrument Serif",
+      cssVariable: "--font-instrument-serif",
+      weights: ["400"],
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: "Geist Mono",
+      cssVariable: "--font-geist-mono",
+      weights: ["100 900"],
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: "Anek Latin",
+      cssVariable: "--font-anek-latin",
+      weights: ["100 800"],
+    },
+  ],
 
+  experimental: {
     clientPrerender: true,
     contentIntellisense: true,
-    svgo: true,
+    svgOptimizer: svgoOptimizer(),
+    incrementalBuild: true,
   },
 });

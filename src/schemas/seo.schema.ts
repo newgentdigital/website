@@ -1,4 +1,5 @@
-import { reference, z, type SchemaContext } from "astro:content";
+import { z } from "astro/zod";
+import { reference, type SchemaContext } from "astro:content";
 
 export const seoSchema = ({ image }: SchemaContext) =>
   z.object({

@@ -39,19 +39,16 @@ const tools = [
 >
   {
     tools
-      .sort((a, b) => a.name.localeCompare(b.name))
+      .toSorted((a, b) => a.name.localeCompare(b.name))
       .map((tool) => (
         <article class="space-y-6 border border-zinc-300 pt-6 dark:border-zinc-700">
           <header class="flex items-center gap-4 px-6">
             <Image
               class="select-none"
               alt={`${tool.name} logo`}
-              fit="cover"
-              format="avif"
+              format="svg"
               height={32}
               layout="constrained"
-              position="center"
-              quality={80}
               src={tool.icon}
               width={32}
             />

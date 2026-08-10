@@ -1,4 +1,5 @@
 import type { SchemaContext } from "astro:content";
+
 import { contactSchema } from "./contact.schema";
 import { dateSchema } from "./date.schema";
 import { seoSchema } from "./seo.schema";
