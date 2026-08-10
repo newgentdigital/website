@@ -3,5 +3,25 @@
     "wrangler.json": "jsonc"
   },
 
-  "astro.content-intellisense": true
+  "astro.content-intellisense": true,
+
+  // Oxlint's language server. Type-aware linting comes from .oxlintrc.json.
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "always"
+  },
+
+  // Oxfmt cannot format .astro files, so it is wired up per-language instead of
+  // as the global default. .astro formatting is left to astro-build.astro-vscode.
+  "editor.formatOnSave": true,
+  "[javascript]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[javascriptreact]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[json]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[jsonc]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[css]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[markdown]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[mdx]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[yaml]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[toml]": { "editor.defaultFormatter": "oxc.oxc-vscode" }
 }

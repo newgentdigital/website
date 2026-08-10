@@ -1,0 +1,61 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+
+  // All of these ship inside Oxlint itself — no npm plugin packages involved.
+  // `react`/`jsx-a11y` are deliberately absent: there are no .tsx files, and
+  // Oxlint only reads the <script> blocks of .astro files, never the template.
+  "plugins": ["typescript", "unicorn", "oxc", "import", "promise"],
+
+  // Type-aware rules run through oxlint-tsgolint. Set here rather than as a CLI
+  // flag so editors pick it up too.
+  "options": {
+    "typeAware": true
+  },
+
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "perf": "error"
+  },
+
+  "rules": {
+    "typescript/consistent-type-imports": "error",
+    "typescript/no-explicit-any": "error",
+    "typescript/no-non-null-assertion": "error",
+    "typescript/no-unnecessary-condition": "error",
+    "typescript/no-unnecessary-type-assertion": "error",
+    "typescript/no-unsafe-type-assertion": "error",
+    // Empty strings are meaningful here: a form field that posts "" should fall
+    // back to the default just like a missing one, so `||` is deliberate for
+    // string defaults. The rule still applies to every other type.
+    "typescript/prefer-nullish-coalescing": [
+      "error",
+      { "ignorePrimitives": { "string": true } }
+    ],
+    "typescript/prefer-optional-chain": "error",
+    // Diagnostics on failed network calls are wanted; stray debug logs are not.
+    "eslint/no-console": ["error", { "allow": ["warn", "error"] }],
+    "promise/no-return-wrap": "error",
+    "unicorn/prefer-string-replace-all": "error",
+
+    // The sequential awaits in this repo are deliberate: they page through
+    // rate-limited registry APIs and read files one at a time on purpose.
+    "eslint/no-await-in-loop": "off",
+    // Astro components import stylesheets for their side effect.
+    "import/no-unassigned-import": "off"
+  },
+
+  "overrides": [
+    {
+      // Node CLI script: reporting to stdout is the whole point, and it runs
+      // untyped so the type-aware `no-unsafe-*` family has nothing to work with.
+      "files": ["scripts/**"],
+      "rules": {
+        "eslint/no-console": "off",
+        "typescript/no-unsafe-type-assertion": "off"
+      }
+    }
+  ],
+
+  "ignorePatterns": ["worker-configuration.d.ts", "src/env.d.ts"]
+}
