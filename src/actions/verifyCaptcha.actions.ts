@@ -1,6 +1,6 @@
+import { z } from "astro/zod";
 import { ActionError, defineAction } from "astro:actions";
 import { TURNSTILE_SECRET_KEY } from "astro:env/server";
-import { z } from "astro:schema";
 
 /**
  * Retrieves the client's IP address from the request headers.
@@ -17,6 +17,28 @@ export async function getClientIp(request: Request): Promise<string> {
   );
 }
 
+interface TurnstileVerifyResponse {
+  success: boolean;
+  "error-codes"?: string[];
+}
+
+/**
+ * Narrows an untrusted siteverify payload to the fields this action reads.
+ *
+ * @param value - The parsed JSON body of the siteverify response.
+ * @returns True when the payload carries a usable `success` flag.
+ */
+function isTurnstileResponse(value: unknown): value is TurnstileVerifyResponse {
+  if (typeof value !== "object" || value === null) return false;
+  if (!("success" in value) || typeof value.success !== "boolean") return false;
+  if (!("error-codes" in value)) return true;
+
+  const codes: unknown = value["error-codes"];
+  return (
+    Array.isArray(codes) && codes.every((code) => typeof code === "string")
+  );
+}
+
 export const verifyCaptcha = {
   turnstile: defineAction({
     accept: "form",
@@ -24,10 +46,7 @@ export const verifyCaptcha = {
       "cf-turnstile-response": z
         .string()
         .min(1, "Turnstile response token is required"),
-      idempotency_key: z
-        .string()
-        .uuid("Idempotency Key must be a valid UUIDv4")
-        .min(1, "Idempotency Key is required"),
+      idempotency_key: z.uuidv4("Idempotency Key must be a valid UUIDv4"),
     }),
 
     handler: async (input, context) => {
@@ -55,19 +74,24 @@ export const verifyCaptcha = {
           });
         }
 
-        const data = await (response.json() as Promise<{
-          success: boolean;
-          "error-codes": string[];
-        }>);
+        const payload: unknown = await response.json();
 
-        if (!data.success) {
+        if (!isTurnstileResponse(payload)) {
           throw new ActionError({
-            code: "BAD_REQUEST",
-            message: `Captcha verification failed: ${data["error-codes"].join(", ")}`,
+            code: "BAD_GATEWAY",
+            message: "Unexpected response from the Turnstile siteverify API.",
           });
         }
 
-        return { data };
+        if (!payload.success) {
+          const errorCodes = payload["error-codes"]?.join(", ") ?? "unknown";
+          throw new ActionError({
+            code: "BAD_REQUEST",
+            message: `Captcha verification failed: ${errorCodes}`,
+          });
+        }
+
+        return { data: payload };
       } catch (error) {
         if (error) throw error;
         throw new ActionError({

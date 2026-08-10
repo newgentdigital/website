@@ -104,26 +104,6 @@ export default defineConfig({
         access: "secret",
         default: "re_xxxxxxxxx",
       }),
-      FORWARDEMAIL_API_KEY: envField.string({
-        context: "server",
-        access: "secret",
-        default: "ApiKeyAuth",
-      }),
-      LISTMONK_BASE_URL: envField.string({
-        context: "server",
-        access: "public",
-        default: "https://listmonk.example.com",
-      }),
-      LISTMONK_API_USER: envField.string({
-        context: "server",
-        access: "public",
-        default: "api_user",
-      }),
-      LISTMONK_API_TOKEN: envField.string({
-        context: "server",
-        access: "secret",
-        default: "token",
-      }),
       TURNSTILE_SITE_KEY: envField.string({
         context: "client",
         access: "public",
