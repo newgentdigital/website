@@ -29,9 +29,10 @@ export default defineConfig({
   redirects,
   session: false,
 
+  prerenderConflictBehavior: "error",
+
   adapter: cloudflare({
     imageService: "compile",
-    prerenderEnvironment: "node",
   }),
 
   integrations: [
@@ -57,7 +58,9 @@ export default defineConfig({
         locales: sitemapSupportedLocales,
       },
     }),
-    mdx(),
+    mdx({
+      optimize: true,
+    }),
     autoParamAstro({
       params: {
         ref: "newgent.digital",
@@ -74,11 +77,12 @@ export default defineConfig({
   },
 
   prefetch: {
-    defaultStrategy: "viewport",
+    defaultStrategy: "hover",
     prefetchAll: true,
   },
 
   image: {
+    responsiveStyles: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -87,7 +91,7 @@ export default defineConfig({
       },
       {
         protocol: "https",
-        hostname: "placehold.co",
+        hostname: "images.unsplash.com",
         pathname: "/**",
       },
       {
