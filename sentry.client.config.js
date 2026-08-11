@@ -8,12 +8,12 @@ Sentry.init({
   integrations: [
     Sentry.browserTracingIntegration(),
     Sentry.replayIntegration(),
-    Sentry.feedbackIntegration({
-      colorScheme: "system",
-      isNameRequired: true,
-      isEmailRequired: true,
-      triggerLabel: "Bug?",
-    }),
+    //Sentry.feedbackIntegration({
+    //  colorScheme: "system",
+    //  isNameRequired: true,
+    //  isEmailRequired: true,
+    //  triggerLabel: "Bug?",
+    //}),
   ],
 
   dataCollection: {
