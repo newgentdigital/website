@@ -8,8 +8,13 @@
   "main": "./sentry.server.config.js",
   "compatibility_date": "2026-08-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "routes": [{ "pattern": "newgent.digital", "custom_domain": true }],
+  "workers_dev": false,
+  "preview_urls": false,
   "assets": {
     "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
   },
   "vars": {
     "SENTRY_DSN": "https://7b13d7e280538fc15fb698f53bda6ee8@o4509860399022080.ingest.de.sentry.io/4509860479303760",
