@@ -83,6 +83,17 @@ export default defineConfig({
 
   image: {
     responsiveStyles: true,
+    layout: "constrained",
+    objectFit: "cover",
+    objectPosition: "center",
+    breakpoints: [640, 828, 1280, 1920, 2560],
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+      config: {
+        webp: { quality: 80, effort: 6 },
+      },
+    },
+    dangerouslyProcessSVG: true,
     remotePatterns: [
       {
         protocol: "https",
