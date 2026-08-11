@@ -108,7 +108,6 @@ export default defineConfig({
       RESEND_API_KEY: envField.string({
         context: "server",
         access: "secret",
-        default: "re_xxxxxxxxx",
       }),
       SENTRY_DSN: envField.string({
         context: "client",
@@ -118,12 +117,10 @@ export default defineConfig({
       TURNSTILE_SITE_KEY: envField.string({
         context: "client",
         access: "public",
-        default: "2x00000000000000000000AB",
       }),
       TURNSTILE_SECRET_KEY: envField.string({
         context: "server",
         access: "secret",
-        default: "2x0000000000000000000000000000000AA",
       }),
     },
   },
