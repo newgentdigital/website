@@ -51,13 +51,11 @@ export default defineConfig({
     autoParamAstro({
       params: {
         ref: "newgent.digital",
+        utm_source: "newgent.digital",
+        utm_medium: "referral",
       },
-      exemptDomains: [
-        "newgent.digital",
-        "*.newgent.digital",
-        "newgent.se",
-        "*.newgent.se",
-      ],
+      skipInternalLinks: true,
+      exemptDomains: ["newgent.se", "*.newgent.se"],
     }),
   ],
 
