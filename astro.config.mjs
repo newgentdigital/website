@@ -40,6 +40,16 @@ export default defineConfig({
       org: "newgentdigital",
       project: "website",
       authToken: process.env.SENTRY_AUTH_TOKEN,
+      sourcemaps: {
+        filesToDeleteAfterUpload: [
+          "./dist/**/client/**/*.map",
+          "./dist/**/server/**/*.map",
+        ],
+      },
+      bundleSizeOptimizations: {
+        excludeDebugStatements: true,
+        excludeReplayShadowDom: true,
+      },
     }),
     sitemap({
       i18n: {
@@ -99,6 +109,11 @@ export default defineConfig({
         context: "server",
         access: "secret",
         default: "re_xxxxxxxxx",
+      }),
+      SENTRY_DSN: envField.string({
+        context: "client",
+        access: "public",
+        optional: true,
       }),
       TURNSTILE_SITE_KEY: envField.string({
         context: "client",

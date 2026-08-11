@@ -1,9 +1,18 @@
-import * as Sentry from "@sentry/astro";
+import handler from "@astrojs/cloudflare/entrypoints/server";
+import * as Sentry from "@sentry/cloudflare";
 
-Sentry.init({
-  dsn: "https://ingest.de.sentry.io/",
+export default Sentry.withSentry(
+  (env) => ({
+    dsn: env.SENTRY_DSN,
+    environment: import.meta.env.DEV ? "development" : "production",
 
-  sendDefaultPii: true,
-  enableLogs: true,
-  tracesSampleRate: 1.0,
-});
+    dataCollection: {
+      userInfo: false,
+      httpBodies: [],
+    },
+
+    enableLogs: true,
+    tracesSampleRate: import.meta.env.DEV ? 1.0 : 0.1,
+  }),
+  handler,
+);

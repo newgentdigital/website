@@ -1,7 +1,9 @@
 import * as Sentry from "@sentry/astro";
+import { SENTRY_DSN } from "astro:env/client";
 
 Sentry.init({
-  dsn: "https://ingest.de.sentry.io/",
+  dsn: SENTRY_DSN,
+  environment: import.meta.env.DEV ? "development" : "production",
 
   integrations: [
     Sentry.browserTracingIntegration(),
@@ -14,9 +16,23 @@ Sentry.init({
     }),
   ],
 
-  sendDefaultPii: true,
+  dataCollection: {
+    userInfo: false,
+    httpBodies: [],
+  },
+
   enableLogs: true,
-  tracesSampleRate: 1.0,
+  tracesSampleRate: import.meta.env.DEV ? 1.0 : 0.1,
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
+
+  denyUrls: [
+    /googletagmanager\.com/,
+    /google-analytics\.com/,
+    /clarity\.ms/,
+    /hs-scripts\.com/,
+    /^chrome-extension:\/\//,
+    /^moz-extension:\/\//,
+    /^safari-web-extension:\/\//,
+  ],
 });
