@@ -49,7 +49,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.2.0",
-    "resend": "^6.19.0",
+    "resend": "^6.20.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
     "vanilla-cookieconsent": "^3.1.0"
