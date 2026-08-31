@@ -51,7 +51,7 @@
     "astro": "^7.2.0",
     "resend": "^6.19.0",
     "tailwindcss": "^4.3.3",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "vanilla-cookieconsent": "^3.1.0"
   },
   "devDependencies": {
