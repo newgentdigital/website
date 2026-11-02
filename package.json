@@ -40,7 +40,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "^14.2.0",
     "@astrojs/mdx": "^7.0.5",
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/sitemap": "^3.7.4",
     "@newgentdigital/auto-param-astro": "^2.1.1",
     "@orestbida/iframemanager": "^1.3.0",
     "@paper-design/shaders": "^0.0.80",
